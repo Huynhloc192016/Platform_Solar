@@ -3,7 +3,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
-import { Search, Loader2, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Loader2, Clock, ChevronLeft, ChevronRight, MoreVertical, Pencil, Trash2 } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '../../components/ui/dialog';
+import { Label } from '../../components/ui/label';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '../../components/ui/dropdown-menu';
 import api from '../../services/api';
 
 const formatDateTime = (value) => {
@@ -24,6 +40,18 @@ const SessionManagement = () => {
   const [dateToInput, setDateToInput] = useState('');
   const [dateFromApplied, setDateFromApplied] = useState('');
   const [dateToApplied, setDateToApplied] = useState('');
+
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [sessionToEdit, setSessionToEdit] = useState(null);
+  const [editFormData, setEditFormData] = useState({
+    StartTime: '',
+    StopTime: '',
+    MeterStart: '',
+    MeterStop: '',
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [editError, setEditError] = useState('');
+  const [deletingId, setDeletingId] = useState(null);
 
   const fetchSessions = async (params) => {
     const { page: p = page, limit: l = limit, search: s, dateFrom: df, dateTo: dt } = params || {};
@@ -85,6 +113,61 @@ const SessionManagement = () => {
   const hasActiveFilter = searchApplied || dateFromApplied || dateToApplied;
 
   const totalPages = Math.max(1, Math.ceil(total / limit));
+
+  const openEditDialog = (s) => {
+    setSessionToEdit(s);
+    setEditFormData({
+      StartTime: s.StartTime ? new Date(s.StartTime).toISOString().slice(0, 16) : '',
+      StopTime: s.StopTime ? new Date(s.StopTime).toISOString().slice(0, 16) : '',
+      MeterStart: s.MeterStart != null ? String(s.MeterStart) : '',
+      MeterStop: s.MeterStop != null ? String(s.MeterStop) : '',
+    });
+    setEditError('');
+    setEditDialogOpen(true);
+  };
+
+  const handleEditSession = async (e) => {
+    e.preventDefault();
+    if (!sessionToEdit) return;
+    setEditError('');
+    setSubmitting(true);
+    try {
+      const payload = {};
+      if (editFormData.StartTime) payload.StartTime = new Date(editFormData.StartTime).toISOString().slice(0, 19).replace('T', ' ');
+      if (editFormData.StopTime) payload.StopTime = new Date(editFormData.StopTime).toISOString().slice(0, 19).replace('T', ' ');
+      if (editFormData.MeterStart !== '') payload.MeterStart = parseFloat(editFormData.MeterStart);
+      if (editFormData.MeterStop !== '') payload.MeterStop = parseFloat(editFormData.MeterStop);
+      const res = await api.put(`/dashboard/sessions/${sessionToEdit.TransactionId}`, payload);
+      if (res.data.success) {
+        setEditDialogOpen(false);
+        setSessionToEdit(null);
+        fetchSessions({ page, limit, search: searchApplied || undefined, dateFrom: dateFromApplied || undefined, dateTo: dateToApplied || undefined });
+      } else {
+        setEditError(res.data.message || 'Không thể cập nhật.');
+      }
+    } catch (err) {
+      setEditError(err.response?.data?.message || 'Đã xảy ra lỗi.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleDeleteSession = async (s) => {
+    if (!window.confirm(`Bạn có chắc muốn xóa phiên sạc #${s.TransactionId}?`)) return;
+    setDeletingId(s.TransactionId);
+    try {
+      const res = await api.delete(`/dashboard/sessions/${s.TransactionId}`);
+      if (res.data.success) {
+        fetchSessions({ page, limit, search: searchApplied || undefined, dateFrom: dateFromApplied || undefined, dateTo: dateToApplied || undefined });
+      } else {
+        alert(res.data.message || 'Không thể xóa.');
+      }
+    } catch (err) {
+      alert(err.response?.data?.message || 'Đã xảy ra lỗi.');
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -159,6 +242,7 @@ const SessionManagement = () => {
                       <th className="text-left font-medium p-3 whitespace-nowrap">ID thẻ kết thúc</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Thời gian kết thúc</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Thời gian đồng hồ kết thúc</th>
+                      <th className="text-left font-medium p-3 whitespace-nowrap w-[80px]">Hành động</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -179,6 +263,35 @@ const SessionManagement = () => {
                         <td className="p-3">{s.StopTagId ?? s.StartTagId ?? '—'}</td>
                         <td className="p-3">{formatDateTime(s.StopTime)}</td>
                         <td className="p-3">{s.MeterStop != null ? s.MeterStop : '—'}</td>
+                        <td className="p-3">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                                <MoreVertical className="w-4 h-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuLabel>Hành động</DropdownMenuLabel>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem onClick={() => openEditDialog(s)}>
+                                <Pencil className="w-4 h-4 mr-2" />
+                                Sửa
+                              </DropdownMenuItem>
+                              <DropdownMenuItem
+                                onClick={() => handleDeleteSession(s)}
+                                disabled={deletingId === (s.TransactionId ?? s.Uid)}
+                                className="text-destructive focus:text-destructive"
+                              >
+                                {deletingId === (s.TransactionId ?? s.Uid) ? (
+                                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                ) : (
+                                  <Trash2 className="w-4 h-4 mr-2" />
+                                )}
+                                Xóa
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -214,6 +327,67 @@ const SessionManagement = () => {
           )}
         </CardContent>
       </Card>
+
+      <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Sửa phiên sạc</DialogTitle>
+            <DialogDescription>Cập nhật thời gian và đồng hồ (meter) cho phiên #{sessionToEdit?.TransactionId}</DialogDescription>
+          </DialogHeader>
+          {sessionToEdit && (
+            <form onSubmit={handleEditSession} className="space-y-4">
+              <div className="space-y-2">
+                <Label>Thời gian bắt đầu</Label>
+                <Input
+                  type="datetime-local"
+                  value={editFormData.StartTime}
+                  onChange={(e) => setEditFormData((f) => ({ ...f, StartTime: e.target.value }))}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Thời gian kết thúc</Label>
+                <Input
+                  type="datetime-local"
+                  value={editFormData.StopTime}
+                  onChange={(e) => setEditFormData((f) => ({ ...f, StopTime: e.target.value }))}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Thời gian đồng hồ bắt đầu (MeterStart)</Label>
+                <Input
+                  type="number"
+                  step="any"
+                  value={editFormData.MeterStart}
+                  onChange={(e) => setEditFormData((f) => ({ ...f, MeterStart: e.target.value }))}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Thời gian đồng hồ kết thúc (MeterStop)</Label>
+                <Input
+                  type="number"
+                  step="any"
+                  value={editFormData.MeterStop}
+                  onChange={(e) => setEditFormData((f) => ({ ...f, MeterStop: e.target.value }))}
+                />
+              </div>
+              {editError && (
+                <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+                  <p className="text-sm text-destructive">{editError}</p>
+                </div>
+              )}
+              <div className="flex gap-2">
+                <Button type="submit" disabled={submitting}>
+                  {submitting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
+                  Lưu
+                </Button>
+                <Button type="button" variant="outline" onClick={() => setEditDialogOpen(false)} disabled={submitting}>
+                  Hủy
+                </Button>
+              </div>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

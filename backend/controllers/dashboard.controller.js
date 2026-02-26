@@ -556,6 +556,157 @@ const getChargingOrders = async (req, res, next) => {
   }
 };
 
+// Cập nhật phiên sạc
+const updateSession = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const ownerId = req.user?.ownerId;
+    const { StartTime, StopTime, MeterStart, MeterStop } = req.body;
+
+    const ownerFilter = ownerId
+      ? `AND EXISTS (SELECT 1 FROM ChargePoint cp WHERE cp.ChargePointId = t.ChargePointId AND cp.OwnerId = ${ownerId})`
+      : '';
+    const [existing] = await sequelize.query(
+      `SELECT t.TransactionId FROM Transactions t WHERE t.TransactionId = :id ${ownerFilter}`,
+      { replacements: { id }, type: sequelize.QueryTypes.SELECT }
+    );
+    if (!existing) {
+      return res.status(404).json({ success: false, message: 'Không tìm thấy phiên sạc hoặc không có quyền.' });
+    }
+
+    const updates = [];
+    const replacements = { id };
+    if (StartTime !== undefined) {
+      updates.push('StartTime = :StartTime');
+      replacements.StartTime = StartTime;
+    }
+    if (StopTime !== undefined) {
+      updates.push('StopTime = :StopTime');
+      replacements.StopTime = StopTime;
+    }
+    if (MeterStart !== undefined) {
+      updates.push('MeterStart = :MeterStart');
+      replacements.MeterStart = MeterStart;
+    }
+    if (MeterStop !== undefined) {
+      updates.push('MeterStop = :MeterStop');
+      replacements.MeterStop = MeterStop;
+    }
+    if (updates.length === 0) {
+      return res.json({ success: true, message: 'Không có thay đổi.' });
+    }
+
+    await sequelize.query(
+      `UPDATE Transactions SET ${updates.join(', ')} WHERE TransactionId = :id`,
+      { replacements }
+    );
+    res.json({ success: true, message: 'Cập nhật phiên sạc thành công.' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Xóa phiên sạc
+const deleteSession = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const ownerId = req.user?.ownerId;
+
+    const ownerFilter = ownerId
+      ? `AND EXISTS (SELECT 1 FROM ChargePoint cp WHERE cp.ChargePointId = t.ChargePointId AND cp.OwnerId = ${ownerId})`
+      : '';
+    const [existing] = await sequelize.query(
+      `SELECT t.TransactionId FROM Transactions t WHERE t.TransactionId = :id ${ownerFilter}`,
+      { replacements: { id }, type: sequelize.QueryTypes.SELECT }
+    );
+    if (!existing) {
+      return res.status(404).json({ success: false, message: 'Không tìm thấy phiên sạc hoặc không có quyền.' });
+    }
+
+    await sequelize.query('DELETE FROM WalletTransaction WHERE TransactionId = :id', { replacements: { id } });
+    await sequelize.query('DELETE FROM Transactions WHERE TransactionId = :id', { replacements: { id } });
+    res.json({ success: true, message: 'Đã xóa phiên sạc.' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Cập nhật đơn sạc
+const updateOrder = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const ownerId = req.user?.ownerId;
+    const { Amount, meterValue, stopMethod, currentBalance, newBalance } = req.body;
+
+    const ownerJoin = ownerId ? 'INNER JOIN UserApp ua ON wt.UserAppId = ua.Id' : '';
+    const ownerWhere = ownerId ? `AND ua.OwnerId = ${ownerId}` : '';
+    const [existing] = await sequelize.query(
+      `SELECT wt.WalletTransactionId FROM WalletTransaction wt ${ownerJoin} WHERE wt.WalletTransactionId = :id ${ownerWhere}`,
+      { replacements: { id }, type: sequelize.QueryTypes.SELECT }
+    );
+    if (!existing) {
+      return res.status(404).json({ success: false, message: 'Không tìm thấy đơn sạc hoặc không có quyền.' });
+    }
+
+    const updates = [];
+    const replacements = { id };
+    if (Amount !== undefined) {
+      updates.push('Amount = :Amount');
+      replacements.Amount = Amount;
+    }
+    if (meterValue !== undefined) {
+      updates.push('MeterValue = :meterValue');
+      replacements.meterValue = meterValue;
+    }
+    if (stopMethod !== undefined) {
+      updates.push('StopMethod = :stopMethod');
+      replacements.stopMethod = stopMethod;
+    }
+    if (currentBalance !== undefined) {
+      updates.push('CurrentBalance = :currentBalance');
+      replacements.currentBalance = currentBalance;
+    }
+    if (newBalance !== undefined) {
+      updates.push('NewBalance = :newBalance');
+      replacements.newBalance = newBalance;
+    }
+    if (updates.length === 0) {
+      return res.json({ success: true, message: 'Không có thay đổi.' });
+    }
+
+    await sequelize.query(
+      `UPDATE WalletTransaction SET ${updates.join(', ')} WHERE WalletTransactionId = :id`,
+      { replacements }
+    );
+    res.json({ success: true, message: 'Cập nhật đơn sạc thành công.' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Xóa đơn sạc
+const deleteOrder = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const ownerId = req.user?.ownerId;
+
+    const ownerJoin = ownerId ? 'INNER JOIN UserApp ua ON wt.UserAppId = ua.Id' : '';
+    const ownerWhere = ownerId ? `AND ua.OwnerId = ${ownerId}` : '';
+    const [existing] = await sequelize.query(
+      `SELECT wt.WalletTransactionId FROM WalletTransaction wt ${ownerJoin} WHERE wt.WalletTransactionId = :id ${ownerWhere}`,
+      { replacements: { id }, type: sequelize.QueryTypes.SELECT }
+    );
+    if (!existing) {
+      return res.status(404).json({ success: false, message: 'Không tìm thấy đơn sạc hoặc không có quyền.' });
+    }
+
+    await sequelize.query('DELETE FROM WalletTransaction WHERE WalletTransactionId = :id', { replacements: { id } });
+    res.json({ success: true, message: 'Đã xóa đơn sạc.' });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Năng lượng theo giờ trong ngày (0-23h)
 const getEnergyByHourToday = async (req, res, next) => {
   try {
@@ -1386,6 +1537,10 @@ module.exports = {
   getRecentTransactions, 
   getChargingSessions,
   getChargingOrders,
+  updateSession,
+  deleteSession,
+  updateOrder,
+  deleteOrder,
   getRecentChargePoints,
   getChargePoints,
   createChargePoint,
