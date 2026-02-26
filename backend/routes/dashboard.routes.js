@@ -48,7 +48,11 @@ router.delete('/chargepoints/:id', authenticate, dashboardController.deleteCharg
 router.get('/stations/recent', authenticate, dashboardController.getRecentChargePoints);
 router.get('/transactions', authenticate, dashboardController.getRecentTransactions);
 router.get('/sessions', authenticate, dashboardController.getChargingSessions);
+router.put('/sessions/:id', authenticate, dashboardController.updateSession);
+router.delete('/sessions/:id', authenticate, dashboardController.deleteSession);
 router.get('/orders', authenticate, dashboardController.getChargingOrders);
+router.put('/orders/:id', authenticate, dashboardController.updateOrder);
+router.delete('/orders/:id', authenticate, dashboardController.deleteOrder);
 router.get('/charts/energy-today', authenticate, dashboardController.getEnergyByHourToday);
 router.get('/charts/revenue-7-days', authenticate, dashboardController.getRevenueLast7Days);
 

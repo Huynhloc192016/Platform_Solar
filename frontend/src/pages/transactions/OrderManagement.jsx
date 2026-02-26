@@ -2,7 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
-import { Search, Loader2, Receipt, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Loader2, Receipt, ChevronLeft, ChevronRight, MoreVertical, Pencil, Trash2 } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '../../components/ui/dialog';
+import { Label } from '../../components/ui/label';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '../../components/ui/dropdown-menu';
 import api from '../../services/api';
 
 const formatDateTime = (value) => {
@@ -29,6 +45,19 @@ const OrderManagement = () => {
   const [dateToInput, setDateToInput] = useState('');
   const [dateFromApplied, setDateFromApplied] = useState('');
   const [dateToApplied, setDateToApplied] = useState('');
+
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [orderToEdit, setOrderToEdit] = useState(null);
+  const [editFormData, setEditFormData] = useState({
+    Amount: '',
+    meterValue: '',
+    stopMethod: '',
+    currentBalance: '',
+    newBalance: '',
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [editError, setEditError] = useState('');
+  const [deletingId, setDeletingId] = useState(null);
 
   const fetchOrders = async (params) => {
     const { page: p = page, limit: l = limit, search: s, dateFrom: df, dateTo: dt } = params || {};
@@ -89,6 +118,63 @@ const OrderManagement = () => {
 
   const hasActiveFilter = searchApplied || dateFromApplied || dateToApplied;
   const totalPages = Math.max(1, Math.ceil(total / limit));
+
+  const openEditDialog = (o) => {
+    setOrderToEdit(o);
+    setEditFormData({
+      Amount: o.Amount != null ? String(o.Amount) : '',
+      meterValue: o.meterValue != null ? String(o.meterValue) : '',
+      stopMethod: o.stopMethod ?? '',
+      currentBalance: o.currentBalance != null ? String(o.currentBalance) : '',
+      newBalance: o.newBalance != null ? String(o.newBalance) : '',
+    });
+    setEditError('');
+    setEditDialogOpen(true);
+  };
+
+  const handleEditOrder = async (e) => {
+    e.preventDefault();
+    if (!orderToEdit) return;
+    setEditError('');
+    setSubmitting(true);
+    try {
+      const payload = {};
+      if (editFormData.Amount !== '') payload.Amount = parseFloat(editFormData.Amount);
+      if (editFormData.meterValue !== '') payload.meterValue = parseFloat(editFormData.meterValue);
+      if (editFormData.stopMethod !== undefined) payload.stopMethod = editFormData.stopMethod;
+      if (editFormData.currentBalance !== '') payload.currentBalance = parseFloat(editFormData.currentBalance);
+      if (editFormData.newBalance !== '') payload.newBalance = parseFloat(editFormData.newBalance);
+      const res = await api.put(`/dashboard/orders/${orderToEdit.WalletTransactionId}`, payload);
+      if (res.data.success) {
+        setEditDialogOpen(false);
+        setOrderToEdit(null);
+        fetchOrders({ page, limit, search: searchApplied || undefined, dateFrom: dateFromApplied || undefined, dateTo: dateToApplied || undefined });
+      } else {
+        setEditError(res.data.message || 'Không thể cập nhật.');
+      }
+    } catch (err) {
+      setEditError(err.response?.data?.message || 'Đã xảy ra lỗi.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleDeleteOrder = async (o) => {
+    if (!window.confirm(`Bạn có chắc muốn xóa đơn sạc #${o.WalletTransactionId}?`)) return;
+    setDeletingId(o.WalletTransactionId);
+    try {
+      const res = await api.delete(`/dashboard/orders/${o.WalletTransactionId}`);
+      if (res.data.success) {
+        fetchOrders({ page, limit, search: searchApplied || undefined, dateFrom: dateFromApplied || undefined, dateTo: dateToApplied || undefined });
+      } else {
+        alert(res.data.message || 'Không thể xóa.');
+      }
+    } catch (err) {
+      alert(err.response?.data?.message || 'Đã xảy ra lỗi.');
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   return (
     <div className="space-y-6">
@@ -164,6 +250,7 @@ const OrderManagement = () => {
                       <th className="text-left font-medium p-3 whitespace-nowrap">Phương pháp dừng</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Số dư hiện tại</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Số dư mới</th>
+                      <th className="text-left font-medium p-3 whitespace-nowrap w-[80px]">Hành động</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -179,6 +266,35 @@ const OrderManagement = () => {
                         <td className="p-3">{o.stopMethod ?? '—'}</td>
                         <td className="p-3">{o.currentBalance != null ? formatNumber(o.currentBalance) : '—'}</td>
                         <td className="p-3">{o.newBalance != null ? formatNumber(o.newBalance) : '—'}</td>
+                        <td className="p-3">
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                                <MoreVertical className="w-4 h-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuLabel>Hành động</DropdownMenuLabel>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem onClick={() => openEditDialog(o)}>
+                                <Pencil className="w-4 h-4 mr-2" />
+                                Sửa
+                              </DropdownMenuItem>
+                              <DropdownMenuItem
+                                onClick={() => handleDeleteOrder(o)}
+                                disabled={deletingId === o.WalletTransactionId}
+                                className="text-destructive focus:text-destructive"
+                              >
+                                {deletingId === o.WalletTransactionId ? (
+                                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                ) : (
+                                  <Trash2 className="w-4 h-4 mr-2" />
+                                )}
+                                Xóa
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -214,6 +330,77 @@ const OrderManagement = () => {
           )}
         </CardContent>
       </Card>
+
+      <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Sửa đơn sạc</DialogTitle>
+            <DialogDescription>Cập nhật thông tin đơn #{orderToEdit?.WalletTransactionId}. ID người dùng và ID phiên sạc không thể thay đổi.</DialogDescription>
+          </DialogHeader>
+          {orderToEdit && (
+            <form onSubmit={handleEditOrder} className="space-y-4">
+              <div className="space-y-2">
+                <Label>Giá tiền đơn sạc (Amount)</Label>
+                <Input
+                  type="number"
+                  step="any"
+                  value={editFormData.Amount}
+                  onChange={(e) => setEditFormData((f) => ({ ...f, Amount: e.target.value }))}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Giá trị meter (meterValue)</Label>
+                <Input
+                  type="number"
+                  step="any"
+                  value={editFormData.meterValue}
+                  onChange={(e) => setEditFormData((f) => ({ ...f, meterValue: e.target.value }))}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Phương pháp dừng (stopMethod)</Label>
+                <Input
+                  value={editFormData.stopMethod}
+                  onChange={(e) => setEditFormData((f) => ({ ...f, stopMethod: e.target.value }))}
+                  placeholder="VD: Local, Remote..."
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Số dư hiện tại (currentBalance)</Label>
+                <Input
+                  type="number"
+                  step="any"
+                  value={editFormData.currentBalance}
+                  onChange={(e) => setEditFormData((f) => ({ ...f, currentBalance: e.target.value }))}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Số dư mới (newBalance)</Label>
+                <Input
+                  type="number"
+                  step="any"
+                  value={editFormData.newBalance}
+                  onChange={(e) => setEditFormData((f) => ({ ...f, newBalance: e.target.value }))}
+                />
+              </div>
+              {editError && (
+                <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+                  <p className="text-sm text-destructive">{editError}</p>
+                </div>
+              )}
+              <div className="flex gap-2">
+                <Button type="submit" disabled={submitting}>
+                  {submitting ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : null}
+                  Lưu
+                </Button>
+                <Button type="button" variant="outline" onClick={() => setEditDialogOpen(false)} disabled={submitting}>
+                  Hủy
+                </Button>
+              </div>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
