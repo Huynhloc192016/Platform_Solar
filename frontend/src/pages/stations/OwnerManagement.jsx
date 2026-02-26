@@ -205,7 +205,7 @@ const OwnerManagement = () => {
                     <CardDescription>ID: {owner.OwnerId}</CardDescription>
                   </div>
                   {isAdmin && (
-                    <DropdownMenu>
+                    <DropdownMenu modal={false}>
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" size="sm">
                           <MoreVertical className="w-4 h-4" />

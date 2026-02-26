@@ -306,7 +306,7 @@ const ChargePointManagement = () => {
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
                     {getStatusBadge(cp.ChargePointState)}
-                    <DropdownMenu>
+                    <DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="sm" className="shrink-0">
                         <MoreVertical className="w-4 h-4" />

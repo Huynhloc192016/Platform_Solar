@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
-import { Badge } from '../../components/ui/badge';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
 import { Search, Loader2, Clock, ChevronLeft, ChevronRight, MoreVertical, Pencil, Trash2 } from 'lucide-react';
@@ -26,6 +25,49 @@ const formatDateTime = (value) => {
   if (value == null || value === '') return '—';
   const d = new Date(value);
   return isNaN(d.getTime()) ? value : d.toLocaleString('vi-VN');
+};
+
+// Parse pasted date/time (vi-VN style or ISO) to datetime-local value (yyyy-MM-ddThh:mm)
+const parsePastedDateTime = (pastedText) => {
+  const s = (pastedText || '').trim();
+  if (!s) return null;
+  // Already datetime-local format
+  if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(s)) {
+    const d = new Date(s);
+    return isNaN(d.getTime()) ? null : s.slice(0, 16);
+  }
+  // vi-VN: dd/MM/yyyy HH:mm SA/CH hoặc dd/MM/yyyy HH:mm
+  const viMatch = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{1,2}):(\d{2})(?:\s*(SA|CH|AM|PM))?/i);
+  if (viMatch) {
+    const [, day, month, year, hour, min, ampm] = viMatch;
+    let h = parseInt(hour, 10);
+    if (ampm) {
+      const isPM = /^(CH|PM)$/i.test(ampm.trim());
+      if (isPM && h < 12) h += 12;
+      if (!isPM && h === 12) h = 0;
+    }
+    const d = new Date(Number(year), Number(month) - 1, Number(day), h, Number(min), 0);
+    if (isNaN(d.getTime())) return null;
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0') + 'T' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+  }
+  // Fallback: try Date parse
+  const d = new Date(s);
+  return isNaN(d.getTime()) ? null : d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0') + 'T' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+};
+
+// Format date/time for display in text field (dd/MM/yyyy HH:mm SA|CH) — có thể chọn full và copy/paste
+const formatToDisplay = (value) => {
+  if (value == null || value === '') return '';
+  const d = new Date(value);
+  if (isNaN(d.getTime())) return '';
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  let h = d.getHours();
+  const m = String(d.getMinutes()).padStart(2, '0');
+  const hour12 = h === 0 ? 12 : h > 12 ? h - 12 : h;
+  const ampm = h < 12 ? 'SA' : 'CH';
+  return `${day}/${month}/${year} ${String(hour12).padStart(2, '0')}:${m} ${ampm}`;
 };
 
 const SessionManagement = () => {
@@ -117,8 +159,8 @@ const SessionManagement = () => {
   const openEditDialog = (s) => {
     setSessionToEdit(s);
     setEditFormData({
-      StartTime: s.StartTime ? new Date(s.StartTime).toISOString().slice(0, 16) : '',
-      StopTime: s.StopTime ? new Date(s.StopTime).toISOString().slice(0, 16) : '',
+      StartTime: s.StartTime ? formatToDisplay(s.StartTime) : '',
+      StopTime: s.StopTime ? formatToDisplay(s.StopTime) : '',
       MeterStart: s.MeterStart != null ? String(s.MeterStart) : '',
       MeterStop: s.MeterStop != null ? String(s.MeterStop) : '',
     });
@@ -133,8 +175,24 @@ const SessionManagement = () => {
     setSubmitting(true);
     try {
       const payload = {};
-      if (editFormData.StartTime) payload.StartTime = new Date(editFormData.StartTime).toISOString().slice(0, 19).replace('T', ' ');
-      if (editFormData.StopTime) payload.StopTime = new Date(editFormData.StopTime).toISOString().slice(0, 19).replace('T', ' ');
+      if (editFormData.StartTime) {
+        const parsedStart = parsePastedDateTime(editFormData.StartTime);
+        if (!parsedStart) {
+          setEditError('Thời gian bắt đầu không đúng định dạng (vd: 23/02/2026 01:01 SA).');
+          setSubmitting(false);
+          return;
+        }
+        payload.StartTime = new Date(parsedStart).toISOString().slice(0, 19).replace('T', ' ');
+      }
+      if (editFormData.StopTime) {
+        const parsedStop = parsePastedDateTime(editFormData.StopTime);
+        if (!parsedStop) {
+          setEditError('Thời gian kết thúc không đúng định dạng (vd: 23/02/2026 01:55 CH).');
+          setSubmitting(false);
+          return;
+        }
+        payload.StopTime = new Date(parsedStop).toISOString().slice(0, 19).replace('T', ' ');
+      }
       if (editFormData.MeterStart !== '') payload.MeterStart = parseFloat(editFormData.MeterStart);
       if (editFormData.MeterStop !== '') payload.MeterStop = parseFloat(editFormData.MeterStop);
       const res = await api.put(`/dashboard/sessions/${sessionToEdit.TransactionId}`, payload);
@@ -238,7 +296,6 @@ const SessionManagement = () => {
                       <th className="text-left font-medium p-3 whitespace-nowrap">ID thẻ bắt đầu</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Thời gian bắt đầu</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Thời gian đồng hồ bắt đầu</th>
-                      <th className="text-left font-medium p-3 whitespace-nowrap">Bắt đầu kết nối</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">ID thẻ kết thúc</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Thời gian kết thúc</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Thời gian đồng hồ kết thúc</th>
@@ -253,18 +310,11 @@ const SessionManagement = () => {
                         <td className="p-3">{s.StartTagId ?? '—'}</td>
                         <td className="p-3">{formatDateTime(s.StartTime)}</td>
                         <td className="p-3">{s.MeterStart != null ? s.MeterStart : '—'}</td>
-                        <td className="p-3">
-                          {s.ConnectionStatus === 'Kết nối thành công' ? (
-                            <Badge className="bg-green-100 text-green-800 border-green-200">Kết nối thành công</Badge>
-                          ) : (
-                            <Badge className="bg-red-100 text-red-800 border-red-200">Kết nối thất bại</Badge>
-                          )}
-                        </td>
                         <td className="p-3">{s.StopTagId ?? s.StartTagId ?? '—'}</td>
                         <td className="p-3">{formatDateTime(s.StopTime)}</td>
                         <td className="p-3">{s.MeterStop != null ? s.MeterStop : '—'}</td>
                         <td className="p-3">
-                          <DropdownMenu>
+                          <DropdownMenu modal={false}>
                             <DropdownMenuTrigger asChild>
                               <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
                                 <MoreVertical className="w-4 h-4" />
@@ -338,18 +388,38 @@ const SessionManagement = () => {
             <form onSubmit={handleEditSession} className="space-y-4">
               <div className="space-y-2">
                 <Label>Thời gian bắt đầu</Label>
+                <p className="text-xs text-muted-foreground">Có thể chọn toàn bộ (Ctrl+A) và dán. Định dạng: 23/02/2026 01:01 SA</p>
                 <Input
-                  type="datetime-local"
+                  type="text"
                   value={editFormData.StartTime}
                   onChange={(e) => setEditFormData((f) => ({ ...f, StartTime: e.target.value }))}
+                  placeholder="23/02/2026 01:01 SA"
+                  onPaste={(e) => {
+                    const text = e.clipboardData?.getData('text') || '';
+                    const parsed = parsePastedDateTime(text);
+                    if (parsed) {
+                      e.preventDefault();
+                      setEditFormData((f) => ({ ...f, StartTime: formatToDisplay(parsed) }));
+                    }
+                  }}
                 />
               </div>
               <div className="space-y-2">
                 <Label>Thời gian kết thúc</Label>
+                <p className="text-xs text-muted-foreground">Có thể chọn toàn bộ (Ctrl+A) và dán. Định dạng: 23/02/2026 01:55 CH</p>
                 <Input
-                  type="datetime-local"
+                  type="text"
                   value={editFormData.StopTime}
                   onChange={(e) => setEditFormData((f) => ({ ...f, StopTime: e.target.value }))}
+                  placeholder="23/02/2026 01:55 CH"
+                  onPaste={(e) => {
+                    const text = e.clipboardData?.getData('text') || '';
+                    const parsed = parsePastedDateTime(text);
+                    if (parsed) {
+                      e.preventDefault();
+                      setEditFormData((f) => ({ ...f, StopTime: formatToDisplay(parsed) }));
+                    }
+                  }}
                 />
               </div>
               <div className="space-y-2">

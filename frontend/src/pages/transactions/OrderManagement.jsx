@@ -49,6 +49,7 @@ const OrderManagement = () => {
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [orderToEdit, setOrderToEdit] = useState(null);
   const [editFormData, setEditFormData] = useState({
+    UserAppId: '',
     Amount: '',
     meterValue: '',
     stopMethod: '',
@@ -122,6 +123,7 @@ const OrderManagement = () => {
   const openEditDialog = (o) => {
     setOrderToEdit(o);
     setEditFormData({
+      UserAppId: o.UserAppId != null ? String(o.UserAppId) : '',
       Amount: o.Amount != null ? String(o.Amount) : '',
       meterValue: o.meterValue != null ? String(o.meterValue) : '',
       stopMethod: o.stopMethod ?? '',
@@ -139,6 +141,7 @@ const OrderManagement = () => {
     setSubmitting(true);
     try {
       const payload = {};
+      if (editFormData.UserAppId !== '') payload.UserAppId = editFormData.UserAppId;
       if (editFormData.Amount !== '') payload.Amount = parseFloat(editFormData.Amount);
       if (editFormData.meterValue !== '') payload.meterValue = parseFloat(editFormData.meterValue);
       if (editFormData.stopMethod !== undefined) payload.stopMethod = editFormData.stopMethod;
@@ -267,7 +270,7 @@ const OrderManagement = () => {
                         <td className="p-3">{o.currentBalance != null ? formatNumber(o.currentBalance) : '—'}</td>
                         <td className="p-3">{o.newBalance != null ? formatNumber(o.newBalance) : '—'}</td>
                         <td className="p-3">
-                          <DropdownMenu>
+                          <DropdownMenu modal={false}>
                             <DropdownMenuTrigger asChild>
                               <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
                                 <MoreVertical className="w-4 h-4" />
@@ -335,10 +338,18 @@ const OrderManagement = () => {
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle>Sửa đơn sạc</DialogTitle>
-            <DialogDescription>Cập nhật thông tin đơn #{orderToEdit?.WalletTransactionId}. ID người dùng và ID phiên sạc không thể thay đổi.</DialogDescription>
+            <DialogDescription>Cập nhật thông tin đơn #{orderToEdit?.WalletTransactionId}.</DialogDescription>
           </DialogHeader>
           {orderToEdit && (
             <form onSubmit={handleEditOrder} className="space-y-4">
+              <div className="space-y-2">
+                <Label>ID người dùng (UserAppId)</Label>
+                <Input
+                  value={editFormData.UserAppId}
+                  onChange={(e) => setEditFormData((f) => ({ ...f, UserAppId: e.target.value }))}
+                  placeholder="ID người dùng"
+                />
+              </div>
               <div className="space-y-2">
                 <Label>Giá tiền đơn sạc (Amount)</Label>
                 <Input

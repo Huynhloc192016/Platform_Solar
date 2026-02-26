@@ -636,7 +636,7 @@ const updateOrder = async (req, res, next) => {
   try {
     const { id } = req.params;
     const ownerId = req.user?.ownerId;
-    const { Amount, meterValue, stopMethod, currentBalance, newBalance } = req.body;
+    const { Amount, meterValue, stopMethod, currentBalance, newBalance, UserAppId } = req.body;
 
     const ownerJoin = ownerId ? 'INNER JOIN UserApp ua ON wt.UserAppId = ua.Id' : '';
     const ownerWhere = ownerId ? `AND ua.OwnerId = ${ownerId}` : '';
@@ -669,6 +669,10 @@ const updateOrder = async (req, res, next) => {
     if (newBalance !== undefined) {
       updates.push('NewBalance = :newBalance');
       replacements.newBalance = newBalance;
+    }
+    if (UserAppId !== undefined && UserAppId !== '') {
+      updates.push('UserAppId = :UserAppId');
+      replacements.UserAppId = Number(UserAppId);
     }
     if (updates.length === 0) {
       return res.json({ success: true, message: 'Không có thay đổi.' });
