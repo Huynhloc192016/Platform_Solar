@@ -47,6 +47,8 @@ router.put(
 router.delete('/chargepoints/:id', authenticate, dashboardController.deleteChargePoint);
 router.get('/stations/recent', authenticate, dashboardController.getRecentChargePoints);
 router.get('/transactions', authenticate, dashboardController.getRecentTransactions);
+router.get('/sessions', authenticate, dashboardController.getChargingSessions);
+router.get('/orders', authenticate, dashboardController.getChargingOrders);
 router.get('/charts/energy-today', authenticate, dashboardController.getEnergyByHourToday);
 router.get('/charts/revenue-7-days', authenticate, dashboardController.getRevenueLast7Days);
 

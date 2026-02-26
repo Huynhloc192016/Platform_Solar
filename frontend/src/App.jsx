@@ -55,6 +55,22 @@ function App() {
             }
           />
           <Route
+            path="/transactions/orders"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/transactions/sessions"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/users"
             element={
               <ProtectedRoute>

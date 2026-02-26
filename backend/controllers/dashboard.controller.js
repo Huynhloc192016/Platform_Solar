@@ -382,6 +382,180 @@ const getRecentTransactions = async (req, res, next) => {
   }
 };
 
+// Danh sách phiên sạc (quản lý phiên sạc)
+const getChargingSessions = async (req, res, next) => {
+  try {
+    const ownerId = req.user?.ownerId;
+    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const limit = Math.min(100, Math.max(1, parseInt(req.query.limit, 10) || 20));
+    const offset = (page - 1) * limit;
+    const searchRaw = (req.query.search || '').trim();
+    const searchParam = searchRaw ? `%${searchRaw}%` : null;
+    const dateFromRaw = (req.query.dateFrom || '').trim();
+    const dateToRaw = (req.query.dateTo || '').trim();
+
+    const ownerWhere = ownerId ? `cp.OwnerId = ${ownerId}` : '';
+    const searchWhere = searchParam
+      ? `(CAST(t.TransactionId AS NVARCHAR(50)) LIKE :search OR t.Uid LIKE :search OR t.ChargePointId LIKE :search OR t.StartTagId LIKE :search OR ISNULL(cs.Name,'') LIKE :search)`
+      : '';
+
+    let dateFromVal = null;
+    let dateToVal = null;
+    if (dateFromRaw && /^\d{4}-\d{2}-\d{2}$/.test(dateFromRaw)) {
+      dateFromVal = dateFromRaw + ' 00:00:00';
+    }
+    if (dateToRaw && /^\d{4}-\d{2}-\d{2}$/.test(dateToRaw)) {
+      dateToVal = dateToRaw + ' 23:59:59';
+    }
+
+    const dateFromWhere = dateFromVal ? `t.StartTime >= :dateFrom` : '';
+    const dateToWhere = dateToVal ? `t.StartTime <= :dateTo` : '';
+    const dateWhereParts = [dateFromWhere, dateToWhere].filter(Boolean);
+    const dateWhere = dateWhereParts.length ? dateWhereParts.join(' AND ') : '';
+
+    const whereParts = [ownerWhere, searchWhere, dateWhere].filter(Boolean);
+    const whereClause = whereParts.length ? `WHERE ${whereParts.join(' AND ')}` : '';
+
+    const replacements = { ...(searchParam ? { search: searchParam } : {}), ...(dateFromVal ? { dateFrom: dateFromVal } : {}), ...(dateToVal ? { dateTo: dateToVal } : {}) };
+
+    const countResult = await sequelize.query(
+      `SELECT COUNT(*) as total
+       FROM Transactions t
+       INNER JOIN ChargePoint cp ON t.ChargePointId = cp.ChargePointId
+       LEFT JOIN ChargeStation cs ON cp.ChargeStationId = cs.ChargeStationId
+       ${whereClause}`,
+      { replacements, type: sequelize.QueryTypes.SELECT }
+    );
+    const total = parseInt(countResult[0]?.total || 0, 10);
+
+    const sessions = await sequelize.query(
+      `SELECT
+        t.TransactionId,
+        t.Uid,
+        t.ChargePointId,
+        t.StartTagId,
+        t.StartTime,
+        t.MeterStart,
+        t.StopTime,
+        t.MeterStop,
+        ISNULL(cs.Name, 'N/A') as StationName
+       FROM Transactions t
+       INNER JOIN ChargePoint cp ON t.ChargePointId = cp.ChargePointId
+       LEFT JOIN ChargeStation cs ON cp.ChargeStationId = cs.ChargeStationId
+       ${whereClause}
+       ORDER BY t.StartTime DESC
+       OFFSET ${offset} ROWS FETCH NEXT ${limit} ROWS ONLY`,
+      { replacements, type: sequelize.QueryTypes.SELECT }
+    );
+
+    const data = sessions.map((row) => ({
+      TransactionId: row.TransactionId,
+      Uid: row.Uid,
+      ChargePointId: row.ChargePointId,
+      StartTagId: row.StartTagId,
+      StartTime: row.StartTime,
+      MeterStart: row.MeterStart,
+      ConnectionStatus: row.StartTime != null ? 'Kết nối thành công' : 'Kết nối thất bại',
+      StopTagId: row.StartTagId,
+      StopTime: row.StopTime,
+      MeterStop: row.MeterStop,
+      StationName: row.StationName,
+    }));
+
+    res.json({
+      success: true,
+      data,
+      total,
+      page,
+      limit,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Danh sách đơn sạc (quản lý đơn sạc)
+const getChargingOrders = async (req, res, next) => {
+  try {
+    const ownerId = req.user?.ownerId;
+    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const limit = Math.min(100, Math.max(1, parseInt(req.query.limit, 10) || 20));
+    const offset = (page - 1) * limit;
+    const searchRaw = (req.query.search || '').trim();
+    const searchParam = searchRaw ? `%${searchRaw}%` : null;
+    const dateFromRaw = (req.query.dateFrom || '').trim();
+    const dateToRaw = (req.query.dateTo || '').trim();
+
+    const ownerJoin = ownerId ? 'INNER JOIN UserApp ua ON wt.UserAppId = ua.Id' : '';
+    const ownerWhere = ownerId ? `AND ua.OwnerId = ${ownerId}` : '';
+    const searchWhere = searchParam
+      ? `AND (CAST(wt.WalletTransactionId AS NVARCHAR(50)) LIKE :search OR CAST(wt.UserAppId AS NVARCHAR(50)) LIKE :search OR CAST(wt.TransactionId AS NVARCHAR(50)) LIKE :search)`
+      : '';
+
+    let dateFromVal = null;
+    let dateToVal = null;
+    if (dateFromRaw && /^\d{4}-\d{2}-\d{2}$/.test(dateFromRaw)) dateFromVal = dateFromRaw + ' 00:00:00';
+    if (dateToRaw && /^\d{4}-\d{2}-\d{2}$/.test(dateToRaw)) dateToVal = dateToRaw + ' 23:59:59';
+    const dateFromWhere = dateFromVal ? 'AND wt.DateCreate >= :dateFrom' : '';
+    const dateToWhere = dateToVal ? 'AND wt.DateCreate <= :dateTo' : '';
+
+    const replacements = { ...(searchParam ? { search: searchParam } : {}), ...(dateFromVal ? { dateFrom: dateFromVal } : {}), ...(dateToVal ? { dateTo: dateToVal } : {}) };
+
+    const countResult = await sequelize.query(
+      `SELECT COUNT(*) as total
+       FROM WalletTransaction wt
+       ${ownerJoin}
+       WHERE 1=1 ${ownerWhere} ${searchWhere} ${dateFromWhere} ${dateToWhere}`,
+      { replacements, type: sequelize.QueryTypes.SELECT }
+    );
+    const total = parseInt(countResult[0]?.total || 0, 10);
+
+    const orders = await sequelize.query(
+      `SELECT
+        wt.WalletTransactionId,
+        wt.UserAppId,
+        wt.TransactionId,
+        wt.Amount,
+        wt.DateCreate,
+        wt.MeterValue,
+        wt.StopMethod,
+        wt.CurrentBalance,
+        wt.NewBalance,
+        CASE WHEN t.MeterStop IS NOT NULL AND t.MeterStart IS NOT NULL THEN CAST(t.MeterStop AS FLOAT) - CAST(t.MeterStart AS FLOAT) ELSE NULL END as EnergyUsed
+       FROM WalletTransaction wt
+       LEFT JOIN Transactions t ON t.TransactionId = wt.TransactionId
+       ${ownerJoin}
+       WHERE 1=1 ${ownerWhere} ${searchWhere} ${dateFromWhere} ${dateToWhere}
+       ORDER BY wt.DateCreate DESC
+       OFFSET ${offset} ROWS FETCH NEXT ${limit} ROWS ONLY`,
+      { replacements, type: sequelize.QueryTypes.SELECT }
+    );
+
+    const data = orders.map((row) => ({
+      WalletTransactionId: row.WalletTransactionId,
+      UserAppId: row.UserAppId,
+      TransactionId: row.TransactionId,
+      EnergyUsed: row.EnergyUsed != null ? row.EnergyUsed : (row.MeterValue ?? row.meterValue),
+      DateCreate: row.DateCreate,
+      meterValue: row.MeterValue ?? row.meterValue,
+      Amount: row.Amount,
+      stopMethod: row.StopMethod ?? row.stopMethod,
+      currentBalance: row.CurrentBalance ?? row.currentBalance,
+      newBalance: row.NewBalance ?? row.newBalance,
+    }));
+
+    res.json({
+      success: true,
+      data,
+      total,
+      page,
+      limit,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Năng lượng theo giờ trong ngày (0-23h)
 const getEnergyByHourToday = async (req, res, next) => {
   try {
@@ -1210,6 +1384,8 @@ module.exports = {
   getStats, 
   getStations, 
   getRecentTransactions, 
+  getChargingSessions,
+  getChargingOrders,
   getRecentChargePoints,
   getChargePoints,
   createChargePoint,

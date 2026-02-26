@@ -7,6 +7,8 @@ import Dashboard from '../../pages/dashboard/Dashboard';
 import StationManagement from '../../pages/stations/StationManagement';
 import OwnerManagement from '../../pages/stations/OwnerManagement';
 import ChargePointManagement from '../../pages/stations/ChargePointManagement';
+import SessionManagement from '../../pages/transactions/SessionManagement';
+import OrderManagement from '../../pages/transactions/OrderManagement';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const tabConfigs = [
@@ -23,12 +25,13 @@ const Layout = () => {
 
   const activeTab =
     tabConfigs.find((tab) => tab.path === location.pathname)?.value ||
-    (location.pathname.startsWith('/stations') ? 'stations' : 'dashboard');
+    (location.pathname.startsWith('/stations') ? 'stations' : location.pathname.startsWith('/transactions') ? 'transactions' : 'dashboard');
 
   const handleTabChange = (value) => {
     const tab = tabConfigs.find((t) => t.value === value);
     if (tab) {
-      navigate(tab.path);
+      const path = tab.value === 'transactions' ? '/transactions/orders' : tab.path;
+      navigate(path);
     }
   };
 
@@ -70,9 +73,15 @@ const Layout = () => {
               )}
             </TabsContent>
             <TabsContent value="transactions" className="mt-0">
-              <div className="text-center py-8 text-muted-foreground">
-                Giao dịch - Đang phát triển
-              </div>
+              {location.pathname === '/transactions/orders' ? (
+                <OrderManagement />
+              ) : location.pathname === '/transactions/sessions' ? (
+                <SessionManagement />
+              ) : (
+                <div className="text-center py-8 text-muted-foreground">
+                  Giao dịch - Đang phát triển
+                </div>
+              )}
             </TabsContent>
             <TabsContent value="users" className="mt-0">
               <div className="text-center py-8 text-muted-foreground">
