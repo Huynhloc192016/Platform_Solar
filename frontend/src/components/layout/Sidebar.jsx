@@ -15,7 +15,7 @@ const Sidebar = () => {
   const isStationsSection = location.pathname.startsWith('/stations');
 
   return (
-    <aside className="w-64 bg-white border-r border-slate-200 min-h-[calc(100vh-73px)] sticky top-[73px] flex-shrink-0">
+    <aside className="w-64 bg-white border-r border-slate-200 fixed left-0 top-[73px] h-[calc(100vh-73px)] flex-shrink-0 z-[1]">
       {isStationsSection && (
         <nav className="p-4 space-y-1">
           <p className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">

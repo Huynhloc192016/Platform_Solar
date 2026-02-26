@@ -411,7 +411,7 @@ const ChargePointManagement = () => {
           }
         }}
       >
-        <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Plus className="w-5 h-5" />
@@ -419,7 +419,7 @@ const ChargePointManagement = () => {
             </DialogTitle>
             <DialogDescription>Nhập thông tin trụ sạc mới để thêm vào hệ thống</DialogDescription>
           </DialogHeader>
-          <form onSubmit={handleAddChargePoint} className="space-y-4">
+          <form onSubmit={handleAddChargePoint} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="add-cp-id">ID trụ *</Label>
               <Input
@@ -441,7 +441,7 @@ const ChargePointManagement = () => {
                 disabled={submitting}
               />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 sm:col-span-2">
               <Label htmlFor="add-station">Trạm sạc *</Label>
               <select
                 id="add-station"
@@ -542,11 +542,11 @@ const ChargePointManagement = () => {
               />
             </div>
             {addError && (
-              <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+              <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md sm:col-span-2">
                 <p className="text-sm text-destructive">{addError}</p>
               </div>
             )}
-            <div className="flex gap-2 pt-2">
+            <div className="flex gap-2 pt-2 sm:col-span-2">
               <Button type="submit" disabled={submitting}>
                 {submitting ? (
                   <>
@@ -581,7 +581,7 @@ const ChargePointManagement = () => {
           }
         }}
       >
-        <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Pencil className="w-5 h-5" />
@@ -590,7 +590,7 @@ const ChargePointManagement = () => {
             <DialogDescription>Cập nhật thông tin trụ sạc</DialogDescription>
           </DialogHeader>
           {chargePointToEdit && (
-            <form onSubmit={handleEditChargePoint} className="space-y-4">
+            <form onSubmit={handleEditChargePoint} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>ID trụ</Label>
                 <Input value={chargePointToEdit.ChargePointId} disabled className="bg-muted" />
@@ -605,7 +605,7 @@ const ChargePointManagement = () => {
                   disabled={submitting}
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 sm:col-span-2">
                 <Label htmlFor="edit-station">Trạm sạc *</Label>
                 <select
                   id="edit-station"
@@ -712,11 +712,11 @@ const ChargePointManagement = () => {
                 />
               </div>
               {editError && (
-                <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+                <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md sm:col-span-2">
                   <p className="text-sm text-destructive">{editError}</p>
                 </div>
               )}
-              <div className="flex gap-2 pt-2">
+              <div className="flex gap-2 pt-2 sm:col-span-2">
                 <Button type="submit" disabled={submitting}>
                   {submitting ? (
                     <>
