@@ -487,8 +487,10 @@ const getChargingOrders = async (req, res, next) => {
     const dateFromRaw = (req.query.dateFrom || '').trim();
     const dateToRaw = (req.query.dateTo || '').trim();
 
-    const ownerJoin = ownerId ? 'INNER JOIN UserApp ua ON wt.UserAppId = ua.Id' : '';
-    const ownerWhere = ownerId ? `AND ua.OwnerId = ${ownerId}` : '';
+    // Lọc theo trụ thuộc owner (giống phiên sạc) — đơn sạc tại trụ của mình đều hiển thị
+    const ownerWhere = ownerId
+      ? `AND EXISTS (SELECT 1 FROM Transactions t INNER JOIN ChargePoint cp ON cp.ChargePointId = t.ChargePointId AND t.TransactionId = wt.TransactionId WHERE cp.OwnerId = ${ownerId})`
+      : '';
     const searchWhere = searchParam
       ? `AND (CAST(wt.WalletTransactionId AS NVARCHAR(50)) LIKE :search OR CAST(wt.UserAppId AS NVARCHAR(50)) LIKE :search OR CAST(wt.TransactionId AS NVARCHAR(50)) LIKE :search)`
       : '';
@@ -505,7 +507,6 @@ const getChargingOrders = async (req, res, next) => {
     const countResult = await sequelize.query(
       `SELECT COUNT(*) as total
        FROM WalletTransaction wt
-       ${ownerJoin}
        WHERE 1=1 ${ownerWhere} ${searchWhere} ${dateFromWhere} ${dateToWhere}`,
       { replacements, type: sequelize.QueryTypes.SELECT }
     );
@@ -525,7 +526,6 @@ const getChargingOrders = async (req, res, next) => {
         CASE WHEN t.MeterStop IS NOT NULL AND t.MeterStart IS NOT NULL THEN CAST(t.MeterStop AS FLOAT) - CAST(t.MeterStart AS FLOAT) ELSE NULL END as EnergyUsed
        FROM WalletTransaction wt
        LEFT JOIN Transactions t ON t.TransactionId = wt.TransactionId
-       ${ownerJoin}
        WHERE 1=1 ${ownerWhere} ${searchWhere} ${dateFromWhere} ${dateToWhere}
        ORDER BY wt.DateCreate DESC
        OFFSET ${offset} ROWS FETCH NEXT ${limit} ROWS ONLY`,
@@ -639,10 +639,11 @@ const updateOrder = async (req, res, next) => {
     const ownerId = req.user?.ownerId;
     const { Amount, meterValue, stopMethod, currentBalance, newBalance, UserAppId } = req.body;
 
-    const ownerJoin = ownerId ? 'INNER JOIN UserApp ua ON wt.UserAppId = ua.Id' : '';
-    const ownerWhere = ownerId ? `AND ua.OwnerId = ${ownerId}` : '';
+    const ownerCheck = ownerId
+      ? `AND EXISTS (SELECT 1 FROM Transactions t INNER JOIN ChargePoint cp ON cp.ChargePointId = t.ChargePointId AND t.TransactionId = wt.TransactionId WHERE cp.OwnerId = ${ownerId})`
+      : '';
     const [existing] = await sequelize.query(
-      `SELECT wt.WalletTransactionId FROM WalletTransaction wt ${ownerJoin} WHERE wt.WalletTransactionId = :id ${ownerWhere}`,
+      `SELECT wt.WalletTransactionId FROM WalletTransaction wt WHERE wt.WalletTransactionId = :id ${ownerCheck}`,
       { replacements: { id }, type: sequelize.QueryTypes.SELECT }
     );
     if (!existing) {
@@ -695,10 +696,11 @@ const deleteOrder = async (req, res, next) => {
     const { id } = req.params;
     const ownerId = req.user?.ownerId;
 
-    const ownerJoin = ownerId ? 'INNER JOIN UserApp ua ON wt.UserAppId = ua.Id' : '';
-    const ownerWhere = ownerId ? `AND ua.OwnerId = ${ownerId}` : '';
+    const ownerCheck = ownerId
+      ? `AND EXISTS (SELECT 1 FROM Transactions t INNER JOIN ChargePoint cp ON cp.ChargePointId = t.ChargePointId AND t.TransactionId = wt.TransactionId WHERE cp.OwnerId = ${ownerId})`
+      : '';
     const [existing] = await sequelize.query(
-      `SELECT wt.WalletTransactionId FROM WalletTransaction wt ${ownerJoin} WHERE wt.WalletTransactionId = :id ${ownerWhere}`,
+      `SELECT wt.WalletTransactionId FROM WalletTransaction wt WHERE wt.WalletTransactionId = :id ${ownerCheck}`,
       { replacements: { id }, type: sequelize.QueryTypes.SELECT }
     );
     if (!existing) {
