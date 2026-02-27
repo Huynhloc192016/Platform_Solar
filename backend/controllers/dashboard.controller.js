@@ -1,5 +1,6 @@
 const { sequelize } = require('../config/database');
 const { Op } = require('sequelize');
+const { hashPassword } = require('../utils/password.util');
 
 // Tổng quan thống kê
 const getStats = async (req, res, next) => {
@@ -1516,8 +1517,11 @@ const getOwners = async (req, res, next) => {
     const whereClause = ownerId ? `WHERE o.OwnerId = ${ownerId}` : '';
 
     const owners = await sequelize.query(
-      `SELECT o.OwnerId, o.Name,
-        (SELECT COUNT(*) FROM ChargeStation cs WHERE cs.OwnerId = o.OwnerId) as StationCount
+      `SELECT 
+        o.OwnerId, 
+        o.Name,
+        (SELECT COUNT(*) FROM ChargeStation cs WHERE cs.OwnerId = o.OwnerId) as StationCount,
+        (SELECT TOP 1 a.UserName FROM Account a WHERE a.OwnerId = o.OwnerId ORDER BY a.AccountId) as LoginUserName
        FROM Owner o ${whereClause} ORDER BY o.Name`,
       { type: sequelize.QueryTypes.SELECT }
     );
@@ -1527,8 +1531,137 @@ const getOwners = async (req, res, next) => {
       data: owners.map(o => ({
         OwnerId: o.OwnerId,
         Name: o.Name,
-        StationCount: parseInt(o.StationCount || 0, 10)
+        StationCount: parseInt(o.StationCount || 0, 10),
+        LoginUserName: o.LoginUserName || null,
       })),
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Tạo mới hoặc reset mật khẩu tài khoản đăng nhập cho chủ đầu tư
+const createOrResetOwnerAccount = async (req, res, next) => {
+  try {
+    // Chỉ admin (không gắn OwnerId) mới được tạo/reset tài khoản chủ đầu tư
+    if (req.user?.ownerId) {
+      return res.status(403).json({
+        success: false,
+        message: 'Bạn không có quyền thao tác tài khoản cho chủ đầu tư',
+      });
+    }
+
+    const { id } = req.params;
+    const ownerId = parseInt(id, 10);
+
+    if (!ownerId || Number.isNaN(ownerId)) {
+      return res.status(400).json({
+        success: false,
+        message: 'ID chủ đầu tư không hợp lệ',
+      });
+    }
+
+    // Kiểm tra chủ đầu tư tồn tại
+    const owners = await sequelize.query(
+      `SELECT OwnerId, Name FROM Owner WHERE OwnerId = :ownerId`,
+      {
+        replacements: { ownerId },
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
+
+    const owner = owners?.[0];
+    if (!owner) {
+      return res.status(404).json({
+        success: false,
+        message: 'Không tìm thấy chủ đầu tư',
+      });
+    }
+
+    // Tìm tài khoản hiện tại (nếu có) của chủ đầu tư này
+    const existingAccounts = await sequelize.query(
+      `SELECT TOP 1 AccountId, UserName 
+       FROM Account 
+       WHERE OwnerId = :ownerId 
+       ORDER BY AccountId`,
+      {
+        replacements: { ownerId },
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
+
+    const existing = existingAccounts?.[0];
+    const DEFAULT_PASSWORD = 'Admin@2026';
+    const hashedPassword = await hashPassword(DEFAULT_PASSWORD);
+
+    // Nếu đã có tài khoản → reset mật khẩu
+    if (existing) {
+      await sequelize.query(
+        `UPDATE Account 
+         SET Password = :password 
+         WHERE AccountId = :accountId`,
+        {
+          replacements: {
+            password: hashedPassword,
+            accountId: existing.AccountId,
+          },
+        }
+      );
+
+      return res.json({
+        success: true,
+        message: 'Đã reset mật khẩu tài khoản chủ đầu tư về mật khẩu mặc định',
+        data: {
+          action: 'reset',
+          ownerId,
+          username: existing.UserName,
+        },
+      });
+    }
+
+    // Chưa có tài khoản → tạo mới với username tự động
+    const baseUsername = `owner${ownerId}`;
+    const usernameCountResult = await sequelize.query(
+      `SELECT COUNT(*) as cnt 
+       FROM Account 
+       WHERE UserName LIKE :prefix`,
+      {
+        replacements: { prefix: `${baseUsername}%` },
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
+
+    const existingCountRaw = usernameCountResult?.[0]?.cnt;
+    const existingCount = parseInt(existingCountRaw || 0, 10);
+    const username =
+      existingCount > 0 ? `${baseUsername}_${existingCount + 1}` : baseUsername;
+
+    // Mặc định PermissionId = 2 cho tài khoản chủ đầu tư
+    const OWNER_PERMISSION_ID = 2;
+
+    await sequelize.query(
+      `INSERT INTO Account (Name, UserName, Password, OwnerId, PermissionId, CreateDate)
+       VALUES (:name, :username, :password, :ownerId, :permissionId, GETDATE())`,
+      {
+        replacements: {
+          name: owner.Name || `Owner ${ownerId}`,
+          username,
+          password: hashedPassword,
+          ownerId,
+          permissionId: OWNER_PERMISSION_ID,
+        },
+      }
+    );
+
+    return res.json({
+      success: true,
+      message:
+        'Đã tạo tài khoản đăng nhập cho chủ đầu tư với mật khẩu mặc định',
+      data: {
+        action: 'created',
+        ownerId,
+        username,
+      },
     });
   } catch (error) {
     next(error);
@@ -1560,5 +1693,6 @@ module.exports = {
   updateOwner,
   deleteOwner,
   getOwners,
+  createOrResetOwnerAccount,
 };
 

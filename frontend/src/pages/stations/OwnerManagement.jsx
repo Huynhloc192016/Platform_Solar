@@ -2,7 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
 import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
-import { Search, Building2, Loader2, MapPin, ExternalLink, Plus, MoreVertical, Pencil, Trash2 } from 'lucide-react';
+import {
+  Search,
+  Building2,
+  Loader2,
+  MapPin,
+  ExternalLink,
+  Plus,
+  MoreVertical,
+  Pencil,
+  Trash2,
+  KeyRound,
+} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import {
@@ -39,6 +50,7 @@ const OwnerManagement = () => {
   const [editFormData, setEditFormData] = useState({ Name: '', Address: '', Phone: '', Email: '' });
   const [editError, setEditError] = useState('');
   const [deletingId, setDeletingId] = useState(null);
+  const [accountActionId, setAccountActionId] = useState(null);
 
   useEffect(() => {
     fetchOwners();
@@ -153,6 +165,43 @@ const OwnerManagement = () => {
     }
   };
 
+  const handleOwnerAccountAction = async (owner) => {
+    const hasAccount = !!owner.LoginUserName;
+    const usernameLabel = owner.LoginUserName || '(sẽ tạo tự động)';
+    const confirmMessage = hasAccount
+      ? `Reset mật khẩu về "Admin@2026" cho tài khoản "${owner.LoginUserName}"?`
+      : `Tạo tài khoản đăng nhập cho chủ đầu tư "${owner.Name || 'N/A'}" với mật khẩu mặc định "Admin@2026"?\n\nTên đăng nhập: ${usernameLabel}`;
+
+    if (!window.confirm(confirmMessage)) return;
+
+    setAccountActionId(owner.OwnerId);
+    try {
+      const res = await api.post(`/dashboard/owners/${owner.OwnerId}/account`);
+      if (res.data?.success) {
+        const action = res.data.data?.action;
+        const username = res.data.data?.username || owner.LoginUserName;
+        if (action === 'created') {
+          alert(
+            `Đã tạo tài khoản đăng nhập cho chủ đầu tư.\n\nTên đăng nhập: ${username}\nMật khẩu mặc định: Admin@2026`
+          );
+        } else if (action === 'reset') {
+          alert(
+            `Đã reset mật khẩu cho tài khoản "${username}".\n\nMật khẩu mới: Admin@2026`
+          );
+        } else {
+          alert('Thao tác tài khoản đã hoàn tất.');
+        }
+        fetchOwners();
+      } else {
+        alert(res.data?.message || 'Không thể thao tác tài khoản cho chủ đầu tư');
+      }
+    } catch (err) {
+      alert(err.response?.data?.message || 'Đã xảy ra lỗi. Vui lòng thử lại.');
+    } finally {
+      setAccountActionId(null);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <Card>
@@ -202,7 +251,17 @@ const OwnerManagement = () => {
                       <Building2 className="w-5 h-5" />
                       {owner.Name || `Chủ đầu tư #${owner.OwnerId}`}
                     </CardTitle>
-                    <CardDescription>ID: {owner.OwnerId}</CardDescription>
+                    <CardDescription className="space-y-0.5">
+                      <div>ID: {owner.OwnerId}</div>
+                      <div>
+                        Tài khoản đăng nhập:{' '}
+                        {owner.LoginUserName ? (
+                          <span className="font-medium text-foreground">{owner.LoginUserName}</span>
+                        ) : (
+                          <span className="text-muted-foreground italic">Chưa có</span>
+                        )}
+                      </div>
+                    </CardDescription>
                   </div>
                   {isAdmin && (
                     <DropdownMenu modal={false}>
@@ -213,6 +272,18 @@ const OwnerManagement = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Hành động</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem
+                          onClick={() => handleOwnerAccountAction(owner)}
+                          disabled={accountActionId === owner.OwnerId}
+                        >
+                          {accountActionId === owner.OwnerId ? (
+                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          ) : (
+                            <KeyRound className="w-4 h-4 mr-2" />
+                          )}
+                          {owner.LoginUserName ? 'Reset mật khẩu' : 'Tạo tài khoản'}
+                        </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem onClick={() => openEditDialog(owner)}>
                           <Pencil className="w-4 h-4 mr-2" />

@@ -17,6 +17,11 @@ router.get('/owners/:id', authenticate, dashboardController.getOwnerById);
 router.post('/owners', authenticate, dashboardController.createOwner);
 router.put('/owners/:id', authenticate, dashboardController.updateOwner);
 router.delete('/owners/:id', authenticate, dashboardController.deleteOwner);
+router.post(
+  '/owners/:id/account',
+  authenticate,
+  dashboardController.createOrResetOwnerAccount
+);
 router.get('/chargepoints', authenticate, dashboardController.getChargePoints);
 router.post(
   '/chargepoints',
