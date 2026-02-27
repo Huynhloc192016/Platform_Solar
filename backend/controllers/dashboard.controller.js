@@ -557,6 +557,367 @@ const getChargingOrders = async (req, res, next) => {
   }
 };
 
+const sqlIdent = (name) => `[${String(name).replace(/]/g, ']]')}]`;
+
+const pickColumn = (availableSet, candidates) => {
+  // Match column names case-insensitively; return actual column name from DB
+  const map = new Map();
+  for (const col of availableSet) {
+    map.set(String(col).toLowerCase(), col);
+  }
+  for (const c of candidates) {
+    const actual = map.get(String(c).toLowerCase());
+    if (actual) return actual;
+  }
+  return null;
+};
+
+const getTableColumns = async (tableName) => {
+  const rows = await sequelize.query(
+    `SELECT COLUMN_NAME
+     FROM INFORMATION_SCHEMA.COLUMNS
+     WHERE TABLE_NAME = :tableName`,
+    { replacements: { tableName }, type: sequelize.QueryTypes.SELECT }
+  );
+  return new Set((rows || []).map((r) => r.COLUMN_NAME));
+};
+
+// Danh sách người dùng (quản lý người dùng)
+const getUsers = async (req, res, next) => {
+  try {
+    const ownerId = req.user?.ownerId;
+    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const limit = Math.min(100, Math.max(1, parseInt(req.query.limit, 10) || 20));
+    const offset = (page - 1) * limit;
+    const searchRaw = (req.query.search || '').trim();
+    const searchParam = searchRaw ? `%${searchRaw}%` : null;
+
+    const [userAppCols, walletCols] = await Promise.all([
+      getTableColumns('UserApp'),
+      getTableColumns('WalletTransaction'),
+    ]);
+
+    const userIdCol = pickColumn(userAppCols, ['Id', 'UserAppId', 'UserId', 'ID']);
+    if (!userIdCol) {
+      return res.status(500).json({ success: false, message: 'Không tìm thấy cột ID trong bảng UserApp.' });
+    }
+
+    const userNameCol = pickColumn(userAppCols, ['UserName', 'Username', 'User_Name']);
+    const fullNameCol = pickColumn(userAppCols, ['Fullname', 'FullName', 'Name']);
+    const emailCol = pickColumn(userAppCols, ['Email', 'EMail', 'Mail']);
+    const phoneCol = pickColumn(userAppCols, ['Phone', 'PhoneNumber', 'Mobile', 'Tel']);
+    const createdAtCol = pickColumn(userAppCols, ['CreateDate', 'DateCreate', 'CreatedAt', 'CreateAt']);
+    const statusCol = pickColumn(userAppCols, ['Status', 'IsActive', 'Active', 'IsLocked', 'Locked']);
+    const ownerIdCol = pickColumn(userAppCols, ['OwnerId', 'OwnerID']);
+
+    const walletUserIdCol = pickColumn(walletCols, ['UserAppId', 'UserId', 'UserAppID']);
+    const newBalanceCol = pickColumn(walletCols, ['NewBalance', 'New_Balance']);
+    const currentBalanceCol = pickColumn(walletCols, ['CurrentBalance', 'CurBalance', 'Balance']);
+    const walletDateCol = pickColumn(walletCols, ['DateCreate', 'CreateDate', 'CreatedAt']);
+    const walletPkCol = pickColumn(walletCols, ['WalletTransactionId', 'Id', 'ID']);
+
+    // Chọn cột join giữa UserApp và WalletTransaction.
+    // Thực tế ở các query khác trong codebase, WalletTransaction.UserAppId đang join với UserApp.Id.
+    // Dùng CAST để tránh lỗi kiểu dữ liệu khác nhau (varchar/int).
+    const userIdColExact = pickColumn(userAppCols, ['Id', 'UserAppId', 'UserId', 'ID']);
+    const userAppIdColExact = pickColumn(userAppCols, ['UserAppId']);
+
+    const walletToUserJoinWhere = (() => {
+      if (!walletUserIdCol) return null;
+      // Prefer joining wt.UserAppId to ua.Id when available (matches existing queries)
+      if (userIdColExact) {
+        const parts = [
+          `CAST(wt.${sqlIdent(walletUserIdCol)} AS NVARCHAR(100)) = CAST(ua.${sqlIdent(userIdColExact)} AS NVARCHAR(100))`,
+        ];
+        if (userAppIdColExact && userAppIdColExact !== userIdColExact) {
+          parts.push(
+            `CAST(wt.${sqlIdent(walletUserIdCol)} AS NVARCHAR(100)) = CAST(ua.${sqlIdent(userAppIdColExact)} AS NVARCHAR(100))`
+          );
+        }
+        return `(${parts.join(' OR ')})`;
+      }
+      // Fallback: join by same-name column if exists
+      if (userAppCols.has(walletUserIdCol)) {
+        return `CAST(wt.${sqlIdent(walletUserIdCol)} AS NVARCHAR(100)) = CAST(ua.${sqlIdent(walletUserIdCol)} AS NVARCHAR(100))`;
+      }
+      return null;
+    })();
+
+    const canComputeBalance =
+      !!walletUserIdCol &&
+      !!walletDateCol &&
+      !!walletPkCol &&
+      (!!newBalanceCol || !!currentBalanceCol);
+
+    const whereParts = [];
+    const replacements = {};
+
+    if (ownerId && ownerIdCol) {
+      whereParts.push(`ua.${sqlIdent(ownerIdCol)} = :ownerId`);
+      replacements.ownerId = ownerId;
+    }
+
+    if (searchParam) {
+      const searchParts = [];
+      searchParts.push(`CAST(ua.${sqlIdent(userIdCol)} AS NVARCHAR(50)) LIKE :search`);
+      if (userNameCol) searchParts.push(`ISNULL(ua.${sqlIdent(userNameCol)}, '') LIKE :search`);
+      if (fullNameCol) searchParts.push(`ISNULL(ua.${sqlIdent(fullNameCol)}, '') LIKE :search`);
+      if (emailCol) searchParts.push(`ISNULL(ua.${sqlIdent(emailCol)}, '') LIKE :search`);
+      if (phoneCol) searchParts.push(`ISNULL(ua.${sqlIdent(phoneCol)}, '') LIKE :search`);
+      whereParts.push(`(${searchParts.join(' OR ')})`);
+      replacements.search = searchParam;
+    }
+
+    const whereClause = whereParts.length ? `WHERE ${whereParts.join(' AND ')}` : '';
+
+    const countResult = await sequelize.query(
+      `SELECT COUNT(*) as total
+       FROM UserApp ua
+       ${whereClause}`,
+      { replacements, type: sequelize.QueryTypes.SELECT }
+    );
+    const total = parseInt(countResult[0]?.total || 0, 10);
+
+    const selectUserName = userNameCol ? `ua.${sqlIdent(userNameCol)}` : 'NULL';
+    const selectFullName = fullNameCol ? `ua.${sqlIdent(fullNameCol)}` : 'NULL';
+    const selectEmail = emailCol ? `ua.${sqlIdent(emailCol)}` : 'NULL';
+    const selectPhone = phoneCol ? `ua.${sqlIdent(phoneCol)}` : 'NULL';
+    const selectCreatedAt = createdAtCol ? `ua.${sqlIdent(createdAtCol)}` : 'NULL';
+    const selectStatus = statusCol ? `ua.${sqlIdent(statusCol)}` : 'NULL';
+
+    const applyJoin = canComputeBalance
+      ? `OUTER APPLY (
+          SELECT TOP 1
+            COALESCE(${newBalanceCol ? `wt.${sqlIdent(newBalanceCol)}` : 'NULL'}, ${currentBalanceCol ? `wt.${sqlIdent(currentBalanceCol)}` : 'NULL'}, 0) AS LastBalance
+          FROM WalletTransaction wt
+          WHERE ${walletToUserJoinWhere || '1=0'}
+          ORDER BY wt.${sqlIdent(walletDateCol)} DESC, wt.${sqlIdent(walletPkCol)} DESC
+        ) w`
+      : '';
+
+    const selectBalance = canComputeBalance ? 'ISNULL(w.LastBalance, 0)' : 'CAST(0 AS DECIMAL(18,2))';
+
+    const orderByCol = createdAtCol ? `ua.${sqlIdent(createdAtCol)}` : `ua.${sqlIdent(userIdCol)}`;
+
+    const rows = await sequelize.query(
+      `SELECT
+         ua.${sqlIdent(userIdCol)} as userId,
+         ${selectUserName} as userName,
+         ${selectFullName} as fullName,
+         ${selectEmail} as email,
+         ${selectPhone} as phone,
+         ${selectBalance} as balance,
+         ${selectCreatedAt} as createdAt,
+         ${selectStatus} as status
+       FROM UserApp ua
+       ${applyJoin}
+       ${whereClause}
+       ORDER BY ${orderByCol} DESC
+       OFFSET ${offset} ROWS FETCH NEXT ${limit} ROWS ONLY`,
+      { replacements, type: sequelize.QueryTypes.SELECT }
+    );
+
+    const data = (rows || []).map((r) => {
+      let isLocked = null;
+      if (statusCol) {
+        const v = r.status;
+        if (statusCol === 'IsActive' || statusCol === 'Active') {
+          isLocked = !(v === 1 || v === true || v === '1');
+        } else if (statusCol === 'IsLocked' || statusCol === 'Locked') {
+          isLocked = v === 1 || v === true || v === '1';
+        } else if (statusCol === 'Status') {
+          isLocked = !(Number(v) === 1);
+        } else {
+          isLocked = null;
+        }
+      }
+      return { ...r, isLocked };
+    });
+
+    res.json({
+      success: true,
+      data,
+      total,
+      page,
+      limit,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const requireAdmin = (req, res) => {
+  if (req.user?.ownerId) {
+    res.status(403).json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
+    return false;
+  }
+  return true;
+};
+
+const getUserAppColumnsOrFail = async (res) => {
+  const userAppCols = await getTableColumns('UserApp');
+  const userIdCol = pickColumn(userAppCols, ['Id', 'UserAppId', 'UserId', 'ID']);
+  if (!userIdCol) {
+    res.status(500).json({ success: false, message: 'Không tìm thấy cột ID trong bảng UserApp.' });
+    return null;
+  }
+  return { userAppCols, userIdCol };
+};
+
+// Reset mật khẩu người dùng (UserApp)
+const resetUserPassword = async (req, res, next) => {
+  try {
+    if (!requireAdmin(req, res)) return;
+    const id = parseInt(req.params.id, 10);
+    if (!id || Number.isNaN(id)) {
+      return res.status(400).json({ success: false, message: 'ID người dùng không hợp lệ' });
+    }
+
+    const cols = await getUserAppColumnsOrFail(res);
+    if (!cols) return;
+
+    const passwordCol = pickColumn(cols.userAppCols, ['Password', 'PassWord', 'Pwd', 'HashedPassword', 'HashPassword']);
+    if (!passwordCol) {
+      return res.status(500).json({ success: false, message: 'Bảng UserApp chưa có cột mật khẩu (Password).' });
+    }
+
+    const DEFAULT_PASSWORD = 'User@2026';
+    const hashedPassword = await hashPassword(DEFAULT_PASSWORD);
+
+    const [existing] = await sequelize.query(
+      `SELECT TOP 1 ua.${sqlIdent(cols.userIdCol)} as userId
+       FROM UserApp ua
+       WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
+      { replacements: { id }, type: sequelize.QueryTypes.SELECT }
+    );
+    if (!existing) {
+      return res.status(404).json({ success: false, message: 'Không tìm thấy người dùng.' });
+    }
+
+    await sequelize.query(
+      `UPDATE UserApp
+       SET ${sqlIdent(passwordCol)} = :password
+       WHERE ${sqlIdent(cols.userIdCol)} = :id`,
+      { replacements: { id, password: hashedPassword } }
+    );
+
+    return res.json({
+      success: true,
+      message: `Đã reset mật khẩu người dùng về mật khẩu mặc định: ${DEFAULT_PASSWORD}`,
+      data: { userId: id },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Khóa/mở khóa người dùng (UserApp)
+const setUserLock = async (req, res, next) => {
+  try {
+    if (!requireAdmin(req, res)) return;
+    const id = parseInt(req.params.id, 10);
+    if (!id || Number.isNaN(id)) {
+      return res.status(400).json({ success: false, message: 'ID người dùng không hợp lệ' });
+    }
+
+    const locked = !!req.body?.locked;
+
+    const cols = await getUserAppColumnsOrFail(res);
+    if (!cols) return;
+
+    const statusCol = pickColumn(cols.userAppCols, ['Status', 'IsActive', 'Active', 'IsLocked', 'Locked']);
+    if (!statusCol) {
+      return res.status(500).json({ success: false, message: 'Bảng UserApp chưa có cột trạng thái để khóa/mở khóa.' });
+    }
+
+    let valueToSet = locked ? 1 : 0;
+    if (statusCol === 'IsActive' || statusCol === 'Active') {
+      valueToSet = locked ? 0 : 1;
+    } else if (statusCol === 'Status') {
+      valueToSet = locked ? 0 : 1;
+    } else if (statusCol === 'IsLocked' || statusCol === 'Locked') {
+      valueToSet = locked ? 1 : 0;
+    }
+
+    const [existing] = await sequelize.query(
+      `SELECT TOP 1 ua.${sqlIdent(cols.userIdCol)} as userId
+       FROM UserApp ua
+       WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
+      { replacements: { id }, type: sequelize.QueryTypes.SELECT }
+    );
+    if (!existing) {
+      return res.status(404).json({ success: false, message: 'Không tìm thấy người dùng.' });
+    }
+
+    await sequelize.query(
+      `UPDATE UserApp
+       SET ${sqlIdent(statusCol)} = :value
+       WHERE ${sqlIdent(cols.userIdCol)} = :id`,
+      { replacements: { id, value: valueToSet } }
+    );
+
+    return res.json({
+      success: true,
+      message: locked ? 'Đã khóa tài khoản người dùng.' : 'Đã mở khóa tài khoản người dùng.',
+      data: { userId: id, locked },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Xóa người dùng (UserApp)
+const deleteUser = async (req, res, next) => {
+  try {
+    if (!requireAdmin(req, res)) return;
+    const id = parseInt(req.params.id, 10);
+    if (!id || Number.isNaN(id)) {
+      return res.status(400).json({ success: false, message: 'ID người dùng không hợp lệ' });
+    }
+
+    const cols = await getUserAppColumnsOrFail(res);
+    if (!cols) return;
+
+    // Không cho xóa nếu đã có WalletTransaction liên kết (an toàn dữ liệu)
+    const walletCols = await getTableColumns('WalletTransaction');
+    const walletUserIdCol = pickColumn(walletCols, ['UserAppId', 'UserId', 'UserAppID']);
+    if (walletUserIdCol) {
+      const wtCountResult = await sequelize.query(
+        `SELECT COUNT(*) as cnt
+         FROM WalletTransaction wt
+         WHERE wt.${sqlIdent(walletUserIdCol)} = :id`,
+        { replacements: { id }, type: sequelize.QueryTypes.SELECT }
+      );
+      const cnt = parseInt(wtCountResult?.[0]?.cnt || 0, 10);
+      if (cnt > 0) {
+        return res.status(400).json({
+          success: false,
+          message: `Không thể xóa vì người dùng đã có ${cnt} giao dịch ví. Vui lòng khóa tài khoản thay vì xóa.`,
+        });
+      }
+    }
+
+    const [existing] = await sequelize.query(
+      `SELECT TOP 1 ua.${sqlIdent(cols.userIdCol)} as userId
+       FROM UserApp ua
+       WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
+      { replacements: { id }, type: sequelize.QueryTypes.SELECT }
+    );
+    if (!existing) {
+      return res.status(404).json({ success: false, message: 'Không tìm thấy người dùng.' });
+    }
+
+    await sequelize.query(
+      `DELETE FROM UserApp WHERE ${sqlIdent(cols.userIdCol)} = :id`,
+      { replacements: { id } }
+    );
+
+    return res.json({ success: true, message: 'Đã xóa người dùng.' });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Cập nhật phiên sạc
 const updateSession = async (req, res, next) => {
   try {
@@ -1706,6 +2067,10 @@ module.exports = {
   getRecentTransactions, 
   getChargingSessions,
   getChargingOrders,
+  getUsers,
+  resetUserPassword,
+  setUserLock,
+  deleteUser,
   updateSession,
   deleteSession,
   updateOrder,

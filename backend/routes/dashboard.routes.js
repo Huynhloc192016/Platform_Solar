@@ -58,6 +58,10 @@ router.delete('/sessions/:id', authenticate, dashboardController.deleteSession);
 router.get('/orders', authenticate, dashboardController.getChargingOrders);
 router.put('/orders/:id', authenticate, dashboardController.updateOrder);
 router.delete('/orders/:id', authenticate, dashboardController.deleteOrder);
+router.get('/users', authenticate, dashboardController.getUsers);
+router.put('/users/:id/reset-password', authenticate, dashboardController.resetUserPassword);
+router.put('/users/:id/lock', authenticate, dashboardController.setUserLock);
+router.delete('/users/:id', authenticate, dashboardController.deleteUser);
 router.get('/charts/energy-today', authenticate, dashboardController.getEnergyByHourToday);
 router.get('/charts/revenue-7-days', authenticate, dashboardController.getRevenueLast7Days);
 

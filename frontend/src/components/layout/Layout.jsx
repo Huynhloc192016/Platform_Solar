@@ -9,6 +9,7 @@ import OwnerManagement from '../../pages/stations/OwnerManagement';
 import ChargePointManagement from '../../pages/stations/ChargePointManagement';
 import SessionManagement from '../../pages/transactions/SessionManagement';
 import OrderManagement from '../../pages/transactions/OrderManagement';
+import UserManagement from '../../pages/users/UserManagement';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
@@ -94,9 +95,7 @@ const Layout = () => {
               )}
             </TabsContent>
             <TabsContent value="users" className="mt-0">
-              <div className="text-center py-8 text-muted-foreground">
-                Người dùng - Đang phát triển
-              </div>
+              <UserManagement />
             </TabsContent>
             <TabsContent value="accounts" className="mt-0">
               <div className="text-center py-8 text-muted-foreground">
