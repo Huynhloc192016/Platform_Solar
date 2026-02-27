@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
@@ -10,6 +10,7 @@ import ChargePointManagement from '../../pages/stations/ChargePointManagement';
 import SessionManagement from '../../pages/transactions/SessionManagement';
 import OrderManagement from '../../pages/transactions/OrderManagement';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const tabConfigs = [
   { value: 'dashboard', label: 'Tổng quan', icon: LayoutDashboard, path: '/dashboard' },
@@ -22,13 +23,22 @@ const tabConfigs = [
 const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const isOwner = !!user?.ownerId;
+  const visibleTabs = isOwner ? tabConfigs.filter((t) => ['dashboard', 'stations', 'transactions'].includes(t.value)) : tabConfigs;
+
+  useEffect(() => {
+    if (isOwner && ['/users', '/accounts', '/stations/owners'].includes(location.pathname)) {
+      navigate('/dashboard', { replace: true });
+    }
+  }, [isOwner, location.pathname, navigate]);
 
   const activeTab =
-    tabConfigs.find((tab) => tab.path === location.pathname)?.value ||
+    visibleTabs.find((tab) => tab.path === location.pathname)?.value ||
     (location.pathname.startsWith('/stations') ? 'stations' : location.pathname.startsWith('/transactions') ? 'transactions' : 'dashboard');
 
   const handleTabChange = (value) => {
-    const tab = tabConfigs.find((t) => t.value === value);
+    const tab = visibleTabs.find((t) => t.value === value);
     if (tab) {
       const path = tab.value === 'transactions' ? '/transactions/orders' : tab.path;
       navigate(path);
@@ -44,7 +54,7 @@ const Layout = () => {
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
             <div className="overflow-x-auto mb-8">
               <TabsList className="inline-flex w-auto min-w-full">
-                {tabConfigs.map((tab) => {
+                {visibleTabs.map((tab) => {
                   const Icon = tab.icon;
                   return (
                     <TabsTrigger

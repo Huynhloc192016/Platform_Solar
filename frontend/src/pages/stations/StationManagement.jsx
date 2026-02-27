@@ -34,10 +34,13 @@ import {
 import { Label } from '../../components/ui/label';
 import { useLocation, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
+import { useAuth } from '../../context/AuthContext';
 
 const StationManagement = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const isOwner = !!user?.ownerId;
   const openStationId = location.state?.stationId;
   const filterOwnerId = location.state?.ownerId;
   const [searchTerm, setSearchTerm] = useState('');
@@ -250,7 +253,7 @@ const StationManagement = () => {
                 className="pl-10"
               />
             </div>
-            <Button onClick={() => setAddDialogOpen(true)}>
+            <Button onClick={() => setAddDialogOpen(true)} disabled={isOwner}>
               <Plus className="w-4 h-4 mr-2" />
               Thêm trạm sạc
             </Button>
@@ -322,22 +325,26 @@ const StationManagement = () => {
                         <Eye className="w-4 h-4 mr-2" />
                         Xem chi tiết
                       </DropdownMenuItem>
-                      <DropdownMenuItem onClick={() => openEditDialog(station)}>
-                        <Pencil className="w-4 h-4 mr-2" />
-                        Sửa
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={() => handleDeleteStation(station)}
-                        disabled={deletingId === station.ChargeStationId}
-                        className="text-destructive focus:text-destructive"
-                      >
-                        {deletingId === station.ChargeStationId ? (
-                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        ) : (
-                          <Trash2 className="w-4 h-4 mr-2" />
-                        )}
-                        Xóa
-                      </DropdownMenuItem>
+                      {!isOwner && (
+                        <>
+                          <DropdownMenuItem onClick={() => openEditDialog(station)}>
+                            <Pencil className="w-4 h-4 mr-2" />
+                            Sửa
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() => handleDeleteStation(station)}
+                            disabled={deletingId === station.ChargeStationId}
+                            className="text-destructive focus:text-destructive"
+                          >
+                            {deletingId === station.ChargeStationId ? (
+                              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                            ) : (
+                              <Trash2 className="w-4 h-4 mr-2" />
+                            )}
+                            Xóa
+                          </DropdownMenuItem>
+                        </>
+                      )}
                       <DropdownMenuItem
                         onClick={() => openStationOnGoogleMaps(station)}
                         disabled={station.Latitude == null && station.Longitude == null}
@@ -717,34 +724,38 @@ const StationManagement = () => {
               </div>
               {selectedStation && (
                 <div className="flex gap-2 shrink-0">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => {
-                      setDetailsOpen(false);
-                      openEditDialog(selectedStation);
-                    }}
-                  >
-                    <Pencil className="w-4 h-4 mr-1" />
-                    Sửa
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="text-destructive hover:text-destructive"
-                    onClick={() => {
-                      setDetailsOpen(false);
-                      handleDeleteStation(selectedStation);
-                    }}
-                    disabled={deletingId === selectedStation.ChargeStationId}
-                  >
-                    {deletingId === selectedStation.ChargeStationId ? (
-                      <Loader2 className="w-4 h-4 mr-1 animate-spin" />
-                    ) : (
-                      <Trash2 className="w-4 h-4 mr-1" />
-                    )}
-                    Xóa
-                  </Button>
+                  {!isOwner && (
+                    <>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          setDetailsOpen(false);
+                          openEditDialog(selectedStation);
+                        }}
+                      >
+                        <Pencil className="w-4 h-4 mr-1" />
+                        Sửa
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="text-destructive hover:text-destructive"
+                        onClick={() => {
+                          setDetailsOpen(false);
+                          handleDeleteStation(selectedStation);
+                        }}
+                        disabled={deletingId === selectedStation.ChargeStationId}
+                      >
+                        {deletingId === selectedStation.ChargeStationId ? (
+                          <Loader2 className="w-4 h-4 mr-1 animate-spin" />
+                        ) : (
+                          <Trash2 className="w-4 h-4 mr-1" />
+                        )}
+                        Xóa
+                      </Button>
+                    </>
+                  )}
                 </div>
               )}
             </div>

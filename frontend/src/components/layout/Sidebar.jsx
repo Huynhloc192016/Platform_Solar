@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Building2, Activity, Zap, Receipt, Clock } from 'lucide-react';
 import { cn } from '../ui/utils';
+import { useAuth } from '../../context/AuthContext';
 
 const stationsSidebarItems = [
   { label: 'Danh sách chủ đầu tư', path: '/stations/owners', icon: Building2 },
@@ -17,6 +18,9 @@ const transactionsSidebarItems = [
 const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const isOwner = !!user?.ownerId;
+  const stationsItems = isOwner ? stationsSidebarItems.filter((item) => item.path !== '/stations/owners') : stationsSidebarItems;
   const isStationsSection = location.pathname.startsWith('/stations');
   const isTransactionsSection = location.pathname.startsWith('/transactions');
 
@@ -27,7 +31,7 @@ const Sidebar = () => {
           <p className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
             Quản lý trạm sạc
           </p>
-          {stationsSidebarItems.map((item) => {
+          {stationsItems.map((item) => {
             const Icon = item.icon;
             const isActive =
               item.path === '/stations'

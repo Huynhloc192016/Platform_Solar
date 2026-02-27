@@ -560,6 +560,9 @@ const getChargingOrders = async (req, res, next) => {
 // Cập nhật phiên sạc
 const updateSession = async (req, res, next) => {
   try {
+    if (req.user?.ownerId) {
+      return res.status(403).json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
+    }
     const { id } = req.params;
     const ownerId = req.user?.ownerId;
     const { StartTime, StopTime, MeterStart, MeterStop } = req.body;
@@ -610,6 +613,9 @@ const updateSession = async (req, res, next) => {
 // Xóa phiên sạc
 const deleteSession = async (req, res, next) => {
   try {
+    if (req.user?.ownerId) {
+      return res.status(403).json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
+    }
     const { id } = req.params;
     const ownerId = req.user?.ownerId;
 
@@ -635,6 +641,9 @@ const deleteSession = async (req, res, next) => {
 // Cập nhật đơn sạc
 const updateOrder = async (req, res, next) => {
   try {
+    if (req.user?.ownerId) {
+      return res.status(403).json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
+    }
     const { id } = req.params;
     const ownerId = req.user?.ownerId;
     const { Amount, meterValue, stopMethod, currentBalance, newBalance, UserAppId } = req.body;
@@ -693,6 +702,9 @@ const updateOrder = async (req, res, next) => {
 // Xóa đơn sạc
 const deleteOrder = async (req, res, next) => {
   try {
+    if (req.user?.ownerId) {
+      return res.status(403).json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
+    }
     const { id } = req.params;
     const ownerId = req.user?.ownerId;
 
@@ -820,6 +832,9 @@ const getRevenueLast7Days = async (req, res, next) => {
 // Thêm trạm sạc mới
 const createStation = async (req, res, next) => {
   try {
+    if (req.user?.ownerId) {
+      return res.status(403).json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
+    }
     const { Name, Address, OwnerId, Status, Type, Latitude, Longitude } = req.body;
     const userOwnerId = req.user?.ownerId;
     const ownerId = OwnerId || userOwnerId;
@@ -876,6 +891,9 @@ const createStation = async (req, res, next) => {
 // Cập nhật trạm sạc
 const updateStation = async (req, res, next) => {
   try {
+    if (req.user?.ownerId) {
+      return res.status(403).json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
+    }
     const { id } = req.params;
     const { Name, Address, OwnerId, Status, Type, Latitude, Longitude } = req.body;
     const userOwnerId = req.user?.ownerId;
@@ -943,6 +961,9 @@ const updateStation = async (req, res, next) => {
 // Xóa trạm sạc
 const deleteStation = async (req, res, next) => {
   try {
+    if (req.user?.ownerId) {
+      return res.status(403).json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
+    }
     const { id } = req.params;
     const userOwnerId = req.user?.ownerId;
 
@@ -1082,6 +1103,9 @@ const getChargePoints = async (req, res, next) => {
 // Thêm trụ sạc mới
 const createChargePoint = async (req, res, next) => {
   try {
+    if (req.user?.ownerId) {
+      return res.status(403).json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
+    }
     const { ChargePointId, Name, ChargeStationId, ChargePointModel, chargerPower, outputType, connectorType, OwnerId, OcppVersion, IsActive } = req.body;
     const userOwnerId = req.user?.ownerId;
 
@@ -1174,6 +1198,9 @@ const createChargePoint = async (req, res, next) => {
 // Cập nhật trụ sạc
 const updateChargePoint = async (req, res, next) => {
   try {
+    if (req.user?.ownerId) {
+      return res.status(403).json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
+    }
     const chargePointId = req.params.id ? decodeURIComponent(req.params.id) : null;
     const { Name, ChargeStationId, ChargePointModel, chargerPower, outputType, connectorType, OwnerId, OcppVersion, IsActive } = req.body;
     const userOwnerId = req.user?.ownerId;
@@ -1289,6 +1316,9 @@ const updateChargePoint = async (req, res, next) => {
 // Xóa trụ sạc
 const deleteChargePoint = async (req, res, next) => {
   try {
+    if (req.user?.ownerId) {
+      return res.status(403).json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
+    }
     const chargePointId = req.params.id ? decodeURIComponent(req.params.id) : null;
     const userOwnerId = req.user?.ownerId;
 
@@ -1423,7 +1453,7 @@ const updateOwner = async (req, res, next) => {
     if (req.user?.ownerId) {
       return res.status(403).json({
         success: false,
-        message: 'Bạn không có quyền sửa chủ đầu tư',
+        message: 'Chủ đầu tư không có quyền thao tác.',
       });
     }
     const { id } = req.params;
@@ -1463,7 +1493,7 @@ const deleteOwner = async (req, res, next) => {
     if (req.user?.ownerId) {
       return res.status(403).json({
         success: false,
-        message: 'Bạn không có quyền xóa chủ đầu tư',
+        message: 'Chủ đầu tư không có quyền thao tác.',
       });
     }
     const { id } = req.params;

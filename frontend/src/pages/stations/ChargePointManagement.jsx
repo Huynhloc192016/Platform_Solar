@@ -22,6 +22,7 @@ import {
   DropdownMenuTrigger,
 } from '../../components/ui/dropdown-menu';
 import api from '../../services/api';
+import { useAuth } from '../../context/AuthContext';
 
 const OUTPUT_TYPES = [
   { value: 'AC', label: 'AC' },
@@ -43,6 +44,8 @@ const selectInputClass =
 
 const ChargePointManagement = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const isOwner = !!user?.ownerId;
   const [chargePoints, setChargePoints] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -274,7 +277,7 @@ const ChargePointManagement = () => {
                 className="pl-10"
               />
             </div>
-            <Button onClick={() => setAddDialogOpen(true)}>
+            <Button onClick={() => setAddDialogOpen(true)} disabled={isOwner}>
               <Plus className="w-4 h-4 mr-2" />
               Thêm trụ sạc
             </Button>
@@ -306,6 +309,7 @@ const ChargePointManagement = () => {
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
                     {getStatusBadge(cp.ChargePointState)}
+                    {!isOwner && (
                     <DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="sm" className="shrink-0">
@@ -333,6 +337,7 @@ const ChargePointManagement = () => {
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                     </DropdownMenu>
+                    )}
                   </div>
                 </div>
                 <CardDescription className="flex items-center gap-1 min-w-0">

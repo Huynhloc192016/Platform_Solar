@@ -20,6 +20,7 @@ import {
   DropdownMenuTrigger,
 } from '../../components/ui/dropdown-menu';
 import api from '../../services/api';
+import { useAuth } from '../../context/AuthContext';
 
 const formatDateTime = (value) => {
   if (value == null || value === '') return '—';
@@ -34,6 +35,8 @@ const formatNumber = (value) => {
 };
 
 const OrderManagement = () => {
+  const { user } = useAuth();
+  const isOwner = !!user?.ownerId;
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(0);
@@ -270,6 +273,9 @@ const OrderManagement = () => {
                         <td className="p-3">{o.currentBalance != null ? formatNumber(o.currentBalance) : '—'}</td>
                         <td className="p-3">{o.newBalance != null ? formatNumber(o.newBalance) : '—'}</td>
                         <td className="p-3">
+                          {isOwner ? (
+                            <span className="text-muted-foreground">—</span>
+                          ) : (
                           <DropdownMenu modal={false}>
                             <DropdownMenuTrigger asChild>
                               <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
@@ -297,6 +303,7 @@ const OrderManagement = () => {
                               </DropdownMenuItem>
                             </DropdownMenuContent>
                           </DropdownMenu>
+                          )}
                         </td>
                       </tr>
                     ))}

@@ -20,6 +20,7 @@ import {
   DropdownMenuTrigger,
 } from '../../components/ui/dropdown-menu';
 import api from '../../services/api';
+import { useAuth } from '../../context/AuthContext';
 
 const formatDateTime = (value) => {
   if (value == null || value === '') return '—';
@@ -71,6 +72,8 @@ const formatToDisplay = (value) => {
 };
 
 const SessionManagement = () => {
+  const { user } = useAuth();
+  const isOwner = !!user?.ownerId;
   const [sessions, setSessions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(0);
@@ -314,6 +317,9 @@ const SessionManagement = () => {
                         <td className="p-3">{formatDateTime(s.StopTime)}</td>
                         <td className="p-3">{s.MeterStop != null ? s.MeterStop : '—'}</td>
                         <td className="p-3">
+                          {isOwner ? (
+                            <span className="text-muted-foreground">—</span>
+                          ) : (
                           <DropdownMenu modal={false}>
                             <DropdownMenuTrigger asChild>
                               <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
@@ -341,6 +347,7 @@ const SessionManagement = () => {
                               </DropdownMenuItem>
                             </DropdownMenuContent>
                           </DropdownMenu>
+                          )}
                         </td>
                       </tr>
                     ))}
