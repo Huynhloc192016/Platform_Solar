@@ -22,6 +22,14 @@ function App() {
             }
           />
           <Route
+            path="/dashboard/reports"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/stations"
             element={
               <ProtectedRoute>
@@ -71,6 +79,14 @@ function App() {
             }
           />
           <Route
+            path="/transactions/export"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/users"
             element={
               <ProtectedRoute>
@@ -86,7 +102,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
           {/* Default redirect */}
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
         </Routes>

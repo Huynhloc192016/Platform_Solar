@@ -9,7 +9,9 @@ import OwnerManagement from '../../pages/stations/OwnerManagement';
 import ChargePointManagement from '../../pages/stations/ChargePointManagement';
 import SessionManagement from '../../pages/transactions/SessionManagement';
 import OrderManagement from '../../pages/transactions/OrderManagement';
+import ExportOrdersPage from '../../pages/transactions/ExportOrdersPage';
 import UserManagement from '../../pages/users/UserManagement';
+import ReportsPage from '../../pages/reports/ReportsPage';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
@@ -36,7 +38,7 @@ const Layout = () => {
 
   const activeTab =
     visibleTabs.find((tab) => tab.path === location.pathname)?.value ||
-    (location.pathname.startsWith('/stations') ? 'stations' : location.pathname.startsWith('/transactions') ? 'transactions' : 'dashboard');
+    (location.pathname.startsWith('/stations') ? 'stations' : location.pathname.startsWith('/transactions') ? 'transactions' : location.pathname.startsWith('/dashboard') ? 'dashboard' : 'dashboard');
 
   const handleTabChange = (value) => {
     const tab = visibleTabs.find((t) => t.value === value);
@@ -72,7 +74,7 @@ const Layout = () => {
             </div>
 
             <TabsContent value="dashboard" className="mt-0">
-              <Dashboard />
+              {location.pathname === '/dashboard/reports' ? <ReportsPage /> : <Dashboard />}
             </TabsContent>
             <TabsContent value="stations" className="mt-0">
               {location.pathname === '/stations/owners' ? (
@@ -88,6 +90,8 @@ const Layout = () => {
                 <OrderManagement />
               ) : location.pathname === '/transactions/sessions' ? (
                 <SessionManagement />
+              ) : location.pathname === '/transactions/export' ? (
+                <ExportOrdersPage />
               ) : (
                 <div className="text-center py-8 text-muted-foreground">
                   Giao dịch - Đang phát triển
