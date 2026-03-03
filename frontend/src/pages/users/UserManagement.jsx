@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
 import { ChevronLeft, ChevronRight, Loader2, Search, Users, MoreVertical, KeyRound, Lock, Unlock, Trash2 } from 'lucide-react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../../components/ui/dialog';
+import { Label } from '../../components/ui/label';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -36,6 +38,12 @@ const UserManagement = () => {
   const [resettingId, setResettingId] = useState(null);
   const [lockingId, setLockingId] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
+  const [balanceDialogOpen, setBalanceDialogOpen] = useState(false);
+  const [balanceMode, setBalanceMode] = useState('add'); // 'add' | 'set'
+  const [balanceUser, setBalanceUser] = useState(null);
+  const [balanceValue, setBalanceValue] = useState('');
+  const [balanceError, setBalanceError] = useState('');
+  const [balancingId, setBalancingId] = useState(null);
 
   const fetchUsers = async (params) => {
     const { page: p = page, limit: l = limit, search: s } = params || {};
@@ -140,6 +148,58 @@ const UserManagement = () => {
     }
   };
 
+  const openBalanceDialog = (u, mode) => {
+    if (!u?.userId) return;
+    setBalanceUser(u);
+    setBalanceMode(mode);
+    setBalanceValue('');
+    setBalanceError('');
+    setBalanceDialogOpen(true);
+  };
+
+  const handleSubmitBalance = async (e) => {
+    e.preventDefault();
+    if (!balanceUser?.userId) return;
+
+    setBalanceError('');
+    const v = Number(String(balanceValue).trim());
+    if (!Number.isFinite(v)) {
+      setBalanceError('Giá trị không hợp lệ.');
+      return;
+    }
+    if (balanceMode === 'add' && v <= 0) {
+      setBalanceError('Số tiền nạp phải > 0.');
+      return;
+    }
+    if (balanceMode === 'set' && v < 0) {
+      setBalanceError('Số dư phải >= 0.');
+      return;
+    }
+
+    setBalancingId(balanceUser.userId);
+    try {
+      const userId = encodeURIComponent(balanceUser.userId);
+      const url =
+        balanceMode === 'add'
+          ? `/dashboard/users/${userId}/balance/add`
+          : `/dashboard/users/${userId}/balance/set`;
+      const payload = balanceMode === 'add' ? { amount: v } : { balance: v };
+
+      const res = await api.post(url, payload);
+      if (res.data?.success) {
+        setBalanceDialogOpen(false);
+        fetchUsers({ page, limit, search: searchApplied || undefined });
+        alert(res.data?.message || 'Thành công.');
+      } else {
+        setBalanceError(res.data?.message || 'Thao tác thất bại.');
+      }
+    } catch (err) {
+      setBalanceError(err.response?.data?.message || 'Đã xảy ra lỗi.');
+    } finally {
+      setBalancingId(null);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <Card>
@@ -232,7 +292,7 @@ const UserManagement = () => {
                               </DropdownMenuItem>
                               <DropdownMenuItem
                                 onClick={() => handleToggleLock(u)}
-                                disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId}
+                                disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId}
                               >
                                 {lockingId === u.userId ? (
                                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
@@ -245,8 +305,21 @@ const UserManagement = () => {
                               </DropdownMenuItem>
                               <DropdownMenuSeparator />
                               <DropdownMenuItem
+                                onClick={() => openBalanceDialog(u, 'add')}
+                                disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId}
+                              >
+                                Nạp tiền
+                              </DropdownMenuItem>
+                              <DropdownMenuItem
+                                onClick={() => openBalanceDialog(u, 'set')}
+                                disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId}
+                              >
+                                Set số dư
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem
                                 onClick={() => handleDeleteUser(u)}
-                                disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId}
+                                disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId}
                                 className="text-destructive focus:text-destructive"
                               >
                                 {deletingId === u.userId ? (
@@ -294,6 +367,61 @@ const UserManagement = () => {
           )}
         </CardContent>
       </Card>
+
+      <Dialog
+        open={balanceDialogOpen}
+        onOpenChange={(open) => {
+          setBalanceDialogOpen(open);
+          if (!open) {
+            setBalanceUser(null);
+            setBalanceValue('');
+            setBalanceError('');
+          }
+        }}
+      >
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>{balanceMode === 'add' ? 'Nạp tiền' : 'Set số dư'}</DialogTitle>
+            <DialogDescription>
+              {balanceUser?.userId ? `Người dùng #${balanceUser.userId}` : 'Chọn người dùng để thao tác'}
+            </DialogDescription>
+          </DialogHeader>
+
+          <form onSubmit={handleSubmitBalance} className="space-y-4">
+            <div className="space-y-2">
+              <Label>{balanceMode === 'add' ? 'Số tiền nạp' : 'Số dư muốn set'}</Label>
+              <Input
+                type="number"
+                step="any"
+                value={balanceValue}
+                onChange={(e) => setBalanceValue(e.target.value)}
+                placeholder={balanceMode === 'add' ? 'VD: 50000' : 'VD: 150000'}
+              />
+            </div>
+
+            {balanceError && (
+              <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+                <p className="text-sm text-destructive">{balanceError}</p>
+              </div>
+            )}
+
+            <div className="flex gap-2">
+              <Button type="submit" disabled={!balanceUser?.userId || balancingId === balanceUser?.userId}>
+                {balancingId === balanceUser?.userId ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
+                Xác nhận
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setBalanceDialogOpen(false)}
+                disabled={balancingId === balanceUser?.userId}
+              >
+                Hủy
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

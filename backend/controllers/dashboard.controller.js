@@ -1,3 +1,21 @@
+const dashboardPage = require('./dashboard.page.controller');
+const stationsPage = require('./stations.page.controller');
+const chargePointsPage = require('./chargepoints.page.controller');
+const sessionsPage = require('./sessions.page.controller');
+const ordersPage = require('./orders.page.controller');
+const usersPage = require('./users.page.controller');
+const ownersPage = require('./owners.page.controller');
+
+module.exports = {
+  ...dashboardPage,
+  ...stationsPage,
+  ...chargePointsPage,
+  ...sessionsPage,
+  ...ordersPage,
+  ...usersPage,
+  ...ownersPage,
+};
+
 const { sequelize } = require('../config/database');
 const { Op } = require('sequelize');
 const { hashPassword } = require('../utils/password.util');
@@ -592,10 +610,7 @@ const getUsers = async (req, res, next) => {
     const searchRaw = (req.query.search || '').trim();
     const searchParam = searchRaw ? `%${searchRaw}%` : null;
 
-    const [userAppCols, walletCols] = await Promise.all([
-      getTableColumns('UserApp'),
-      getTableColumns('WalletTransaction'),
-    ]);
+    const userAppCols = await getTableColumns('UserApp');
 
     const userIdCol = pickColumn(userAppCols, ['Id', 'UserAppId', 'UserId', 'ID']);
     if (!userIdCol) {
@@ -607,47 +622,9 @@ const getUsers = async (req, res, next) => {
     const emailCol = pickColumn(userAppCols, ['Email', 'EMail', 'Mail']);
     const phoneCol = pickColumn(userAppCols, ['Phone', 'PhoneNumber', 'Mobile', 'Tel']);
     const createdAtCol = pickColumn(userAppCols, ['CreateDate', 'DateCreate', 'CreatedAt', 'CreateAt']);
-    const statusCol = pickColumn(userAppCols, ['Status', 'IsActive', 'Active', 'IsLocked', 'Locked']);
+    // Prefer using IsActive/isActive for lock state, then IsLocked, then Status
+    const statusCol = pickColumn(userAppCols, ['IsActive', 'Active', 'IsLocked', 'Locked', 'Status']);
     const ownerIdCol = pickColumn(userAppCols, ['OwnerId', 'OwnerID']);
-
-    const walletUserIdCol = pickColumn(walletCols, ['UserAppId', 'UserId', 'UserAppID']);
-    const newBalanceCol = pickColumn(walletCols, ['NewBalance', 'New_Balance']);
-    const currentBalanceCol = pickColumn(walletCols, ['CurrentBalance', 'CurBalance', 'Balance']);
-    const walletDateCol = pickColumn(walletCols, ['DateCreate', 'CreateDate', 'CreatedAt']);
-    const walletPkCol = pickColumn(walletCols, ['WalletTransactionId', 'Id', 'ID']);
-
-    // Chọn cột join giữa UserApp và WalletTransaction.
-    // Thực tế ở các query khác trong codebase, WalletTransaction.UserAppId đang join với UserApp.Id.
-    // Dùng CAST để tránh lỗi kiểu dữ liệu khác nhau (varchar/int).
-    const userIdColExact = pickColumn(userAppCols, ['Id', 'UserAppId', 'UserId', 'ID']);
-    const userAppIdColExact = pickColumn(userAppCols, ['UserAppId']);
-
-    const walletToUserJoinWhere = (() => {
-      if (!walletUserIdCol) return null;
-      // Prefer joining wt.UserAppId to ua.Id when available (matches existing queries)
-      if (userIdColExact) {
-        const parts = [
-          `CAST(wt.${sqlIdent(walletUserIdCol)} AS NVARCHAR(100)) = CAST(ua.${sqlIdent(userIdColExact)} AS NVARCHAR(100))`,
-        ];
-        if (userAppIdColExact && userAppIdColExact !== userIdColExact) {
-          parts.push(
-            `CAST(wt.${sqlIdent(walletUserIdCol)} AS NVARCHAR(100)) = CAST(ua.${sqlIdent(userAppIdColExact)} AS NVARCHAR(100))`
-          );
-        }
-        return `(${parts.join(' OR ')})`;
-      }
-      // Fallback: join by same-name column if exists
-      if (userAppCols.has(walletUserIdCol)) {
-        return `CAST(wt.${sqlIdent(walletUserIdCol)} AS NVARCHAR(100)) = CAST(ua.${sqlIdent(walletUserIdCol)} AS NVARCHAR(100))`;
-      }
-      return null;
-    })();
-
-    const canComputeBalance =
-      !!walletUserIdCol &&
-      !!walletDateCol &&
-      !!walletPkCol &&
-      (!!newBalanceCol || !!currentBalanceCol);
 
     const whereParts = [];
     const replacements = {};
@@ -685,17 +662,7 @@ const getUsers = async (req, res, next) => {
     const selectCreatedAt = createdAtCol ? `ua.${sqlIdent(createdAtCol)}` : 'NULL';
     const selectStatus = statusCol ? `ua.${sqlIdent(statusCol)}` : 'NULL';
 
-    const applyJoin = canComputeBalance
-      ? `OUTER APPLY (
-          SELECT TOP 1
-            COALESCE(${newBalanceCol ? `wt.${sqlIdent(newBalanceCol)}` : 'NULL'}, ${currentBalanceCol ? `wt.${sqlIdent(currentBalanceCol)}` : 'NULL'}, 0) AS LastBalance
-          FROM WalletTransaction wt
-          WHERE ${walletToUserJoinWhere || '1=0'}
-          ORDER BY wt.${sqlIdent(walletDateCol)} DESC, wt.${sqlIdent(walletPkCol)} DESC
-        ) w`
-      : '';
-
-    const selectBalance = canComputeBalance ? 'ISNULL(w.LastBalance, 0)' : 'CAST(0 AS DECIMAL(18,2))';
+    const selectBalance = `ISNULL(ua.${sqlIdent('Balance')}, 0)`;
 
     const orderByCol = createdAtCol ? `ua.${sqlIdent(createdAtCol)}` : `ua.${sqlIdent(userIdCol)}`;
 
@@ -710,22 +677,22 @@ const getUsers = async (req, res, next) => {
          ${selectCreatedAt} as createdAt,
          ${selectStatus} as status
        FROM UserApp ua
-       ${applyJoin}
        ${whereClause}
        ORDER BY ${orderByCol} DESC
        OFFSET ${offset} ROWS FETCH NEXT ${limit} ROWS ONLY`,
       { replacements, type: sequelize.QueryTypes.SELECT }
     );
 
+    const statusColKey = statusCol ? String(statusCol).toLowerCase() : null;
     const data = (rows || []).map((r) => {
       let isLocked = null;
-      if (statusCol) {
+      if (statusColKey) {
         const v = r.status;
-        if (statusCol === 'IsActive' || statusCol === 'Active') {
+        if (statusColKey === 'isactive' || statusColKey === 'active') {
           isLocked = !(v === 1 || v === true || v === '1');
-        } else if (statusCol === 'IsLocked' || statusCol === 'Locked') {
+        } else if (statusColKey === 'islocked' || statusColKey === 'locked') {
           isLocked = v === 1 || v === true || v === '1';
-        } else if (statusCol === 'Status') {
+        } else if (statusColKey === 'status') {
           isLocked = !(Number(v) === 1);
         } else {
           isLocked = null;
@@ -768,8 +735,8 @@ const getUserAppColumnsOrFail = async (res) => {
 const resetUserPassword = async (req, res, next) => {
   try {
     if (!requireAdmin(req, res)) return;
-    const id = parseInt(req.params.id, 10);
-    if (!id || Number.isNaN(id)) {
+    const id = req.params.id != null ? String(req.params.id).trim() : '';
+    if (!id) {
       return res.status(400).json({ success: false, message: 'ID người dùng không hợp lệ' });
     }
 
@@ -781,7 +748,7 @@ const resetUserPassword = async (req, res, next) => {
       return res.status(500).json({ success: false, message: 'Bảng UserApp chưa có cột mật khẩu (Password).' });
     }
 
-    const DEFAULT_PASSWORD = 'User@2026';
+    const DEFAULT_PASSWORD = 'SolarEV@2026';
     const hashedPassword = await hashPassword(DEFAULT_PASSWORD);
 
     const [existing] = await sequelize.query(
@@ -815,8 +782,8 @@ const resetUserPassword = async (req, res, next) => {
 const setUserLock = async (req, res, next) => {
   try {
     if (!requireAdmin(req, res)) return;
-    const id = parseInt(req.params.id, 10);
-    if (!id || Number.isNaN(id)) {
+    const id = req.params.id != null ? String(req.params.id).trim() : '';
+    if (!id) {
       return res.status(400).json({ success: false, message: 'ID người dùng không hợp lệ' });
     }
 
@@ -825,17 +792,17 @@ const setUserLock = async (req, res, next) => {
     const cols = await getUserAppColumnsOrFail(res);
     if (!cols) return;
 
-    const statusCol = pickColumn(cols.userAppCols, ['Status', 'IsActive', 'Active', 'IsLocked', 'Locked']);
+    // Prefer using IsActive/isActive for lock state, then IsLocked, then Status
+    const statusCol = pickColumn(cols.userAppCols, ['IsActive', 'Active', 'IsLocked', 'Locked', 'Status']);
     if (!statusCol) {
       return res.status(500).json({ success: false, message: 'Bảng UserApp chưa có cột trạng thái để khóa/mở khóa.' });
     }
 
+    const statusColKey = String(statusCol).toLowerCase();
     let valueToSet = locked ? 1 : 0;
-    if (statusCol === 'IsActive' || statusCol === 'Active') {
+    if (statusColKey === 'isactive' || statusColKey === 'active' || statusColKey === 'status') {
       valueToSet = locked ? 0 : 1;
-    } else if (statusCol === 'Status') {
-      valueToSet = locked ? 0 : 1;
-    } else if (statusCol === 'IsLocked' || statusCol === 'Locked') {
+    } else if (statusColKey === 'islocked' || statusColKey === 'locked') {
       valueToSet = locked ? 1 : 0;
     }
 
@@ -870,8 +837,8 @@ const setUserLock = async (req, res, next) => {
 const deleteUser = async (req, res, next) => {
   try {
     if (!requireAdmin(req, res)) return;
-    const id = parseInt(req.params.id, 10);
-    if (!id || Number.isNaN(id)) {
+    const id = req.params.id != null ? String(req.params.id).trim() : '';
+    if (!id) {
       return res.status(400).json({ success: false, message: 'ID người dùng không hợp lệ' });
     }
 
@@ -913,6 +880,115 @@ const deleteUser = async (req, res, next) => {
     );
 
     return res.json({ success: true, message: 'Đã xóa người dùng.' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Cộng thêm tiền vào số dư người dùng (UserApp.Balance)
+const addUserBalance = async (req, res, next) => {
+  try {
+    if (!requireAdmin(req, res)) return;
+    const id = req.params.id != null ? String(req.params.id).trim() : '';
+    if (!id) {
+      return res.status(400).json({ success: false, message: 'ID người dùng không hợp lệ' });
+    }
+
+    const amountRaw = req.body?.amount;
+    const amount = typeof amountRaw === 'string' ? Number(amountRaw.trim()) : Number(amountRaw);
+    if (!Number.isFinite(amount) || amount <= 0) {
+      return res.status(400).json({ success: false, message: 'Số tiền nạp không hợp lệ' });
+    }
+
+    const cols = await getUserAppColumnsOrFail(res);
+    if (!cols) return;
+
+    const result = await sequelize.transaction(async (transaction) => {
+      const [existing] = await sequelize.query(
+        `SELECT TOP 1 ua.${sqlIdent(cols.userIdCol)} as userId
+         FROM UserApp ua
+         WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
+        { replacements: { id }, type: sequelize.QueryTypes.SELECT, transaction }
+      );
+      if (!existing) {
+        return { ok: false, status: 404, payload: { success: false, message: 'Không tìm thấy người dùng.' } };
+      }
+
+      const [row] = await sequelize.query(
+        `SELECT ISNULL(ua.${sqlIdent('Balance')}, 0) as balance
+         FROM UserApp ua
+         WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
+        { replacements: { id }, type: sequelize.QueryTypes.SELECT, transaction }
+      );
+      const currentBalance = Number(row?.balance ?? 0) || 0;
+      const newBalance = currentBalance + amount;
+
+      await sequelize.query(
+        `UPDATE UserApp
+         SET ${sqlIdent('Balance')} = :balance
+         WHERE ${sqlIdent(cols.userIdCol)} = :id`,
+        { replacements: { id, balance: newBalance }, transaction }
+      );
+
+      return { ok: true, data: { userId: id, previousBalance: currentBalance, amountAdded: amount, balance: newBalance } };
+    });
+
+    if (!result?.ok) return res.status(result.status || 400).json(result.payload);
+    return res.json({ success: true, message: 'Nạp tiền thành công.', data: result.data });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Set số dư người dùng theo ý muốn (UserApp.Balance)
+const setUserBalance = async (req, res, next) => {
+  try {
+    if (!requireAdmin(req, res)) return;
+    const id = req.params.id != null ? String(req.params.id).trim() : '';
+    if (!id) {
+      return res.status(400).json({ success: false, message: 'ID người dùng không hợp lệ' });
+    }
+
+    const balanceRaw = req.body?.balance;
+    const balance = typeof balanceRaw === 'string' ? Number(balanceRaw.trim()) : Number(balanceRaw);
+    if (!Number.isFinite(balance) || balance < 0) {
+      return res.status(400).json({ success: false, message: 'Số dư không hợp lệ' });
+    }
+
+    const cols = await getUserAppColumnsOrFail(res);
+    if (!cols) return;
+
+    const result = await sequelize.transaction(async (transaction) => {
+      const [existing] = await sequelize.query(
+        `SELECT TOP 1 ua.${sqlIdent(cols.userIdCol)} as userId
+         FROM UserApp ua
+         WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
+        { replacements: { id }, type: sequelize.QueryTypes.SELECT, transaction }
+      );
+      if (!existing) {
+        return { ok: false, status: 404, payload: { success: false, message: 'Không tìm thấy người dùng.' } };
+      }
+
+      const [row] = await sequelize.query(
+        `SELECT ISNULL(ua.${sqlIdent('Balance')}, 0) as balance
+         FROM UserApp ua
+         WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
+        { replacements: { id }, type: sequelize.QueryTypes.SELECT, transaction }
+      );
+      const previousBalance = Number(row?.balance ?? 0) || 0;
+
+      await sequelize.query(
+        `UPDATE UserApp
+         SET ${sqlIdent('Balance')} = :balance
+         WHERE ${sqlIdent(cols.userIdCol)} = :id`,
+        { replacements: { id, balance }, transaction }
+      );
+
+      return { ok: true, data: { userId: id, previousBalance, balance } };
+    });
+
+    if (!result?.ok) return res.status(result.status || 400).json(result.payload);
+    return res.json({ success: true, message: 'Cập nhật số dư thành công.', data: result.data });
   } catch (error) {
     next(error);
   }
@@ -2070,6 +2146,8 @@ module.exports = {
   getUsers,
   resetUserPassword,
   setUserLock,
+  addUserBalance,
+  setUserBalance,
   deleteUser,
   updateSession,
   deleteSession,

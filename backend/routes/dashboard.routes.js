@@ -61,6 +61,18 @@ router.delete('/orders/:id', authenticate, dashboardController.deleteOrder);
 router.get('/users', authenticate, dashboardController.getUsers);
 router.put('/users/:id/reset-password', authenticate, dashboardController.resetUserPassword);
 router.put('/users/:id/lock', authenticate, dashboardController.setUserLock);
+router.post(
+  '/users/:id/balance/add',
+  authenticate,
+  [body('amount').notEmpty().withMessage('Số tiền là bắt buộc').isFloat({ gt: 0 }).withMessage('Số tiền phải > 0'), validate],
+  dashboardController.addUserBalance
+);
+router.post(
+  '/users/:id/balance/set',
+  authenticate,
+  [body('balance').notEmpty().withMessage('Số dư là bắt buộc').isFloat({ min: 0 }).withMessage('Số dư phải >= 0'), validate],
+  dashboardController.setUserBalance
+);
 router.delete('/users/:id', authenticate, dashboardController.deleteUser);
 router.get('/charts/energy-today', authenticate, dashboardController.getEnergyByHourToday);
 router.get('/charts/revenue-7-days', authenticate, dashboardController.getRevenueLast7Days);
