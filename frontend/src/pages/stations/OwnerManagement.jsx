@@ -33,10 +33,14 @@ import {
   DropdownMenuTrigger,
 } from '../../components/ui/dropdown-menu';
 import api from '../../services/api';
+import { useToast } from '../../context/ToastContext';
+import { useConfirm } from '../../context/ConfirmContext';
 
 const OwnerManagement = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const toast = useToast();
+  const confirm = useConfirm();
   const isAdmin = !user?.ownerId;
   const [owners, setOwners] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -148,58 +152,70 @@ const OwnerManagement = () => {
     }
   };
 
-  const handleDeleteOwner = async (owner) => {
-    if (!window.confirm(`Bạn có chắc muốn xóa "${owner.Name || 'N/A'}"? Hành động này không thể hoàn tác.`)) return;
-    setDeletingId(owner.OwnerId);
-    try {
-      const res = await api.delete(`/dashboard/owners/${owner.OwnerId}`);
-      if (res.data.success) {
-        fetchOwners();
-      } else {
-        alert(res.data.message || 'Không thể xóa chủ đầu tư');
-      }
-    } catch (err) {
-      alert(err.response?.data?.message || 'Đã xảy ra lỗi. Vui lòng thử lại.');
-    } finally {
-      setDeletingId(null);
-    }
+  const handleDeleteOwner = (owner) => {
+    confirm({
+      title: 'Xác nhận xóa chủ đầu tư',
+      message: `Bạn có chắc muốn xóa "${owner.Name || 'N/A'}"? Hành động này không thể hoàn tác.`,
+      confirmLabel: 'Xóa',
+      variant: 'destructive',
+      onConfirm: async () => {
+        setDeletingId(owner.OwnerId);
+        try {
+          const res = await api.delete(`/dashboard/owners/${owner.OwnerId}`);
+          if (res.data.success) {
+            fetchOwners();
+          } else {
+            toast.error(res.data.message || 'Không thể xóa chủ đầu tư');
+          }
+        } catch (err) {
+          toast.error(err.response?.data?.message || 'Đã xảy ra lỗi. Vui lòng thử lại.');
+        } finally {
+          setDeletingId(null);
+        }
+      },
+    });
   };
 
-  const handleOwnerAccountAction = async (owner) => {
+  const handleOwnerAccountAction = (owner) => {
     const hasAccount = !!owner.LoginUserName;
     const usernameLabel = owner.LoginUserName || '(sẽ tạo tự động)';
     const confirmMessage = hasAccount
       ? `Reset mật khẩu về "Admin@2026" cho tài khoản "${owner.LoginUserName}"?`
       : `Tạo tài khoản đăng nhập cho chủ đầu tư "${owner.Name || 'N/A'}" với mật khẩu mặc định "Admin@2026"?\n\nTên đăng nhập: ${usernameLabel}`;
 
-    if (!window.confirm(confirmMessage)) return;
-
-    setAccountActionId(owner.OwnerId);
-    try {
-      const res = await api.post(`/dashboard/owners/${owner.OwnerId}/account`);
-      if (res.data?.success) {
-        const action = res.data.data?.action;
-        const username = res.data.data?.username || owner.LoginUserName;
-        if (action === 'created') {
-          alert(
-            `Đã tạo tài khoản đăng nhập cho chủ đầu tư.\n\nTên đăng nhập: ${username}\nMật khẩu mặc định: Admin@2026`
-          );
-        } else if (action === 'reset') {
-          alert(
-            `Đã reset mật khẩu cho tài khoản "${username}".\n\nMật khẩu mới: Admin@2026`
-          );
-        } else {
-          alert('Thao tác tài khoản đã hoàn tất.');
+    confirm({
+      title: hasAccount ? 'Reset mật khẩu' : 'Tạo tài khoản',
+      message: confirmMessage,
+      confirmLabel: 'Xác nhận',
+      onConfirm: async () => {
+        setAccountActionId(owner.OwnerId);
+        try {
+          const res = await api.post(`/dashboard/owners/${owner.OwnerId}/account`);
+          if (res.data?.success) {
+            const action = res.data.data?.action;
+            const username = res.data.data?.username || owner.LoginUserName;
+            if (action === 'created') {
+              toast.success(
+                `Đã tạo tài khoản đăng nhập cho chủ đầu tư. Tên đăng nhập: ${username}. Mật khẩu mặc định: Admin@2026`
+              );
+            } else if (action === 'reset') {
+              toast.success(
+                `Đã reset mật khẩu cho tài khoản "${username}". Mật khẩu mới: Admin@2026`
+              );
+            } else {
+              toast.success('Thao tác tài khoản đã hoàn tất.');
+            }
+            fetchOwners();
+          } else {
+            toast.error(res.data?.message || 'Không thể thao tác tài khoản cho chủ đầu tư');
+          }
+        } catch (err) {
+          toast.error(err.response?.data?.message || 'Đã xảy ra lỗi. Vui lòng thử lại.');
+        } finally {
+          setAccountActionId(null);
         }
-        fetchOwners();
-      } else {
-        alert(res.data?.message || 'Không thể thao tác tài khoản cho chủ đầu tư');
-      }
-    } catch (err) {
-      alert(err.response?.data?.message || 'Đã xảy ra lỗi. Vui lòng thử lại.');
-    } finally {
-      setAccountActionId(null);
-    }
+      },
+    });
   };
 
   return (
@@ -251,7 +267,7 @@ const OwnerManagement = () => {
                       <Building2 className="w-5 h-5" />
                       {owner.Name || `Chủ đầu tư #${owner.OwnerId}`}
                     </CardTitle>
-                    <CardDescription className="space-y-0.5">
+                    <div className="text-sm text-muted-foreground space-y-0.5">
                       <div>ID: {owner.OwnerId}</div>
                       <div>
                         Tài khoản đăng nhập:{' '}
@@ -261,7 +277,7 @@ const OwnerManagement = () => {
                           <span className="text-muted-foreground italic">Chưa có</span>
                         )}
                       </div>
-                    </CardDescription>
+                    </div>
                   </div>
                   {isAdmin && (
                     <DropdownMenu modal={false}>

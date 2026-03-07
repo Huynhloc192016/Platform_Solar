@@ -21,6 +21,8 @@ import {
 } from '../../components/ui/dropdown-menu';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
+import { useToast } from '../../context/ToastContext';
+import { useConfirm } from '../../context/ConfirmContext';
 
 const formatDateTime = (value) => {
   if (value == null || value === '') return '—';
@@ -73,6 +75,8 @@ const formatToDisplay = (value) => {
 
 const SessionManagement = () => {
   const { user } = useAuth();
+  const toast = useToast();
+  const confirm = useConfirm();
   const isOwner = !!user?.ownerId;
   const [sessions, setSessions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -213,21 +217,28 @@ const SessionManagement = () => {
     }
   };
 
-  const handleDeleteSession = async (s) => {
-    if (!window.confirm(`Bạn có chắc muốn xóa phiên sạc #${s.TransactionId}?`)) return;
-    setDeletingId(s.TransactionId);
-    try {
-      const res = await api.delete(`/dashboard/sessions/${s.TransactionId}`);
-      if (res.data.success) {
-        fetchSessions({ page, limit, search: searchApplied || undefined, dateFrom: dateFromApplied || undefined, dateTo: dateToApplied || undefined });
-      } else {
-        alert(res.data.message || 'Không thể xóa.');
-      }
-    } catch (err) {
-      alert(err.response?.data?.message || 'Đã xảy ra lỗi.');
-    } finally {
-      setDeletingId(null);
-    }
+  const handleDeleteSession = (s) => {
+    confirm({
+      title: 'Xác nhận xóa phiên sạc',
+      message: `Bạn có chắc muốn xóa phiên sạc #${s.TransactionId}?`,
+      confirmLabel: 'Xóa',
+      variant: 'destructive',
+      onConfirm: async () => {
+        setDeletingId(s.TransactionId);
+        try {
+          const res = await api.delete(`/dashboard/sessions/${s.TransactionId}`);
+          if (res.data.success) {
+            fetchSessions({ page, limit, search: searchApplied || undefined, dateFrom: dateFromApplied || undefined, dateTo: dateToApplied || undefined });
+          } else {
+            toast.error(res.data.message || 'Không thể xóa.');
+          }
+        } catch (err) {
+          toast.error(err.response?.data?.message || 'Đã xảy ra lỗi.');
+        } finally {
+          setDeletingId(null);
+        }
+      },
+    });
   };
 
   return (
@@ -290,7 +301,8 @@ const SessionManagement = () => {
             </div>
           ) : (
             <>
-              <div className="overflow-x-auto rounded-md border border-slate-200">
+              {/* Desktop: Table */}
+              <div className="hidden lg:block overflow-x-auto rounded-md border border-slate-200">
                 <table className="w-full text-sm">
                   <thead className="bg-slate-50 border-b border-slate-200">
                     <tr>
@@ -353,6 +365,48 @@ const SessionManagement = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+
+              {/* Mobile: Cards */}
+              <div className="lg:hidden space-y-4">
+                {sessions.map((s) => (
+                  <Card key={s.TransactionId ?? s.Uid ?? Math.random()}>
+                    <CardContent className="p-4 space-y-2">
+                      <div className="flex justify-between items-start gap-2">
+                        <p className="text-sm font-medium">Phiên #{s.TransactionId ?? s.Uid ?? '—'}</p>
+                        {!isOwner && (
+                          <DropdownMenu modal={false}>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                                <MoreVertical className="w-4 h-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuItem onClick={() => openEditDialog(s)}>
+                                <Pencil className="w-4 h-4 mr-2" /> Sửa
+                              </DropdownMenuItem>
+                              <DropdownMenuItem
+                                onClick={() => handleDeleteSession(s)}
+                                disabled={deletingId === (s.TransactionId ?? s.Uid)}
+                                className="text-destructive focus:text-destructive"
+                              >
+                                {deletingId === (s.TransactionId ?? s.Uid) ? (
+                                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                ) : (
+                                  <Trash2 className="w-4 h-4 mr-2" />
+                                )}
+                                Xóa
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        )}
+                      </div>
+                      <p className="text-xs text-muted-foreground">Điểm thu phí: {s.ChargePointId ?? '—'} • Thẻ: {s.StartTagId ?? '—'}</p>
+                      <p className="text-sm">Bắt đầu: {formatDateTime(s.StartTime)}</p>
+                      <p className="text-sm">Kết thúc: {formatDateTime(s.StopTime)}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
 
               {totalPages > 1 && (

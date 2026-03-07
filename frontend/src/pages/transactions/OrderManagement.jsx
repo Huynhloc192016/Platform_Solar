@@ -21,6 +21,8 @@ import {
 } from '../../components/ui/dropdown-menu';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
+import { useToast } from '../../context/ToastContext';
+import { useConfirm } from '../../context/ConfirmContext';
 
 const formatDateTime = (value) => {
   if (value == null || value === '') return '—';
@@ -36,6 +38,8 @@ const formatNumber = (value) => {
 
 const OrderManagement = () => {
   const { user } = useAuth();
+  const toast = useToast();
+  const confirm = useConfirm();
   const isOwner = !!user?.ownerId;
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -165,21 +169,28 @@ const OrderManagement = () => {
     }
   };
 
-  const handleDeleteOrder = async (o) => {
-    if (!window.confirm(`Bạn có chắc muốn xóa đơn sạc #${o.WalletTransactionId}?`)) return;
-    setDeletingId(o.WalletTransactionId);
-    try {
-      const res = await api.delete(`/dashboard/orders/${o.WalletTransactionId}`);
-      if (res.data.success) {
-        fetchOrders({ page, limit, search: searchApplied || undefined, dateFrom: dateFromApplied || undefined, dateTo: dateToApplied || undefined });
-      } else {
-        alert(res.data.message || 'Không thể xóa.');
-      }
-    } catch (err) {
-      alert(err.response?.data?.message || 'Đã xảy ra lỗi.');
-    } finally {
-      setDeletingId(null);
-    }
+  const handleDeleteOrder = (o) => {
+    confirm({
+      title: 'Xác nhận xóa đơn',
+      message: `Bạn có chắc muốn xóa đơn sạc #${o.WalletTransactionId}?`,
+      confirmLabel: 'Xóa',
+      variant: 'destructive',
+      onConfirm: async () => {
+        setDeletingId(o.WalletTransactionId);
+        try {
+          const res = await api.delete(`/dashboard/orders/${o.WalletTransactionId}`);
+          if (res.data.success) {
+            fetchOrders({ page, limit, search: searchApplied || undefined, dateFrom: dateFromApplied || undefined, dateTo: dateToApplied || undefined });
+          } else {
+            toast.error(res.data.message || 'Không thể xóa.');
+          }
+        } catch (err) {
+          toast.error(err.response?.data?.message || 'Đã xảy ra lỗi.');
+        } finally {
+          setDeletingId(null);
+        }
+      },
+    });
   };
 
   return (
@@ -242,7 +253,8 @@ const OrderManagement = () => {
             </div>
           ) : (
             <>
-              <div className="overflow-x-auto rounded-md border border-slate-200">
+              {/* Desktop: Table */}
+              <div className="hidden lg:block overflow-x-auto rounded-md border border-slate-200">
                 <table className="w-full text-sm">
                   <thead className="bg-slate-50 border-b border-slate-200">
                     <tr>
@@ -309,6 +321,48 @@ const OrderManagement = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+
+              {/* Mobile: Cards */}
+              <div className="lg:hidden space-y-4">
+                {orders.map((o) => (
+                  <Card key={o.WalletTransactionId ?? Math.random()}>
+                    <CardContent className="p-4 space-y-2">
+                      <div className="flex justify-between items-start gap-2">
+                        <p className="text-sm font-medium">ID đơn #{o.WalletTransactionId ?? '—'}</p>
+                        {!isOwner && (
+                          <DropdownMenu modal={false}>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                                <MoreVertical className="w-4 h-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuItem onClick={() => openEditDialog(o)}>
+                                <Pencil className="w-4 h-4 mr-2" /> Sửa
+                              </DropdownMenuItem>
+                              <DropdownMenuItem
+                                onClick={() => handleDeleteOrder(o)}
+                                disabled={deletingId === o.WalletTransactionId}
+                                className="text-destructive focus:text-destructive"
+                              >
+                                {deletingId === o.WalletTransactionId ? (
+                                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                ) : (
+                                  <Trash2 className="w-4 h-4 mr-2" />
+                                )}
+                                Xóa
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        )}
+                      </div>
+                      <p className="text-xs text-muted-foreground">User: {o.UserAppId ?? '—'} • Phiên: {o.TransactionId ?? '—'}</p>
+                      <p className="text-sm">Điện: {o.EnergyUsed != null ? formatNumber(o.EnergyUsed) : '—'} • Giá: {o.Amount != null ? formatNumber(o.Amount) : '—'}</p>
+                      <p className="text-xs text-muted-foreground">{formatDateTime(o.DateCreate)}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
 
               {totalPages > 1 && (

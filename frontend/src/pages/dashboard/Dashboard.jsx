@@ -110,7 +110,7 @@ const Dashboard = () => {
   return (
     <div className="space-y-6">
           {/* Stats Cards Row 1 */}
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Tổng trạm sạc</CardTitle>
@@ -181,7 +181,7 @@ const Dashboard = () => {
         </div>
 
           {/* Stats Cards Row 2 */}
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Tổng năng lượng</CardTitle>
@@ -223,7 +223,7 @@ const Dashboard = () => {
         </div>
 
         {/* Charts Section */}
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Energy by hour today */}
           <Card>
             <CardHeader>
@@ -323,7 +323,7 @@ const Dashboard = () => {
           </Card>
         </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {/* Station Status */}
           <Card>
             <CardHeader>

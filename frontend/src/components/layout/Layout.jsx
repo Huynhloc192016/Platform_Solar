@@ -29,8 +29,14 @@ const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
   const isOwner = !!user?.ownerId;
   const visibleTabs = isOwner ? tabConfigs.filter((t) => ['dashboard', 'stations', 'live', 'transactions'].includes(t.value)) : tabConfigs;
+
+  // Đóng sidebar trên mobile khi chuyển trang
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (isOwner && ['/users', '/accounts', '/stations/owners'].includes(location.pathname)) {
@@ -59,23 +65,24 @@ const Layout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Header />
-      <div className="flex">
-        <Sidebar />
-        <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8 ml-64">
-          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-            <div className="overflow-x-auto mb-8">
-              <TabsList className="inline-flex w-auto min-w-full">
+    <div className="min-h-screen bg-slate-50 overflow-x-hidden max-w-full">
+      <Header onMenuClick={() => setSidebarOpen((v) => !v)} />
+      <div className="flex min-w-0">
+        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} mainTabs={visibleTabs} />
+        <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-8 lg:ml-64">
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full min-w-0">
+            <div className="hidden lg:block overflow-x-auto mb-8 -mx-1 px-1 w-full">
+              <TabsList className="flex w-full min-w-0">
                 {visibleTabs.map((tab) => {
                   const Icon = tab.icon;
                   return (
                     <TabsTrigger
                       key={tab.value}
                       value={tab.value}
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 [&>span]:hidden [&>span]:sm:inline"
+                      title={tab.label}
                     >
-                      <Icon className="w-4 h-4" />
+                      <Icon className="w-4 h-4 shrink-0" />
                       <span>{tab.label}</span>
                     </TabsTrigger>
                   );

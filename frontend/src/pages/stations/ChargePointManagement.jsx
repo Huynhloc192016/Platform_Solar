@@ -23,6 +23,8 @@ import {
 } from '../../components/ui/dropdown-menu';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
+import { useToast } from '../../context/ToastContext';
+import { useConfirm } from '../../context/ConfirmContext';
 
 const OUTPUT_TYPES = [
   { value: 'AC', label: 'AC' },
@@ -45,6 +47,8 @@ const selectInputClass =
 const ChargePointManagement = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const toast = useToast();
+  const confirm = useConfirm();
   const isOwner = !!user?.ownerId;
   const [chargePoints, setChargePoints] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -231,27 +235,28 @@ const ChargePointManagement = () => {
     }
   };
 
-  const handleDeleteChargePoint = async (cp) => {
-    if (
-      !window.confirm(
-        `Bạn có chắc muốn xóa trụ "${cp.Name || cp.ChargePointId || 'N/A'}"? Hành động này không thể hoàn tác.`
-      )
-    ) {
-      return;
-    }
-    setDeletingId(cp.ChargePointId);
-    try {
-      const res = await api.delete(`/dashboard/chargepoints/${encodeURIComponent(cp.ChargePointId)}`);
-      if (res.data.success) {
-        fetchChargePoints();
-      } else {
-        alert(res.data.message || 'Không thể xóa trụ sạc');
-      }
-    } catch (err) {
-      alert(err.response?.data?.message || 'Đã xảy ra lỗi. Vui lòng thử lại.');
-    } finally {
-      setDeletingId(null);
-    }
+  const handleDeleteChargePoint = (cp) => {
+    confirm({
+      title: 'Xác nhận xóa trụ sạc',
+      message: `Bạn có chắc muốn xóa trụ "${cp.Name || cp.ChargePointId || 'N/A'}"? Hành động này không thể hoàn tác.`,
+      confirmLabel: 'Xóa',
+      variant: 'destructive',
+      onConfirm: async () => {
+        setDeletingId(cp.ChargePointId);
+        try {
+          const res = await api.delete(`/dashboard/chargepoints/${encodeURIComponent(cp.ChargePointId)}`);
+          if (res.data.success) {
+            fetchChargePoints();
+          } else {
+            toast.error(res.data.message || 'Không thể xóa trụ sạc');
+          }
+        } catch (err) {
+          toast.error(err.response?.data?.message || 'Đã xảy ra lỗi. Vui lòng thử lại.');
+        } finally {
+          setDeletingId(null);
+        }
+      },
+    });
   };
 
   const formatPower = (v) => {

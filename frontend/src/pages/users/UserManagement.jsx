@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
-import { ChevronLeft, ChevronRight, Loader2, Search, Users, MoreVertical, KeyRound, Lock, Unlock, Trash2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Loader2, Search, Users, MoreVertical, KeyRound, Lock, Unlock, Trash2, Coins, SlidersHorizontal } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../../components/ui/dialog';
 import { Label } from '../../components/ui/label';
 import {
@@ -14,6 +14,8 @@ import {
   DropdownMenuTrigger,
 } from '../../components/ui/dropdown-menu';
 import api from '../../services/api';
+import { useToast } from '../../context/ToastContext';
+import { useConfirm } from '../../context/ConfirmContext';
 
 const formatDateTime = (value) => {
   if (value == null || value === '') return '—';
@@ -28,6 +30,8 @@ const formatNumber = (value) => {
 };
 
 const UserManagement = () => {
+  const toast = useToast();
+  const confirm = useConfirm();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(0);
@@ -90,62 +94,81 @@ const UserManagement = () => {
   const hasActiveFilter = !!searchApplied;
   const totalPages = Math.max(1, Math.ceil(total / limit));
 
-  const handleResetPassword = async (u) => {
+  const handleResetPassword = (u) => {
     if (!u?.userId) return;
-    if (!window.confirm(`Reset mật khẩu người dùng #${u.userId} về mặc định?`)) return;
-    setResettingId(u.userId);
-    try {
-      const res = await api.put(`/dashboard/users/${u.userId}/reset-password`);
-      if (res.data?.success) {
-        alert(res.data?.message || 'Đã reset mật khẩu.');
-      } else {
-        alert(res.data?.message || 'Không thể reset mật khẩu.');
-      }
-    } catch (err) {
-      alert(err.response?.data?.message || 'Đã xảy ra lỗi.');
-    } finally {
-      setResettingId(null);
-    }
+    confirm({
+      title: 'Reset mật khẩu',
+      message: `Reset mật khẩu người dùng #${u.userId} về mặc định?`,
+      confirmLabel: 'Reset',
+      onConfirm: async () => {
+        setResettingId(u.userId);
+        try {
+          const res = await api.put(`/dashboard/users/${u.userId}/reset-password`);
+          if (res.data?.success) {
+            toast.success(res.data?.message || 'Đã reset mật khẩu.');
+          } else {
+            toast.error(res.data?.message || 'Không thể reset mật khẩu.');
+          }
+        } catch (err) {
+          toast.error(err.response?.data?.message || 'Đã xảy ra lỗi.');
+        } finally {
+          setResettingId(null);
+        }
+      },
+    });
   };
 
-  const handleToggleLock = async (u) => {
+  const handleToggleLock = (u) => {
     if (!u?.userId) return;
     const currentLocked = !!u.isLocked;
     const nextLocked = !currentLocked;
     const label = nextLocked ? 'khóa' : 'mở khóa';
-    if (!window.confirm(`Bạn có chắc muốn ${label} người dùng #${u.userId}?`)) return;
-    setLockingId(u.userId);
-    try {
-      const res = await api.put(`/dashboard/users/${u.userId}/lock`, { locked: nextLocked });
-      if (res.data?.success) {
-        fetchUsers({ page, limit, search: searchApplied || undefined });
-      } else {
-        alert(res.data?.message || 'Không thể cập nhật trạng thái.');
-      }
-    } catch (err) {
-      alert(err.response?.data?.message || 'Đã xảy ra lỗi.');
-    } finally {
-      setLockingId(null);
-    }
+    confirm({
+      title: 'Xác nhận',
+      message: `Bạn có chắc muốn ${label} người dùng #${u.userId}?`,
+      confirmLabel: 'Xác nhận',
+      onConfirm: async () => {
+        setLockingId(u.userId);
+        try {
+          const res = await api.put(`/dashboard/users/${u.userId}/lock`, { locked: nextLocked });
+          if (res.data?.success) {
+            fetchUsers({ page, limit, search: searchApplied || undefined });
+          } else {
+            toast.error(res.data?.message || 'Không thể cập nhật trạng thái.');
+          }
+        } catch (err) {
+          toast.error(err.response?.data?.message || 'Đã xảy ra lỗi.');
+        } finally {
+          setLockingId(null);
+        }
+      },
+    });
   };
 
-  const handleDeleteUser = async (u) => {
+  const handleDeleteUser = (u) => {
     if (!u?.userId) return;
-    if (!window.confirm(`Bạn có chắc muốn xóa người dùng #${u.userId}?`)) return;
-    setDeletingId(u.userId);
-    try {
-      const res = await api.delete(`/dashboard/users/${u.userId}`);
-      if (res.data?.success) {
-        fetchUsers({ page: 1, limit, search: searchApplied || undefined });
-        setPage(1);
-      } else {
-        alert(res.data?.message || 'Không thể xóa người dùng.');
-      }
-    } catch (err) {
-      alert(err.response?.data?.message || 'Đã xảy ra lỗi.');
-    } finally {
-      setDeletingId(null);
-    }
+    confirm({
+      title: 'Xác nhận xóa',
+      message: `Bạn có chắc muốn xóa người dùng #${u.userId}?`,
+      confirmLabel: 'Xóa',
+      variant: 'destructive',
+      onConfirm: async () => {
+        setDeletingId(u.userId);
+        try {
+          const res = await api.delete(`/dashboard/users/${u.userId}`);
+          if (res.data?.success) {
+            fetchUsers({ page: 1, limit, search: searchApplied || undefined });
+            setPage(1);
+          } else {
+            toast.error(res.data?.message || 'Không thể xóa người dùng.');
+          }
+        } catch (err) {
+          toast.error(err.response?.data?.message || 'Đã xảy ra lỗi.');
+        } finally {
+          setDeletingId(null);
+        }
+      },
+    });
   };
 
   const openBalanceDialog = (u, mode) => {
@@ -189,7 +212,7 @@ const UserManagement = () => {
       if (res.data?.success) {
         setBalanceDialogOpen(false);
         fetchUsers({ page, limit, search: searchApplied || undefined });
-        alert(res.data?.message || 'Thành công.');
+        toast.success(res.data?.message || 'Thành công.');
       } else {
         setBalanceError(res.data?.message || 'Thao tác thất bại.');
       }
@@ -242,7 +265,8 @@ const UserManagement = () => {
             </div>
           ) : (
             <>
-              <div className="overflow-x-auto rounded-md border border-slate-200">
+              {/* Desktop: Table */}
+              <div className="hidden lg:block overflow-x-auto rounded-md border border-slate-200">
                 <table className="w-full text-sm">
                   <thead className="bg-slate-50 border-b border-slate-200">
                     <tr>
@@ -308,12 +332,14 @@ const UserManagement = () => {
                                 onClick={() => openBalanceDialog(u, 'add')}
                                 disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId}
                               >
+                                <Coins className="w-4 h-4 mr-2" />
                                 Nạp tiền
                               </DropdownMenuItem>
                               <DropdownMenuItem
                                 onClick={() => openBalanceDialog(u, 'set')}
                                 disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId}
                               >
+                                <SlidersHorizontal className="w-4 h-4 mr-2" />
                                 Set số dư
                               </DropdownMenuItem>
                               <DropdownMenuSeparator />
@@ -336,6 +362,53 @@ const UserManagement = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+
+              {/* Mobile: Cards */}
+              <div className="lg:hidden space-y-4">
+                {users.map((u) => (
+                  <Card key={u.userId ?? Math.random()}>
+                    <CardContent className="p-4 space-y-2">
+                      <div className="flex justify-between items-start gap-2">
+                        <p className="text-sm font-medium">{(u.fullName || u.userName || u.userId) ?? '—'}</p>
+                        <DropdownMenu modal={false}>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                              <MoreVertical className="w-4 h-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem onClick={() => handleResetPassword(u)} disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId}>
+                              {resettingId === u.userId ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <KeyRound className="w-4 h-4 mr-2" />}
+                              Reset mật khẩu
+                            </DropdownMenuItem>
+                            <DropdownMenuItem onClick={() => handleToggleLock(u)} disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId}>
+                              {lockingId === u.userId ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : u.isLocked ? <Unlock className="w-4 h-4 mr-2" /> : <Lock className="w-4 h-4 mr-2" />}
+                              {u.isLocked ? 'Mở khóa' : 'Khóa'}
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem onClick={() => openBalanceDialog(u, 'add')} disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId}>
+                              <Coins className="w-4 h-4 mr-2" />
+                              Nạp tiền
+                            </DropdownMenuItem>
+                            <DropdownMenuItem onClick={() => openBalanceDialog(u, 'set')} disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId}>
+                              <SlidersHorizontal className="w-4 h-4 mr-2" />
+                              Set số dư
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem onClick={() => handleDeleteUser(u)} disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId} className="text-destructive focus:text-destructive">
+                              {deletingId === u.userId ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Trash2 className="w-4 h-4 mr-2" />}
+                              Xóa
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </div>
+                      <p className="text-xs text-muted-foreground">{u.email ?? '—'} • {u.phone ?? '—'}</p>
+                      <p className="text-sm">Số dư: {u.balance != null ? formatNumber(u.balance) : '—'}</p>
+                      <p className="text-xs text-muted-foreground">{formatDateTime(u.createdAt)}</p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
 
               {totalPages > 1 && (

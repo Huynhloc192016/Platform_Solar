@@ -35,11 +35,15 @@ import { Label } from '../../components/ui/label';
 import { useLocation, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
+import { useToast } from '../../context/ToastContext';
+import { useConfirm } from '../../context/ConfirmContext';
 
 const StationManagement = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const toast = useToast();
+  const confirm = useConfirm();
   const isOwner = !!user?.ownerId;
   const openStationId = location.state?.stationId;
   const filterOwnerId = location.state?.ownerId;
@@ -204,23 +208,28 @@ const StationManagement = () => {
     }
   };
 
-  const handleDeleteStation = async (station) => {
-    if (!window.confirm(`Bạn có chắc muốn xóa trạm "${station.Name || 'N/A'}"? Hành động này không thể hoàn tác.`)) {
-      return;
-    }
-    setDeletingId(station.ChargeStationId);
-    try {
-      const res = await api.delete(`/dashboard/stations/${station.ChargeStationId}`);
-      if (res.data.success) {
-        fetchStations();
-      } else {
-        alert(res.data.message || 'Không thể xóa trạm sạc');
-      }
-    } catch (err) {
-      alert(err.response?.data?.message || 'Đã xảy ra lỗi. Vui lòng thử lại.');
-    } finally {
-      setDeletingId(null);
-    }
+  const handleDeleteStation = (station) => {
+    confirm({
+      title: 'Xác nhận xóa trạm',
+      message: `Bạn có chắc muốn xóa trạm "${station.Name || 'N/A'}"? Hành động này không thể hoàn tác.`,
+      confirmLabel: 'Xóa',
+      variant: 'destructive',
+      onConfirm: async () => {
+        setDeletingId(station.ChargeStationId);
+        try {
+          const res = await api.delete(`/dashboard/stations/${station.ChargeStationId}`);
+          if (res.data.success) {
+            fetchStations();
+          } else {
+            toast.error(res.data.message || 'Không thể xóa trạm sạc');
+          }
+        } catch (err) {
+          toast.error(err.response?.data?.message || 'Đã xảy ra lỗi. Vui lòng thử lại.');
+        } finally {
+          setDeletingId(null);
+        }
+      },
+    });
   };
 
   const openStationOnGoogleMaps = (station) => {
@@ -230,30 +239,30 @@ const StationManagement = () => {
       const url = `https://www.google.com/maps?q=${Number(lat)},${Number(lng)}`;
       window.open(url, '_blank', 'noopener,noreferrer');
     } else {
-      alert('Trạm này chưa có tọa độ. Vui lòng cập nhật Lat/Long trong phần Sửa.');
+      toast.info('Trạm này chưa có tọa độ. Vui lòng cập nhật Lat/Long trong phần Sửa.');
     }
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 min-w-0">
       {/* Header */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Quản lý trạm sạc</CardTitle>
-          <CardDescription>Theo dõi và quản lý các ChargeStation trong hệ thống</CardDescription>
+      <Card className="min-w-0">
+        <CardHeader className="p-4 sm:p-6">
+          <CardTitle className="text-lg sm:text-xl">Quản lý trạm sạc</CardTitle>
+          <CardDescription className="text-sm">Theo dõi và quản lý các ChargeStation trong hệ thống</CardDescription>
         </CardHeader>
-        <CardContent>
-          <div className="flex gap-2">
-            <div className="relative flex-1">
+        <CardContent className="p-4 pt-0 sm:p-6 sm:pt-0">
+          <div className="flex flex-col gap-2 sm:flex-row sm:gap-2 min-w-0">
+            <div className="relative w-full min-w-0 sm:flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
-                placeholder="Tìm kiếm theo tên, địa chỉ hoặc ID trạm..."
+                placeholder="Tìm theo tên, địa chỉ hoặc ID..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
+                className="pl-10 min-w-0"
               />
             </div>
-            <Button onClick={() => setAddDialogOpen(true)} disabled={isOwner}>
+            <Button onClick={() => setAddDialogOpen(true)} disabled={isOwner} className="w-full sm:w-auto shrink-0">
               <Plus className="w-4 h-4 mr-2" />
               Thêm trạm sạc
             </Button>
@@ -262,8 +271,8 @@ const StationManagement = () => {
       </Card>
 
       {filterOwnerId != null && (
-        <div className="flex items-center justify-between rounded-lg border bg-muted/50 px-4 py-2">
-          <span className="text-sm">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between rounded-lg border bg-muted/50 px-3 py-2 sm:px-4 min-w-0">
+          <span className="text-sm break-words min-w-0">
             Đang xem trạm của chủ đầu tư:{' '}
             {stations.find((s) => s.OwnerId == filterOwnerId)?.OwnerName || `#${filterOwnerId}`}
           </span>
@@ -271,6 +280,7 @@ const StationManagement = () => {
             variant="ghost"
             size="sm"
             onClick={() => navigate('/stations', { replace: true, state: {} })}
+            className="shrink-0"
           >
             Xem tất cả trạm
           </Button>
@@ -293,13 +303,13 @@ const StationManagement = () => {
           </CardContent>
         </Card>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 min-w-0">
           {filteredStations.map((station) => (
-            <Card key={station.ChargeStationId} className="hover:shadow-lg transition-shadow">
-              <CardHeader className="pb-3">
-                <div className="flex items-start justify-between">
+            <Card key={station.ChargeStationId} className="hover:shadow-lg transition-shadow min-w-0">
+              <CardHeader className="pb-3 p-4 sm:p-6">
+                <div className="flex items-start justify-between gap-2">
                   <div className="flex-1 min-w-0">
-                    <CardTitle className="text-lg flex items-center gap-2">
+                    <CardTitle className="text-base sm:text-lg flex items-center gap-2 min-w-0">
                       <Building2 className="w-5 h-5 shrink-0" />
                       <span className="truncate" title={station.Name || 'N/A'}>
                         {station.Name || 'N/A'}
@@ -356,7 +366,7 @@ const StationManagement = () => {
                   </DropdownMenu>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 p-4 sm:p-6 pt-0">
                 {/* Status */}
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Trạng thái</span>
@@ -364,31 +374,31 @@ const StationManagement = () => {
                 </div>
 
                 {/* Station Info */}
-                <div className="grid grid-cols-2 gap-3 pt-2 border-t">
-                  <div>
+                <div className="grid grid-cols-2 gap-2 sm:gap-3 pt-2 border-t min-w-0">
+                  <div className="min-w-0">
                     <p className="text-xs text-muted-foreground">Loại</p>
-                    <p className="text-sm font-medium">{station.Type || 'N/A'}</p>
+                    <p className="text-xs sm:text-sm font-medium truncate">{station.Type || 'N/A'}</p>
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs text-muted-foreground">Tọa độ</p>
-                    <p className="text-sm font-medium truncate" title={station.Latitude != null && station.Longitude != null ? `${station.Latitude}, ${station.Longitude}` : 'Chưa cập nhật'}>
+                    <p className="text-xs sm:text-sm font-medium truncate" title={station.Latitude != null && station.Longitude != null ? `${station.Latitude}, ${station.Longitude}` : 'Chưa cập nhật'}>
                       {station.Latitude != null && station.Longitude != null
                         ? `${Number(station.Latitude).toFixed(5)}, ${Number(station.Longitude).toFixed(5)}`
                         : 'Chưa cập nhật'}
                     </p>
                   </div>
-                  <div>
+                  <div className="min-w-0 col-span-2">
                     <p className="text-xs text-muted-foreground">Chủ sở hữu</p>
                     {station.OwnerId ? (
                       <button
                         type="button"
                         onClick={() => navigate('/stations')}
-                        className="text-sm font-medium text-primary hover:underline text-left"
+                        className="text-xs sm:text-sm font-medium text-primary hover:underline text-left truncate block w-full"
                       >
                         {station.OwnerName || 'N/A'}
                       </button>
                     ) : (
-                      <p className="text-sm font-medium">{station.OwnerName || 'N/A'}</p>
+                      <p className="text-xs sm:text-sm font-medium truncate">{station.OwnerName || 'N/A'}</p>
                     )}
                   </div>
                 </div>
