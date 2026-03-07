@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Building2, Activity, Zap, Receipt, Clock, Users, BarChart3, LayoutDashboard, FileDown } from 'lucide-react';
+import { Building2, Activity, Zap, Receipt, Clock, Users, BarChart3, LayoutDashboard, FileDown, Radio } from 'lucide-react';
 import { cn } from '../ui/utils';
 import { useAuth } from '../../context/AuthContext';
 
@@ -9,6 +9,8 @@ const stationsSidebarItems = [
   { label: 'Danh sách trạm', path: '/stations', icon: Activity },
   { label: 'Danh sách trụ', path: '/stations/chargepoints', icon: Zap },
 ];
+
+const liveSidebarItems = [{ label: 'Trạng thái trực tuyến', path: '/live', icon: Radio }];
 
 const transactionsSidebarItems = [
   { label: 'Quản lý đơn sạc', path: '/transactions/orders', icon: Receipt },
@@ -31,6 +33,7 @@ const Sidebar = () => {
   const stationsItems = isOwner ? stationsSidebarItems.filter((item) => item.path !== '/stations/owners') : stationsSidebarItems;
   const isDashboardSection = location.pathname.startsWith('/dashboard');
   const isStationsSection = location.pathname.startsWith('/stations');
+  const isLiveSection = location.pathname === '/live';
   const isTransactionsSection = location.pathname.startsWith('/transactions');
   const isUsersSection = location.pathname.startsWith('/users');
 
@@ -76,6 +79,32 @@ const Sidebar = () => {
               item.path === '/stations'
                 ? location.pathname === '/stations'
                 : location.pathname.startsWith(item.path);
+            return (
+              <button
+                key={item.path}
+                onClick={() => navigate(item.path)}
+                className={cn(
+                  'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
+                  isActive
+                    ? 'bg-slate-100 text-slate-900'
+                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                )}
+              >
+                <Icon className="w-4 h-4 flex-shrink-0" />
+                {item.label}
+              </button>
+            );
+          })}
+        </nav>
+      )}
+      {isLiveSection && (
+        <nav className="p-4 space-y-1">
+          <p className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+            Live
+          </p>
+          {liveSidebarItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = location.pathname === item.path;
             return (
               <button
                 key={item.path}

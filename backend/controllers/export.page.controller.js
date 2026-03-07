@@ -1,5 +1,6 @@
 const { sequelize } = require('../config/database');
 const ExcelJS = require('exceljs');
+const { getOwnerIdForFilter } = require('../utils/authorization.util');
 
 const sanitizeFilename = (s) => (s || '').replace(/[/\\?*:|"]/g, '_').trim() || 'export';
 
@@ -9,7 +10,7 @@ const sanitizeFilename = (s) => (s || '').replace(/[/\\?*:|"]/g, '_').trim() || 
  */
 const exportOrdersForReport = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
     const stationId = parseInt(req.query.stationId, 10);
     const chargePointId = (req.query.chargePointId || '').trim() || null;
     const chargePointNameFromQuery = (req.query.chargePointName || '').trim() || null;

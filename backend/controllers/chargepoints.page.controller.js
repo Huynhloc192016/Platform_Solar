@@ -1,9 +1,29 @@
 const { sequelize } = require('../config/database');
+const http = require('http');
+const https = require('https');
+const { getOwnerIdForFilter } = require('../utils/authorization.util');
+
+// Parse LastMeterRemote: MeterKWH|CurrentChargeKW|SoC|Voltage|Temperature|Current (from OCPP MeterValues)
+function parseLastMeterRemote(raw) {
+  const result = { Voltage: null, Current: null, SoC: null, CurrentChargeKW: null };
+  if (raw == null || typeof raw !== 'string') return result;
+  const parts = raw.trim().split('|');
+  if (parts.length < 6) return result;
+  const n = (s) => {
+    const v = parseFloat(String(s).replace(/[^\d.-]/g, ''));
+    return Number.isFinite(v) ? v : null;
+  };
+  result.Voltage = n(parts[3]);
+  result.Current = n(parts[5]);
+  result.SoC = n(parts[2]);
+  result.CurrentChargeKW = n(parts[1]);
+  return result;
+}
 
 // Danh sách tất cả trụ sạc (ChargePoint)
 const getChargePoints = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
     const ownerFilter = ownerId ? `AND cp.OwnerId = ${ownerId}` : '';
 
     let chargePoints;
@@ -70,21 +90,82 @@ const getChargePoints = async (req, res, next) => {
       }
     }
 
-    const result = chargePoints.map((cp) => ({
-      ChargePointId: cp.ChargePointId,
-      Name: cp.Name || cp.ChargePointId,
-      ChargePointModel: cp.ChargePointModel,
-      chargerPower: cp.chargerPower,
-      outputType: cp.outputType,
-      connectorType: cp.connectorType,
-      OcppVersion: cp.OcppVersion,
-      IsActive: cp.IsActive !== false && cp.IsActive !== 0,
-      ChargeStationId: cp.ChargeStationId,
-      StationName: cp.StationName,
-      StationAddress: cp.StationAddress,
-      OwnerName: cp.OwnerName,
-      ChargePointState: cp.ChargePointState || 'Unavailable',
-    }));
+    const chargePointIds = chargePoints.map((cp) => cp.ChargePointId);
+    let lastSeenByCp = {};
+    if (chargePointIds.length > 0) {
+      const inList = chargePointIds.map((id) => `'${String(id).replace(/'/g, "''")}'`).join(',');
+      try {
+        const lastSeenRows = await sequelize.query(
+          `SELECT ChargePointId, MAX(lastSeen) AS LastSeen FROM ConnectorStatus WHERE ChargePointId IN (${inList}) GROUP BY ChargePointId`,
+          { type: sequelize.QueryTypes.SELECT }
+        );
+        lastSeenRows.forEach((r) => {
+          lastSeenByCp[r.ChargePointId] = r.LastSeen ?? r.lastSeen ?? null;
+        });
+      } catch (_) {
+        // lastSeen column may not exist in some DB
+      }
+    }
+    let connectorsByCp = {};
+    if (chargePointIds.length > 0) {
+      const inList = chargePointIds.map((id) => `'${String(id).replace(/'/g, "''")}'`).join(',');
+      let connectorRows;
+      try {
+        connectorRows = await sequelize.query(
+          `WITH Latest AS (
+            SELECT ChargePointId, ConnectorId, ConnectorName, LastStatus, LastStatusTime, LastMeterRemote, RemoteTime,
+                   ROW_NUMBER() OVER (PARTITION BY ChargePointId, ConnectorId ORDER BY LastStatusTime DESC) AS rn
+            FROM ConnectorStatus
+            WHERE ChargePointId IN (${inList})
+          )
+          SELECT ChargePointId, ConnectorId, ConnectorName, LastStatus, LastStatusTime, LastMeterRemote, RemoteTime
+          FROM Latest WHERE rn = 1
+          ORDER BY ChargePointId, ConnectorId`,
+          { type: sequelize.QueryTypes.SELECT }
+        );
+      } catch (connErr) {
+        connectorRows = [];
+      }
+      connectorRows.forEach((row) => {
+        if (!connectorsByCp[row.ChargePointId]) connectorsByCp[row.ChargePointId] = [];
+        const lastStatus = row.LastStatus != null ? String(row.LastStatus).trim() : (row.lastStatus != null ? String(row.lastStatus).trim() : null);
+        const rawMeter = row.LastMeterRemote ?? row.lastMeterRemote ?? null;
+        const meter = parseLastMeterRemote(rawMeter);
+        connectorsByCp[row.ChargePointId].push({
+          ConnectorId: row.ConnectorId,
+          ConnectorName: row.ConnectorName || `Súng ${row.ConnectorId}`,
+          LastStatus: lastStatus || 'Unavailable',
+          LastStatusTime: row.LastStatusTime ?? row.lastStatusTime,
+          RemoteTime: row.RemoteTime ?? row.remoteTime ?? null,
+          Voltage: meter.Voltage,
+          Current: meter.Current,
+          SoC: meter.SoC,
+          CurrentChargeKW: meter.CurrentChargeKW,
+        });
+      });
+    }
+
+    const result = chargePoints.map((cp) => {
+      const connectors = connectorsByCp[cp.ChargePointId] || [];
+      const chargePointState = cp.ChargePointState || (connectors[0] && connectors[0].LastStatus) || 'Unavailable';
+      return {
+        ChargePointId: cp.ChargePointId,
+        Name: cp.Name || cp.ChargePointId,
+        ChargePointModel: cp.ChargePointModel,
+        chargerPower: cp.chargerPower,
+        outputType: cp.outputType,
+        connectorType: cp.connectorType,
+        OcppVersion: cp.OcppVersion,
+        IsActive: cp.IsActive !== false && cp.IsActive !== 0,
+        ChargeStationId: cp.ChargeStationId,
+        StationName: cp.StationName,
+        StationAddress: cp.StationAddress,
+        OwnerName: cp.OwnerName,
+        ChargePointState: chargePointState,
+        LastSeen: lastSeenByCp[cp.ChargePointId] ?? null,
+        connectors,
+      };
+    });
 
     res.json({
       success: true,
@@ -98,7 +179,7 @@ const getChargePoints = async (req, res, next) => {
 // Thêm trụ sạc mới
 const createChargePoint = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res
         .status(403)
         .json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
@@ -115,7 +196,7 @@ const createChargePoint = async (req, res, next) => {
       OcppVersion,
       IsActive,
     } = req.body;
-    const userOwnerId = req.user?.ownerId;
+    const userOwnerId = getOwnerIdForFilter(req.user);
 
     if (!ChargePointId || !ChargeStationId) {
       return res.status(400).json({
@@ -225,7 +306,7 @@ const createChargePoint = async (req, res, next) => {
 // Cập nhật trụ sạc
 const updateChargePoint = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res
         .status(403)
         .json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
@@ -242,7 +323,7 @@ const updateChargePoint = async (req, res, next) => {
       OcppVersion,
       IsActive,
     } = req.body;
-    const userOwnerId = req.user?.ownerId;
+    const userOwnerId = getOwnerIdForFilter(req.user);
 
     if (!chargePointId) {
       return res
@@ -374,13 +455,13 @@ const updateChargePoint = async (req, res, next) => {
 // Xóa trụ sạc
 const deleteChargePoint = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res
         .status(403)
         .json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
     }
     const chargePointId = req.params.id ? decodeURIComponent(req.params.id) : null;
-    const userOwnerId = req.user?.ownerId;
+    const userOwnerId = getOwnerIdForFilter(req.user);
 
     if (!chargePointId) {
       return res
@@ -442,10 +523,77 @@ const deleteChargePoint = async (req, res, next) => {
   }
 };
 
+function httpGet(url) {
+  return new Promise((resolve, reject) => {
+    const lib = url.startsWith('https') ? https : http;
+    const req = lib.get(url, (res) => {
+      let body = '';
+      res.on('data', (chunk) => (body += chunk));
+      res.on('end', () => resolve({ ok: res.statusCode >= 200 && res.statusCode < 300, statusCode: res.statusCode, body }));
+    });
+    req.on('error', reject);
+    req.setTimeout(15000, () => { req.destroy(); reject(new Error('Timeout')); });
+  });
+}
+
+// Dừng phiên sạc (gửi RemoteStopTransaction xuống OCPP server)
+const stopChargingSession = async (req, res) => {
+  try {
+    const chargePointId = req.params.id;
+    const connectorId = req.body?.connectorId != null ? Number(req.body.connectorId) : null;
+    if (!chargePointId || connectorId == null || connectorId < 1) {
+      return res.status(400).json({
+        success: false,
+        message: 'Thiếu chargePointId hoặc connectorId (1 hoặc 2).',
+      });
+    }
+
+    const rows = await sequelize.query(
+      `SELECT TOP 1 TransactionId FROM Transactions 
+       WHERE ChargePointId = :chargePointId AND ConnectorId = :connectorId AND MeterStop IS NULL`,
+      {
+        replacements: { chargePointId, connectorId },
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
+    const transactionId = rows[0]?.TransactionId;
+    if (transactionId == null) {
+      return res.status(404).json({
+        success: false,
+        message: 'Không tìm thấy phiên sạc đang chạy cho connector này.',
+      });
+    }
+
+    const baseUrl = (process.env.OCPP_SERVER_URL || 'http://localhost:8081').replace(/\/$/, '');
+    const url = `${baseUrl}/RemoteStopTransaction?id=${encodeURIComponent(chargePointId)}&TransactionId=${encodeURIComponent(transactionId)}`;
+    const { ok, statusCode, body } = await httpGet(url);
+
+    if (!ok) {
+      return res.status(502).json({
+        success: false,
+        message: 'OCPP server trả lỗi.',
+        detail: (body || '').slice(0, 200),
+      });
+    }
+
+    return res.json({
+      success: true,
+      message: 'Đã gửi lệnh dừng sạc.',
+    });
+  } catch (err) {
+    console.error('stopChargingSession:', err);
+    return res.status(500).json({
+      success: false,
+      message: err.message || 'Lỗi khi gọi OCPP server.',
+    });
+  }
+};
+
 module.exports = {
   getChargePoints,
   createChargePoint,
   updateChargePoint,
   deleteChargePoint,
+  stopChargingSession,
 };
 

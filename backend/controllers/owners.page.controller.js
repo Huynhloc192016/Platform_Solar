@@ -1,10 +1,11 @@
 const { sequelize } = require('../config/database');
 const { hashPassword } = require('../utils/password.util');
+const { getOwnerIdForFilter } = require('../utils/authorization.util');
 
 // Thêm chủ đầu tư mới (chỉ admin)
 const createOwner = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res.status(403).json({
         success: false,
         message: 'Bạn không có quyền thêm chủ đầu tư',
@@ -46,7 +47,7 @@ const createOwner = async (req, res, next) => {
 const getOwnerById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const userOwnerId = req.user?.ownerId;
+    const userOwnerId = getOwnerIdForFilter(req.user);
 
     if (!id) {
       return res
@@ -84,7 +85,7 @@ const getOwnerById = async (req, res, next) => {
 // Cập nhật chủ đầu tư (chỉ admin)
 const updateOwner = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res.status(403).json({
         success: false,
         message: 'Chủ đầu tư không có quyền thao tác.',
@@ -130,7 +131,7 @@ const updateOwner = async (req, res, next) => {
 // Xóa chủ đầu tư (chỉ admin)
 const deleteOwner = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res.status(403).json({
         success: false,
         message: 'Chủ đầu tư không có quyền thao tác.',
@@ -189,7 +190,7 @@ const deleteOwner = async (req, res, next) => {
 // Danh sách Owner (cho dropdown + danh sách chủ đầu tư)
 const getOwners = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
     const whereClause = ownerId ? `WHERE o.OwnerId = ${ownerId}` : '';
 
     const owners = await sequelize.query(
@@ -219,7 +220,7 @@ const getOwners = async (req, res, next) => {
 // Tạo mới hoặc reset mật khẩu tài khoản đăng nhập cho chủ đầu tư
 const createOrResetOwnerAccount = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res.status(403).json({
         success: false,
         message: 'Bạn không có quyền thao tác tài khoản cho chủ đầu tư',

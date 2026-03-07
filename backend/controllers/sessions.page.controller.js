@@ -1,9 +1,10 @@
 const { sequelize } = require('../config/database');
+const { getOwnerIdForFilter } = require('../utils/authorization.util');
 
 // Danh sách phiên sạc (quản lý phiên sạc)
 const getChargingSessions = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
     const page = Math.max(1, parseInt(req.query.page, 10) || 1);
     const limit = Math.min(100, Math.max(1, parseInt(req.query.limit, 10) || 20));
     const offset = (page - 1) * limit;
@@ -102,13 +103,13 @@ const getChargingSessions = async (req, res, next) => {
 // Cập nhật phiên sạc
 const updateSession = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res
         .status(403)
         .json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
     }
     const { id } = req.params;
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
     const { StartTime, StopTime, MeterStart, MeterStop } = req.body;
 
     const ownerFilter = ownerId
@@ -159,13 +160,13 @@ const updateSession = async (req, res, next) => {
 // Xóa phiên sạc
 const deleteSession = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res
         .status(403)
         .json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
     }
     const { id } = req.params;
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
 
     const ownerFilter = ownerId
       ? `AND EXISTS (SELECT 1 FROM ChargePoint cp WHERE cp.ChargePointId = t.ChargePointId AND cp.OwnerId = ${ownerId})`

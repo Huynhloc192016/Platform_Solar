@@ -1,5 +1,17 @@
 const { ROLES } = require('./constants');
 
+/** Admin (PermissionId 1) luôn full quyền: không lọc theo OwnerId */
+const isAdmin = (user) => user?.role === ROLES.ADMIN;
+
+/**
+ * Trả về ownerId dùng cho lọc dữ liệu. Admin => null (xem toàn bộ), Owner => ownerId của họ.
+ */
+const getOwnerIdForFilter = (user) => {
+  if (!user) return null;
+  if (user.role === ROLES.ADMIN) return null;
+  return user.ownerId ?? null;
+};
+
 const filterByOwner = (query, ownerId) => {
   if (ownerId) {
     query.where = query.where || {};
@@ -53,6 +65,8 @@ const checkResourceOwner = (resource, user) => {
 };
 
 module.exports = {
+  isAdmin,
+  getOwnerIdForFilter,
   filterByOwner,
   checkOwnerAccess,
   getUserScope,

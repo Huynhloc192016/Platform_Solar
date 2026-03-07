@@ -1,9 +1,10 @@
 const { sequelize } = require('../config/database');
+const { getOwnerIdForFilter } = require('../utils/authorization.util');
 
 // Danh sách đơn sạc (quản lý đơn sạc)
 const getChargingOrders = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
     const page = Math.max(1, parseInt(req.query.page, 10) || 1);
     const limit = Math.min(100, Math.max(1, parseInt(req.query.limit, 10) || 20));
     const offset = (page - 1) * limit;
@@ -93,13 +94,13 @@ const getChargingOrders = async (req, res, next) => {
 // Cập nhật đơn sạc
 const updateOrder = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res
         .status(403)
         .json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
     }
     const { id } = req.params;
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
     const { Amount, meterValue, stopMethod, currentBalance, newBalance, UserAppId } =
       req.body;
 
@@ -159,13 +160,13 @@ const updateOrder = async (req, res, next) => {
 // Xóa đơn sạc
 const deleteOrder = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res
         .status(403)
         .json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
     }
     const { id } = req.params;
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
 
     const ownerCheck = ownerId
       ? `AND EXISTS (SELECT 1 FROM Transactions t INNER JOIN ChargePoint cp ON cp.ChargePointId = t.ChargePointId AND t.TransactionId = wt.TransactionId WHERE cp.OwnerId = ${ownerId})`

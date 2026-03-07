@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
-import { LayoutDashboard, Activity, History, Users, Shield } from 'lucide-react';
+import { LayoutDashboard, Activity, History, Users, Shield, Zap } from 'lucide-react';
 import Dashboard from '../../pages/dashboard/Dashboard';
 import StationManagement from '../../pages/stations/StationManagement';
 import OwnerManagement from '../../pages/stations/OwnerManagement';
 import ChargePointManagement from '../../pages/stations/ChargePointManagement';
+import StationLivePage from '../../pages/stations/StationLivePage';
 import SessionManagement from '../../pages/transactions/SessionManagement';
 import OrderManagement from '../../pages/transactions/OrderManagement';
 import ExportOrdersPage from '../../pages/transactions/ExportOrdersPage';
@@ -18,6 +19,7 @@ import { useAuth } from '../../context/AuthContext';
 const tabConfigs = [
   { value: 'dashboard', label: 'Tổng quan', icon: LayoutDashboard, path: '/dashboard' },
   { value: 'stations', label: 'Trạm sạc', icon: Activity, path: '/stations' },
+  { value: 'live', label: 'Live', icon: Zap, path: '/live' },
   { value: 'transactions', label: 'Giao dịch', icon: History, path: '/transactions' },
   { value: 'users', label: 'Người dùng', icon: Users, path: '/users' },
   { value: 'accounts', label: 'Tài khoản', icon: Shield, path: '/accounts' },
@@ -28,7 +30,7 @@ const Layout = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const isOwner = !!user?.ownerId;
-  const visibleTabs = isOwner ? tabConfigs.filter((t) => ['dashboard', 'stations', 'transactions'].includes(t.value)) : tabConfigs;
+  const visibleTabs = isOwner ? tabConfigs.filter((t) => ['dashboard', 'stations', 'live', 'transactions'].includes(t.value)) : tabConfigs;
 
   useEffect(() => {
     if (isOwner && ['/users', '/accounts', '/stations/owners'].includes(location.pathname)) {
@@ -38,7 +40,15 @@ const Layout = () => {
 
   const activeTab =
     visibleTabs.find((tab) => tab.path === location.pathname)?.value ||
-    (location.pathname.startsWith('/stations') ? 'stations' : location.pathname.startsWith('/transactions') ? 'transactions' : location.pathname.startsWith('/dashboard') ? 'dashboard' : 'dashboard');
+    (location.pathname === '/live'
+      ? 'live'
+      : location.pathname.startsWith('/stations')
+        ? 'stations'
+        : location.pathname.startsWith('/transactions')
+          ? 'transactions'
+          : location.pathname.startsWith('/dashboard')
+            ? 'dashboard'
+            : 'dashboard');
 
   const handleTabChange = (value) => {
     const tab = visibleTabs.find((t) => t.value === value);
@@ -84,6 +94,9 @@ const Layout = () => {
               ) : (
                 <StationManagement />
               )}
+            </TabsContent>
+            <TabsContent value="live" className="mt-0">
+              <StationLivePage />
             </TabsContent>
             <TabsContent value="transactions" className="mt-0">
               {location.pathname === '/transactions/orders' ? (

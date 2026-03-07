@@ -1,9 +1,10 @@
 const { sequelize } = require('../config/database');
+const { getOwnerIdForFilter } = require('../utils/authorization.util');
 
 // Tổng quan thống kê (Dashboard)
 const getStats = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
 
     const [
       totalStationsResult,
@@ -114,7 +115,7 @@ const getStats = async (req, res, next) => {
 // 5 trụ gần nhất, ưu tiên đang sạc (Dashboard widget)
 const getRecentChargePoints = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
     const ownerFilter = ownerId ? `AND cp.OwnerId = ${ownerId}` : '';
 
     const chargePoints = await sequelize.query(
@@ -172,7 +173,7 @@ const getRecentChargePoints = async (req, res, next) => {
 // 5 giao dịch gần đây (Dashboard widget)
 const getRecentTransactions = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
     const whereClause = ownerId ? `WHERE cp.OwnerId = ${ownerId}` : '';
 
     const transactions = await sequelize.query(
@@ -216,7 +217,7 @@ const getRecentTransactions = async (req, res, next) => {
 // Năng lượng theo giờ trong ngày (0-23h) - chart dashboard
 const getEnergyByHourToday = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
 
     const ownerJoin = ownerId
       ? 'INNER JOIN ChargePoint cp ON t.ChargePointId = cp.ChargePointId'
@@ -260,7 +261,7 @@ const getEnergyByHourToday = async (req, res, next) => {
 // Doanh thu 7 ngày gần nhất - chart dashboard
 const getRevenueLast7Days = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
 
     const ownerJoin = ownerId
       ? 'INNER JOIN UserApp ua ON wt.UserAppId = ua.Id'

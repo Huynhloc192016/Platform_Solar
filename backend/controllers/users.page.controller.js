@@ -1,5 +1,6 @@
 const { sequelize } = require('../config/database');
 const { hashPassword } = require('../utils/password.util');
+const { getOwnerIdForFilter } = require('../utils/authorization.util');
 
 const sqlIdent = (name) => `[${String(name).replace(/]/g, ']]')}]`;
 
@@ -26,7 +27,7 @@ const getTableColumns = async (tableName) => {
 };
 
 const requireAdmin = (req, res) => {
-  if (req.user?.ownerId) {
+  if (getOwnerIdForFilter(req.user)) {
     res
       .status(403)
       .json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
@@ -50,7 +51,7 @@ const getUserAppColumnsOrFail = async (res) => {
 // Danh sách người dùng (quản lý người dùng)
 const getUsers = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
     const page = Math.max(1, parseInt(req.query.page, 10) || 1);
     const limit = Math.min(100, Math.max(1, parseInt(req.query.limit, 10) || 20));
     const offset = (page - 1) * limit;

@@ -1,9 +1,10 @@
 const { sequelize } = require('../config/database');
+const { getOwnerIdForFilter } = require('../utils/authorization.util');
 
 // Danh sách trạm + trụ
 const getStations = async (req, res, next) => {
   try {
-    const ownerId = req.user?.ownerId;
+    const ownerId = getOwnerIdForFilter(req.user);
     const whereClause = ownerId ? `WHERE cs.OwnerId = ${ownerId}` : '';
 
     let stations;
@@ -155,13 +156,13 @@ const getStations = async (req, res, next) => {
 // Thêm trạm sạc mới
 const createStation = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res
         .status(403)
         .json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
     }
     const { Name, Address, OwnerId, Status, Type, Latitude, Longitude } = req.body;
-    const userOwnerId = req.user?.ownerId;
+    const userOwnerId = getOwnerIdForFilter(req.user);
     const ownerId = OwnerId || userOwnerId;
 
     if (!Name || !Address) {
@@ -233,14 +234,14 @@ const createStation = async (req, res, next) => {
 // Cập nhật trạm sạc
 const updateStation = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res
         .status(403)
         .json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
     }
     const { id } = req.params;
     const { Name, Address, OwnerId, Status, Type, Latitude, Longitude } = req.body;
-    const userOwnerId = req.user?.ownerId;
+    const userOwnerId = getOwnerIdForFilter(req.user);
 
     if (!id) {
       return res
@@ -326,13 +327,13 @@ const updateStation = async (req, res, next) => {
 // Xóa trạm sạc
 const deleteStation = async (req, res, next) => {
   try {
-    if (req.user?.ownerId) {
+    if (getOwnerIdForFilter(req.user)) {
       return res
         .status(403)
         .json({ success: false, message: 'Chủ đầu tư không có quyền thao tác.' });
     }
     const { id } = req.params;
-    const userOwnerId = req.user?.ownerId;
+    const userOwnerId = getOwnerIdForFilter(req.user);
 
     if (!id) {
       return res

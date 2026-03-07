@@ -35,5 +35,6 @@ router.put(
   controller.updateChargePoint
 );
 router.delete('/chargepoints/:id', authenticate, controller.deleteChargePoint);
+router.post('/chargepoints/:id/stop-session', authenticate, controller.stopChargingSession);
 
 module.exports = router;
