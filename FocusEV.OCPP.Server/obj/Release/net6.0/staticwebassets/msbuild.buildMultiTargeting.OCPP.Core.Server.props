@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\OCPP.Core.Server.props" />
+</Project>

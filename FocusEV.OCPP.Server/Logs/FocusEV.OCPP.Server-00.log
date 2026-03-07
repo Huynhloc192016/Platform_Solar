@@ -1,0 +1,24 @@
+﻿trce: OCPPMiddleware[0] @ 2023-11-19T09:29:42.2302912+07:00
+      My Log Path/
+trce: OCPPMiddleware[0] @ 2023-11-19T09:29:42.4024583+07:00
+      OCPPMiddleware => Websocket request: Path='/'
+trce: OCPPMiddleware[0] @ 2023-11-19T09:29:42.4028056+07:00
+      OCPPMiddleware => Index status page
+trce: OCPPMiddleware[0] @ 2023-11-19T09:29:43.8362205+07:00
+      My Log Path/favicon.ico
+trce: OCPPMiddleware[0] @ 2023-11-19T09:29:43.8363451+07:00
+      OCPPMiddleware => Websocket request: Path='/favicon.ico'
+warn: OCPPMiddleware[0] @ 2023-11-19T09:29:43.9372210+07:00
+      OCPPMiddleware => Bad path request
+trce: OCPPMiddleware[0] @ 2023-11-19T09:30:50.7833865+07:00
+      My Log Path/
+trce: OCPPMiddleware[0] @ 2023-11-19T09:30:50.8323263+07:00
+      OCPPMiddleware => Websocket request: Path='/'
+trce: OCPPMiddleware[0] @ 2023-11-19T09:30:50.8329870+07:00
+      OCPPMiddleware => Index status page
+trce: OCPPMiddleware[0] @ 2023-11-19T09:30:51.4243255+07:00
+      My Log Path/favicon.ico
+trce: OCPPMiddleware[0] @ 2023-11-19T09:30:51.4244573+07:00
+      OCPPMiddleware => Websocket request: Path='/favicon.ico'
+warn: OCPPMiddleware[0] @ 2023-11-19T09:30:51.4933635+07:00
+      OCPPMiddleware => Bad path request

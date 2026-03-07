@@ -1,9 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader } from '../../components/ui/card';
 import { Badge } from '../../components/ui/badge';
-import { Zap, Loader2, Power, PowerOff, Clock, CheckCircle2, Plug, AlertCircle, XCircle, Circle, StopCircle } from 'lucide-react';
+import { Zap, Loader2, Power, PowerOff, Clock, CheckCircle2, Plug, AlertCircle, XCircle, Circle, StopCircle, RefreshCw } from 'lucide-react';
 import api from '../../services/api';
 import { Button } from '../../components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '../../components/ui/dialog';
+
+const POLL_INTERVAL_MS = 15000; // 15 giây
 
 const OCPP_STATUS_CONFIG = {
   Available: {
@@ -100,25 +110,49 @@ const StationLivePage = () => {
   const [toast, setToast] = useState(null);
   const [pausedChargePointIds, setPausedChargePointIds] = useState(() => new Set());
   const [frozenCards, setFrozenCards] = useState({});
+  const [lastUpdated, setLastUpdated] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+  const [stopNotifyModal, setStopNotifyModal] = useState({ open: false, type: 'success', text: '' });
+  const pollIntervalRef = useRef(null);
 
-  const fetchData = React.useCallback(async () => {
+  const fetchData = React.useCallback(async (isSilent = false) => {
+    if (!isSilent) setLoading(true);
+    else setRefreshing(true);
+    if (!isSilent) setError(null);
     try {
-      setLoading(true);
-      setError(null);
       const response = await api.get('/dashboard/chargepoints');
       if (response.data.success) {
         setChargePoints(response.data.data || []);
+        setLastUpdated(new Date());
+        setError(null);
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Không tải được dữ liệu trụ sạc.');
-      setChargePoints([]);
+      const msg = err.response?.data?.message || 'Không tải được dữ liệu trụ sạc.';
+      if (!isSilent) {
+        setError(msg);
+        setChargePoints([]);
+      } else {
+        setToast({ type: 'error', text: 'Cập nhật nền thất bại. ' + msg });
+      }
     } finally {
       setLoading(false);
+      setRefreshing(false);
     }
   }, []);
 
   useEffect(() => {
-    fetchData();
+    fetchData(false);
+  }, [fetchData]);
+
+  // Polling: chỉ chạy khi tab đang hiển thị
+  useEffect(() => {
+    const tick = () => {
+      if (document.visibilityState === 'visible') fetchData(true);
+    };
+    pollIntervalRef.current = setInterval(tick, POLL_INTERVAL_MS);
+    return () => {
+      if (pollIntervalRef.current) clearInterval(pollIntervalRef.current);
+    };
   }, [fetchData]);
 
   useEffect(() => {
@@ -131,16 +165,21 @@ const StationLivePage = () => {
     const key = `${chargePointId}-${connectorId}`;
     setStopping(key);
     setToast(null);
+    setStopNotifyModal((m) => ({ ...m, open: false }));
     try {
       const res = await api.post(`/dashboard/chargepoints/${chargePointId}/stop-session`, { connectorId });
       if (res.data?.success) {
-        setToast({ type: 'success', text: 'Đã gửi lệnh dừng sạc.' });
-        await fetchData();
+        setStopNotifyModal({ open: true, type: 'success', text: res.data?.message || 'Đã gửi lệnh dừng sạc.' });
+        await fetchData(true);
       } else {
-        setToast({ type: 'error', text: res.data?.message || 'Không gửi được lệnh.' });
+        setStopNotifyModal({ open: true, type: 'error', text: res.data?.message || 'Không gửi được lệnh.' });
       }
     } catch (err) {
-      setToast({ type: 'error', text: err.response?.data?.message || 'Lỗi khi gửi lệnh dừng sạc.' });
+      setStopNotifyModal({
+        open: true,
+        type: 'error',
+        text: err.response?.data?.message || 'Lỗi khi gửi lệnh dừng sạc.',
+      });
     } finally {
       setStopping(null);
     }
@@ -212,6 +251,31 @@ const StationLivePage = () => {
           {toast.text}
         </div>
       )}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <Clock className="w-4 h-4 shrink-0" />
+          <span>
+            {lastUpdated
+              ? `Cập nhật lúc ${lastUpdated.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`
+              : 'Đang tải...'}
+          </span>
+          {refreshing && <Loader2 className="w-4 h-4 animate-spin shrink-0" aria-hidden />}
+        </div>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => fetchData(true)}
+          disabled={loading || refreshing}
+          className="gap-2"
+        >
+          {refreshing ? (
+            <Loader2 className="w-4 h-4 animate-spin" />
+          ) : (
+            <RefreshCw className="w-4 h-4" />
+          )}
+          Làm mới
+        </Button>
+      </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {displayList.map((cp) => {
           const isPaused = pausedChargePointIds.has(cp.ChargePointId);
@@ -444,6 +508,49 @@ const StationLivePage = () => {
           </CardContent>
         </Card>
       )}
+
+      <Dialog
+        open={stopNotifyModal.open}
+        onOpenChange={(open) => {
+          if (!open) setStopNotifyModal((m) => ({ ...m, open: false }));
+        }}
+      >
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              {stopNotifyModal.type === 'success' ? (
+                <>
+                  <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0" />
+                  Thông báo
+                </>
+              ) : (
+                <>
+                  <AlertCircle className="h-5 w-5 text-destructive shrink-0" />
+                  Thông báo
+                </>
+              )}
+            </DialogTitle>
+            <DialogDescription
+              className={
+                stopNotifyModal.type === 'success'
+                  ? 'text-green-700 pt-1'
+                  : 'text-destructive pt-1'
+              }
+            >
+              {stopNotifyModal.text}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="sm:justify-end">
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() => setStopNotifyModal((m) => ({ ...m, open: false }))}
+            >
+              Đóng
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
