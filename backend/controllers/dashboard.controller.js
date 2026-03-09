@@ -10,6 +10,7 @@ const ordersPage = require('./orders.page.controller');
 const usersPage = require('./users.page.controller');
 const ownersPage = require('./owners.page.controller');
 const exportPage = require('./export.page.controller');
+const servicePage = require('./service.page.controller');
 
 module.exports = {
   ...dashboardPage,
@@ -20,4 +21,5 @@ module.exports = {
   ...usersPage,
   ...ownersPage,
   ...exportPage,
+  ...servicePage,
 };

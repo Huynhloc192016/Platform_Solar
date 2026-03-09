@@ -65,6 +65,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/live/service"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/stations/live" element={<Navigate to="/live" replace />} />
           <Route path="/chargepoints" element={<Navigate to="/stations/chargepoints" replace />} />
           <Route

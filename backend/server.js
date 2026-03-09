@@ -44,6 +44,15 @@ const startServer = async () => {
     app.listen(PORT, () => {
       console.log(`🚀 Server is running on port ${PORT}`);
       console.log(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
+      if (process.env.MAIL_CRON_ENABLED !== 'false') {
+        const cron = require('node-cron');
+        const { runConnectorNoSessionCheck } = require('./services/connector-check.service');
+        const minutes = Math.max(1, parseInt(process.env.MAIL_CRON_INTERVAL_MINUTES || '5', 10));
+        cron.schedule(`*/${minutes} * * * *`, () => {
+          runConnectorNoSessionCheck().catch((err) => console.error('[Cron] runConnectorNoSessionCheck:', err.message));
+        });
+        console.log(`📧 Mail cron: every ${minutes} min (connector no-session check)`);
+      }
     });
   } else {
     console.error('❌ Failed to start server due to database connection error');

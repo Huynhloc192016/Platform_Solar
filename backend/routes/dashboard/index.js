@@ -14,6 +14,7 @@ const sessionsRoutes = require('./sessions.routes');
 const ordersRoutes = require('./orders.routes');
 const usersRoutes = require('./users.routes');
 const exportRoutes = require('./export.routes');
+const serviceRoutes = require('./service.routes');
 
 router.use(overviewRoutes);
 router.use(stationsRoutes);
@@ -23,5 +24,6 @@ router.use(sessionsRoutes);
 router.use(ordersRoutes);
 router.use(usersRoutes);
 router.use('/export', exportRoutes);
+router.use(serviceRoutes);
 
 module.exports = router;

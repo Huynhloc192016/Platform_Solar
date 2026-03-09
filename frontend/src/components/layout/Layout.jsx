@@ -8,6 +8,7 @@ import StationManagement from '../../pages/stations/StationManagement';
 import OwnerManagement from '../../pages/stations/OwnerManagement';
 import ChargePointManagement from '../../pages/stations/ChargePointManagement';
 import StationLivePage from '../../pages/stations/StationLivePage';
+import ServicePage from '../../pages/live/ServicePage';
 import SessionManagement from '../../pages/transactions/SessionManagement';
 import OrderManagement from '../../pages/transactions/OrderManagement';
 import ExportOrdersPage from '../../pages/transactions/ExportOrdersPage';
@@ -46,7 +47,7 @@ const Layout = () => {
 
   const activeTab =
     visibleTabs.find((tab) => tab.path === location.pathname)?.value ||
-    (location.pathname === '/live'
+    (location.pathname === '/live' || location.pathname.startsWith('/live/')
       ? 'live'
       : location.pathname.startsWith('/stations')
         ? 'stations'
@@ -59,7 +60,12 @@ const Layout = () => {
   const handleTabChange = (value) => {
     const tab = visibleTabs.find((t) => t.value === value);
     if (tab) {
-      const path = tab.value === 'transactions' ? '/transactions/orders' : tab.path;
+      const path =
+        tab.value === 'transactions'
+          ? '/transactions/orders'
+          : tab.value === 'live'
+            ? '/live'
+            : tab.path;
       navigate(path);
     }
   };
@@ -103,7 +109,11 @@ const Layout = () => {
               )}
             </TabsContent>
             <TabsContent value="live" className="mt-0">
-              <StationLivePage />
+              {location.pathname === '/live/service' ? (
+                <ServicePage />
+              ) : (
+                <StationLivePage />
+              )}
             </TabsContent>
             <TabsContent value="transactions" className="mt-0">
               {location.pathname === '/transactions/orders' ? (

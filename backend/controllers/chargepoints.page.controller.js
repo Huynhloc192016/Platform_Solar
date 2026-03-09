@@ -564,7 +564,7 @@ const stopChargingSession = async (req, res) => {
       });
     }
 
-    const baseUrl = (process.env.OCPP_SERVER_URL || 'http://localhost:8081').replace(/\/$/, '');
+    const baseUrl = (process.env.OCPP_SERVER_URL || 'http://localhost:8481').replace(/\/$/, '');
     const url = `${baseUrl}/RemoteStopTransaction?id=${encodeURIComponent(chargePointId)}&TransactionId=${encodeURIComponent(transactionId)}`;
     const { ok, statusCode, body } = await httpGet(url);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Building2, Activity, Zap, Receipt, Clock, Users, BarChart3, LayoutDashboard, FileDown, Radio, X, LogOut, ChevronDown, Shield } from 'lucide-react';
+import { Building2, Activity, Zap, Receipt, Clock, Users, BarChart3, LayoutDashboard, FileDown, Radio, X, LogOut, ChevronDown, Shield, Mail } from 'lucide-react';
 import { cn } from '../ui/utils';
 import { useAuth } from '../../context/AuthContext';
 import logo from '../../img/logo.png';
@@ -11,7 +11,10 @@ const stationsSidebarItems = [
   { label: 'Danh sách trụ', path: '/stations/chargepoints', icon: Zap },
 ];
 
-const liveSidebarItems = [{ label: 'Trạng thái trực tuyến', path: '/live', icon: Radio }];
+const liveSidebarItems = [
+  { label: 'Trạng thái trực tuyến', path: '/live', icon: Radio },
+  { label: 'Service', path: '/live/service', icon: Mail },
+];
 
 const transactionsSidebarItems = [
   { label: 'Quản lý đơn sạc', path: '/transactions/orders', icon: Receipt },
@@ -73,7 +76,7 @@ const Sidebar = ({ open = false, onClose, mainTabs = [] }) => {
 
   const isDashboardSection = location.pathname.startsWith('/dashboard');
   const isStationsSection = location.pathname.startsWith('/stations');
-  const isLiveSection = location.pathname === '/live';
+  const isLiveSection = location.pathname.startsWith('/live');
   const isTransactionsSection = location.pathname.startsWith('/transactions');
   const isUsersSection = location.pathname.startsWith('/users');
 
