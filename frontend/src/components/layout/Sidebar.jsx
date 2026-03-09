@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Building2, Activity, Zap, Receipt, Clock, Users, BarChart3, LayoutDashboard, FileDown, Radio, X, LogOut, ChevronDown, Shield } from 'lucide-react';
+import { Building2, Activity, Zap, Receipt, Clock, Users, BarChart3, LayoutDashboard, FileDown, Radio, X, LogOut, ChevronDown, Shield, Mail, CreditCard, Calendar, CalendarDays } from 'lucide-react';
 import { cn } from '../ui/utils';
 import { useAuth } from '../../context/AuthContext';
 import logo from '../../img/logo.png';
