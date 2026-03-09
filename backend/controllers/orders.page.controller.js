@@ -1,5 +1,25 @@
 const { sequelize } = require('../config/database');
 const { getOwnerIdForFilter } = require('../utils/authorization.util');
+const { insertActivityLog } = require('../utils/activity-log.util');
+
+const getOrderSnapshotById = async (id) => {
+  const [row] = await sequelize.query(
+    `SELECT TOP 1
+       wt.WalletTransactionId,
+       wt.UserAppId,
+       wt.TransactionId,
+       wt.Amount,
+       wt.DateCreate,
+       wt.MeterValue,
+       wt.StopMethod,
+       wt.CurrentBalance,
+       wt.NewBalance
+     FROM WalletTransaction wt
+     WHERE wt.WalletTransactionId = :id`,
+    { replacements: { id }, type: sequelize.QueryTypes.SELECT }
+  );
+  return row || null;
+};
 
 // Danh sách đơn sạc (quản lý đơn sạc)
 const getChargingOrders = async (req, res, next) => {
@@ -108,7 +128,7 @@ const updateOrder = async (req, res, next) => {
       ? `AND EXISTS (SELECT 1 FROM Transactions t INNER JOIN ChargePoint cp ON cp.ChargePointId = t.ChargePointId AND t.TransactionId = wt.TransactionId WHERE cp.OwnerId = ${ownerId})`
       : '';
     const [existing] = await sequelize.query(
-      `SELECT wt.WalletTransactionId FROM WalletTransaction wt WHERE wt.WalletTransactionId = :id ${ownerCheck}`,
+      `SELECT TOP 1 wt.WalletTransactionId FROM WalletTransaction wt WHERE wt.WalletTransactionId = :id ${ownerCheck}`,
       { replacements: { id }, type: sequelize.QueryTypes.SELECT }
     );
     if (!existing) {
@@ -116,6 +136,8 @@ const updateOrder = async (req, res, next) => {
         .status(404)
         .json({ success: false, message: 'Không tìm thấy đơn sạc hoặc không có quyền.' });
     }
+
+    const before = await getOrderSnapshotById(id);
 
     const updates = [];
     const replacements = { id };
@@ -151,6 +173,19 @@ const updateOrder = async (req, res, next) => {
       `UPDATE WalletTransaction SET ${updates.join(', ')} WHERE WalletTransactionId = :id`,
       { replacements }
     );
+
+    const after = await getOrderSnapshotById(id);
+    await insertActivityLog({
+      module: 'transactions',
+      action: 'UPDATE',
+      actionName: 'ORDER_UPDATE',
+      entity: 'WalletTransaction',
+      entityId: id,
+      before,
+      after,
+      req,
+    });
+
     res.json({ success: true, message: 'Cập nhật đơn sạc thành công.' });
   } catch (error) {
     next(error);
@@ -172,7 +207,7 @@ const deleteOrder = async (req, res, next) => {
       ? `AND EXISTS (SELECT 1 FROM Transactions t INNER JOIN ChargePoint cp ON cp.ChargePointId = t.ChargePointId AND t.TransactionId = wt.TransactionId WHERE cp.OwnerId = ${ownerId})`
       : '';
     const [existing] = await sequelize.query(
-      `SELECT wt.WalletTransactionId FROM WalletTransaction wt WHERE wt.WalletTransactionId = :id ${ownerCheck}`,
+      `SELECT TOP 1 wt.WalletTransactionId FROM WalletTransaction wt WHERE wt.WalletTransactionId = :id ${ownerCheck}`,
       { replacements: { id }, type: sequelize.QueryTypes.SELECT }
     );
     if (!existing) {
@@ -181,10 +216,24 @@ const deleteOrder = async (req, res, next) => {
         .json({ success: false, message: 'Không tìm thấy đơn sạc hoặc không có quyền.' });
     }
 
+    const before = await getOrderSnapshotById(id);
+
     await sequelize.query(
       'DELETE FROM WalletTransaction WHERE WalletTransactionId = :id',
       { replacements: { id } }
     );
+
+    await insertActivityLog({
+      module: 'transactions',
+      action: 'DELETE',
+      actionName: 'ORDER_DELETE',
+      entity: 'WalletTransaction',
+      entityId: id,
+      before,
+      after: null,
+      req,
+    });
+
     res.json({ success: true, message: 'Đã xóa đơn sạc.' });
   } catch (error) {
     next(error);

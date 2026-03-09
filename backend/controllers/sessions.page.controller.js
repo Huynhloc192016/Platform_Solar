@@ -1,5 +1,59 @@
 const { sequelize } = require('../config/database');
 const { getOwnerIdForFilter } = require('../utils/authorization.util');
+const { insertActivityLog } = require('../utils/activity-log.util');
+
+const getSessionSnapshotById = async (id, transaction) => {
+  const [row] = await sequelize.query(
+    `SELECT TOP 1
+       t.TransactionId,
+       t.Uid,
+       t.ChargePointId,
+       t.StartTagId,
+       t.StartTime,
+       t.MeterStart,
+       t.StopTime,
+       t.MeterStop
+     FROM Transactions t
+     WHERE t.TransactionId = :id`,
+    {
+      replacements: { id },
+      type: sequelize.QueryTypes.SELECT,
+      transaction,
+    }
+  );
+  return row || null;
+};
+
+const getOrdersSnapshotByTransactionId = async (id, transaction) => {
+  const [countRow] = await sequelize.query(
+    `SELECT COUNT(*) as cnt FROM WalletTransaction wt WHERE wt.TransactionId = :id`,
+    {
+      replacements: { id },
+      type: sequelize.QueryTypes.SELECT,
+      transaction,
+    }
+  );
+  const sample = await sequelize.query(
+    `SELECT TOP 5
+       wt.WalletTransactionId,
+       wt.UserAppId,
+       wt.Amount,
+       wt.DateCreate,
+       wt.MeterValue,
+       wt.StopMethod,
+       wt.CurrentBalance,
+       wt.NewBalance
+     FROM WalletTransaction wt
+     WHERE wt.TransactionId = :id
+     ORDER BY wt.DateCreate DESC`,
+    {
+      replacements: { id },
+      type: sequelize.QueryTypes.SELECT,
+      transaction,
+    }
+  );
+  return { count: parseInt(countRow?.cnt || 0, 10), sample: sample || [] };
+};
 
 // Danh sách phiên sạc (quản lý phiên sạc)
 const getChargingSessions = async (req, res, next) => {
@@ -164,6 +218,8 @@ const updateSession = async (req, res, next) => {
         .json({ success: false, message: 'Không tìm thấy phiên sạc hoặc không có quyền.' });
     }
 
+    const before = await getSessionSnapshotById(id);
+
     const updates = [];
     const replacements = { id };
     if (StartTime !== undefined) {
@@ -190,6 +246,19 @@ const updateSession = async (req, res, next) => {
       `UPDATE Transactions SET ${updates.join(', ')} WHERE TransactionId = :id`,
       { replacements }
     );
+
+    const after = await getSessionSnapshotById(id);
+    await insertActivityLog({
+      module: 'transactions',
+      action: 'UPDATE',
+      actionName: 'SESSION_UPDATE',
+      entity: 'Transactions',
+      entityId: id,
+      before,
+      after,
+      req,
+    });
+
     res.json({ success: true, message: 'Cập nhật phiên sạc thành công.' });
   } catch (error) {
     next(error);
@@ -220,12 +289,44 @@ const deleteSession = async (req, res, next) => {
         .json({ success: false, message: 'Không tìm thấy phiên sạc hoặc không có quyền.' });
     }
 
-    await sequelize.query('DELETE FROM WalletTransaction WHERE TransactionId = :id', {
-      replacements: { id },
+    await sequelize.transaction(async (transaction) => {
+      const sessionBefore = await getSessionSnapshotById(id, transaction);
+      const ordersBefore = await getOrdersSnapshotByTransactionId(id, transaction);
+
+      await sequelize.query('DELETE FROM WalletTransaction WHERE TransactionId = :id', {
+        replacements: { id },
+        transaction,
+      });
+      await sequelize.query('DELETE FROM Transactions WHERE TransactionId = :id', {
+        replacements: { id },
+        transaction,
+      });
+
+      await insertActivityLog({
+        module: 'transactions',
+        action: 'DELETE',
+        actionName: 'ORDER_DELETE_BY_SESSION',
+        entity: 'WalletTransaction',
+        entityId: id,
+        before: ordersBefore,
+        after: null,
+        req,
+        transaction,
+      });
+
+      await insertActivityLog({
+        module: 'transactions',
+        action: 'DELETE',
+        actionName: 'SESSION_DELETE',
+        entity: 'Transactions',
+        entityId: id,
+        before: sessionBefore,
+        after: null,
+        req,
+        transaction,
+      });
     });
-    await sequelize.query('DELETE FROM Transactions WHERE TransactionId = :id', {
-      replacements: { id },
-    });
+
     res.json({ success: true, message: 'Đã xóa phiên sạc.' });
   } catch (error) {
     next(error);

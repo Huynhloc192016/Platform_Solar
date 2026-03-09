@@ -17,6 +17,7 @@ import UserManagement from '../../pages/users/UserManagement';
 import VnpayTopUp from '../../pages/users/VnpayTopUp';
 import RevenueByPeriod from '../../pages/users/RevenueByPeriod';
 import ReportsPage from '../../pages/reports/ReportsPage';
+import ActivityHistoryPage from '../../pages/accounts/ActivityHistoryPage';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
@@ -26,7 +27,7 @@ const tabConfigs = [
   { value: 'live', label: 'Live', icon: Zap, path: '/live' },
   { value: 'transactions', label: 'Giao dịch', icon: History, path: '/transactions' },
   { value: 'users', label: 'Người dùng', icon: Users, path: '/users' },
-  { value: 'accounts', label: 'Tài khoản', icon: Shield, path: '/accounts' },
+  { value: 'accounts', label: 'Tiện Ích', icon: Shield, path: '/accounts' },
 ];
 
 const Layout = () => {
@@ -145,9 +146,7 @@ const Layout = () => {
               )}
             </TabsContent>
             <TabsContent value="accounts" className="mt-0">
-              <div className="text-center py-8 text-muted-foreground">
-                Tài khoản - Đang phát triển
-              </div>
+              <ActivityHistoryPage />
             </TabsContent>
           </Tabs>
         </main>

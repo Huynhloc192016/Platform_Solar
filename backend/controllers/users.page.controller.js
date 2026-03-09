@@ -1,6 +1,7 @@
 const { sequelize } = require('../config/database');
 const { hashPassword } = require('../utils/password.util');
 const { getOwnerIdForFilter } = require('../utils/authorization.util');
+const { insertActivityLog } = require('../utils/activity-log.util');
 
 const sqlIdent = (name) => `[${String(name).replace(/]/g, ']]')}]`;
 
@@ -46,6 +47,58 @@ const getUserAppColumnsOrFail = async (res) => {
     return null;
   }
   return { userAppCols, userIdCol };
+};
+
+const getUserAppSnapshotById = async (id, cols, transaction) => {
+  const userNameCol = pickColumn(cols.userAppCols, ['UserName', 'Username', 'User_Name']);
+  const fullNameCol = pickColumn(cols.userAppCols, ['Fullname', 'FullName', 'Name']);
+  const emailCol = pickColumn(cols.userAppCols, ['Email', 'EMail', 'Mail']);
+  const phoneCol = pickColumn(cols.userAppCols, ['Phone', 'PhoneNumber', 'Mobile', 'Tel']);
+  const createdAtCol = pickColumn(cols.userAppCols, [
+    'CreateDate',
+    'DateCreate',
+    'CreatedAt',
+    'CreateAt',
+  ]);
+  const statusCol = pickColumn(cols.userAppCols, [
+    'IsActive',
+    'Active',
+    'IsLocked',
+    'Locked',
+    'Status',
+  ]);
+  const ownerIdCol = pickColumn(cols.userAppCols, ['OwnerId', 'OwnerID']);
+  const balanceCol = pickColumn(cols.userAppCols, ['Balance']);
+
+  const selectUserName = userNameCol ? `ua.${sqlIdent(userNameCol)}` : 'NULL';
+  const selectFullName = fullNameCol ? `ua.${sqlIdent(fullNameCol)}` : 'NULL';
+  const selectEmail = emailCol ? `ua.${sqlIdent(emailCol)}` : 'NULL';
+  const selectPhone = phoneCol ? `ua.${sqlIdent(phoneCol)}` : 'NULL';
+  const selectCreatedAt = createdAtCol ? `ua.${sqlIdent(createdAtCol)}` : 'NULL';
+  const selectStatus = statusCol ? `ua.${sqlIdent(statusCol)}` : 'NULL';
+  const selectOwnerId = ownerIdCol ? `ua.${sqlIdent(ownerIdCol)}` : 'NULL';
+  const selectBalance = balanceCol ? `ua.${sqlIdent(balanceCol)}` : 'NULL';
+
+  const [row] = await sequelize.query(
+    `SELECT TOP 1
+        ua.${sqlIdent(cols.userIdCol)} as userId,
+        ${selectUserName} as userName,
+        ${selectFullName} as fullName,
+        ${selectEmail} as email,
+        ${selectPhone} as phone,
+        ${selectBalance} as balance,
+        ${selectOwnerId} as ownerId,
+        ${selectCreatedAt} as createdAt,
+        ${selectStatus} as status
+     FROM UserApp ua
+     WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
+    {
+      replacements: { id },
+      type: sequelize.QueryTypes.SELECT,
+      transaction,
+    }
+  );
+  return row || null;
 };
 
 // Danh sách người dùng (quản lý người dùng)
@@ -224,13 +277,8 @@ const resetUserPassword = async (req, res, next) => {
     const DEFAULT_PASSWORD = 'SolarEV@2026';
     const hashedPassword = await hashPassword(DEFAULT_PASSWORD);
 
-    const [existing] = await sequelize.query(
-      `SELECT TOP 1 ua.${sqlIdent(cols.userIdCol)} as userId
-       FROM UserApp ua
-       WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
-      { replacements: { id }, type: sequelize.QueryTypes.SELECT }
-    );
-    if (!existing) {
+    const before = await getUserAppSnapshotById(id, cols);
+    if (!before) {
       return res
         .status(404)
         .json({ success: false, message: 'Không tìm thấy người dùng.' });
@@ -242,6 +290,18 @@ const resetUserPassword = async (req, res, next) => {
        WHERE ${sqlIdent(cols.userIdCol)} = :id`,
       { replacements: { id, password: hashedPassword } }
     );
+
+    const after = await getUserAppSnapshotById(id, cols);
+    await insertActivityLog({
+      module: 'users',
+      action: 'UPDATE',
+      actionName: 'USER_RESET_PASSWORD',
+      entity: 'UserApp',
+      entityId: id,
+      before,
+      after,
+      req,
+    });
 
     return res.json({
       success: true,
@@ -295,13 +355,8 @@ const setUserLock = async (req, res, next) => {
       valueToSet = locked ? 1 : 0;
     }
 
-    const [existing] = await sequelize.query(
-      `SELECT TOP 1 ua.${sqlIdent(cols.userIdCol)} as userId
-       FROM UserApp ua
-       WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
-      { replacements: { id }, type: sequelize.QueryTypes.SELECT }
-    );
-    if (!existing) {
+    const before = await getUserAppSnapshotById(id, cols);
+    if (!before) {
       return res
         .status(404)
         .json({ success: false, message: 'Không tìm thấy người dùng.' });
@@ -313,6 +368,18 @@ const setUserLock = async (req, res, next) => {
        WHERE ${sqlIdent(cols.userIdCol)} = :id`,
       { replacements: { id, value: valueToSet } }
     );
+
+    const after = await getUserAppSnapshotById(id, cols);
+    await insertActivityLog({
+      module: 'users',
+      action: 'UPDATE',
+      actionName: locked ? 'USER_LOCK' : 'USER_UNLOCK',
+      entity: 'UserApp',
+      entityId: id,
+      before,
+      after,
+      req,
+    });
 
     return res.json({
       success: true,
@@ -362,13 +429,8 @@ const deleteUser = async (req, res, next) => {
       }
     }
 
-    const [existing] = await sequelize.query(
-      `SELECT TOP 1 ua.${sqlIdent(cols.userIdCol)} as userId
-       FROM UserApp ua
-       WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
-      { replacements: { id }, type: sequelize.QueryTypes.SELECT }
-    );
-    if (!existing) {
+    const before = await getUserAppSnapshotById(id, cols);
+    if (!before) {
       return res
         .status(404)
         .json({ success: false, message: 'Không tìm thấy người dùng.' });
@@ -378,6 +440,17 @@ const deleteUser = async (req, res, next) => {
       `DELETE FROM UserApp WHERE ${sqlIdent(cols.userIdCol)} = :id`,
       { replacements: { id } }
     );
+
+    await insertActivityLog({
+      module: 'users',
+      action: 'DELETE',
+      actionName: 'USER_DELETE',
+      entity: 'UserApp',
+      entityId: id,
+      before,
+      after: null,
+      req,
+    });
 
     return res.json({ success: true, message: 'Đã xóa người dùng.' });
   } catch (error) {
@@ -411,17 +484,8 @@ const addUserBalance = async (req, res, next) => {
     if (!cols) return;
 
     const result = await sequelize.transaction(async (transaction) => {
-      const [existing] = await sequelize.query(
-        `SELECT TOP 1 ua.${sqlIdent(cols.userIdCol)} as userId
-         FROM UserApp ua
-         WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
-        {
-          replacements: { id },
-          type: sequelize.QueryTypes.SELECT,
-          transaction,
-        }
-      );
-      if (!existing) {
+      const before = await getUserAppSnapshotById(id, cols, transaction);
+      if (!before) {
         return {
           ok: false,
           status: 404,
@@ -448,6 +512,19 @@ const addUserBalance = async (req, res, next) => {
          WHERE ${sqlIdent(cols.userIdCol)} = :id`,
         { replacements: { id, balance: newBalance }, transaction }
       );
+
+      const after = await getUserAppSnapshotById(id, cols, transaction);
+      await insertActivityLog({
+        module: 'users',
+        action: 'UPDATE',
+        actionName: 'USER_BALANCE_ADD',
+        entity: 'UserApp',
+        entityId: id,
+        before,
+        after,
+        req,
+        transaction,
+      });
 
       return {
         ok: true,
@@ -499,17 +576,8 @@ const setUserBalance = async (req, res, next) => {
     if (!cols) return;
 
     const result = await sequelize.transaction(async (transaction) => {
-      const [existing] = await sequelize.query(
-        `SELECT TOP 1 ua.${sqlIdent(cols.userIdCol)} as userId
-         FROM UserApp ua
-         WHERE ua.${sqlIdent(cols.userIdCol)} = :id`,
-        {
-          replacements: { id },
-          type: sequelize.QueryTypes.SELECT,
-          transaction,
-        }
-      );
-      if (!existing) {
+      const before = await getUserAppSnapshotById(id, cols, transaction);
+      if (!before) {
         return {
           ok: false,
           status: 404,
@@ -535,6 +603,19 @@ const setUserBalance = async (req, res, next) => {
          WHERE ${sqlIdent(cols.userIdCol)} = :id`,
         { replacements: { id, balance }, transaction }
       );
+
+      const after = await getUserAppSnapshotById(id, cols, transaction);
+      await insertActivityLog({
+        module: 'users',
+        action: 'UPDATE',
+        actionName: 'USER_BALANCE_SET',
+        entity: 'UserApp',
+        entityId: id,
+        before,
+        after,
+        req,
+        transaction,
+      });
 
       return {
         ok: true,

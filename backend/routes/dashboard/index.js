@@ -17,6 +17,7 @@ const usersRoutes = require('./users.routes');
 const exportRoutes = require('./export.routes');
 const serviceRoutes = require('./service.routes');
 const revenueRoutes = require('./revenue.routes');
+const activityRoutes = require('./activity.routes');
 
 router.use(overviewRoutes);
 router.use('/revenue', revenueRoutes);
@@ -29,5 +30,6 @@ router.use('/transactions', transactionsRoutes);
 router.use(usersRoutes);
 router.use('/export', exportRoutes);
 router.use(serviceRoutes);
+router.use(activityRoutes);
 
 module.exports = router;

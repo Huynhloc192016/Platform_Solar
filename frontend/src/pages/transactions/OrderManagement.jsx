@@ -59,7 +59,6 @@ const OrderManagement = () => {
     UserAppId: '',
     Amount: '',
     meterValue: '',
-    stopMethod: '',
     currentBalance: '',
     newBalance: '',
   });
@@ -133,7 +132,6 @@ const OrderManagement = () => {
       UserAppId: o.UserAppId != null ? String(o.UserAppId) : '',
       Amount: o.Amount != null ? String(o.Amount) : '',
       meterValue: o.meterValue != null ? String(o.meterValue) : '',
-      stopMethod: o.stopMethod ?? '',
       currentBalance: o.currentBalance != null ? String(o.currentBalance) : '',
       newBalance: o.newBalance != null ? String(o.newBalance) : '',
     });
@@ -151,7 +149,6 @@ const OrderManagement = () => {
       if (editFormData.UserAppId !== '') payload.UserAppId = editFormData.UserAppId;
       if (editFormData.Amount !== '') payload.Amount = parseFloat(editFormData.Amount);
       if (editFormData.meterValue !== '') payload.meterValue = parseFloat(editFormData.meterValue);
-      if (editFormData.stopMethod !== undefined) payload.stopMethod = editFormData.stopMethod;
       if (editFormData.currentBalance !== '') payload.currentBalance = parseFloat(editFormData.currentBalance);
       if (editFormData.newBalance !== '') payload.newBalance = parseFloat(editFormData.newBalance);
       const res = await api.put(`/dashboard/orders/${orderToEdit.WalletTransactionId}`, payload);
@@ -264,7 +261,6 @@ const OrderManagement = () => {
                       <th className="text-left font-medium p-3 whitespace-nowrap">Ngày giờ đơn sạc</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Giá trị meter</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Giá tiền đơn sạc</th>
-                      <th className="text-left font-medium p-3 whitespace-nowrap">Phương pháp dừng</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Số dư hiện tại</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap bg-emerald-100 text-emerald-900">Số dư mới</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap w-[80px]">Hành động</th>
@@ -279,7 +275,6 @@ const OrderManagement = () => {
                         <td className="p-3">{formatDateTime(o.DateCreate)}</td>
                         <td className="p-3">{o.meterValue != null ? formatNumber(o.meterValue) : '—'}</td>
                         <td className="p-3">{o.Amount != null ? formatNumber(o.Amount) : '—'}</td>
-                        <td className="p-3">{o.stopMethod ?? '—'}</td>
                         <td className="p-3">{o.currentBalance != null ? formatNumber(o.currentBalance) : '—'}</td>
                         <td className="p-3 bg-emerald-50 font-medium text-emerald-800">{o.newBalance != null ? formatNumber(o.newBalance) : '—'}</td>
                         <td className="p-3">
@@ -425,14 +420,6 @@ const OrderManagement = () => {
                   step="any"
                   value={editFormData.meterValue}
                   onChange={(e) => setEditFormData((f) => ({ ...f, meterValue: e.target.value }))}
-                />
-              </div>
-              <div className="space-y-2">
-                <Label>Phương pháp dừng (stopMethod)</Label>
-                <Input
-                  value={editFormData.stopMethod}
-                  onChange={(e) => setEditFormData((f) => ({ ...f, stopMethod: e.target.value }))}
-                  placeholder="VD: Local, Remote..."
                 />
               </div>
               <div className="space-y-2">

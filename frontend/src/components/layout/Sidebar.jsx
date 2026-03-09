@@ -29,7 +29,7 @@ const usersSidebarItems = [
   { label: 'Doanh thu ngày tháng năm', path: '/users/revenue', icon: Calendar },
 ];
 
-const accountsSidebarItems = [{ label: 'Tài khoản', path: '/accounts', icon: Shield }];
+const accountsSidebarItems = [{ label: 'Lịch sử hoạt động', path: '/accounts', icon: Shield }];
 
 const dashboardSidebarItems = [
   { label: 'Tổng quan', path: '/dashboard', icon: LayoutDashboard },
@@ -84,6 +84,7 @@ const Sidebar = ({ open = false, onClose, mainTabs = [] }) => {
   const isLiveSection = location.pathname.startsWith('/live');
   const isTransactionsSection = location.pathname.startsWith('/transactions');
   const isUsersSection = location.pathname.startsWith('/users');
+  const isAccountsSection = location.pathname.startsWith('/accounts');
 
   const handleNav = (path) => {
     navigate(path);
@@ -362,6 +363,32 @@ const Sidebar = ({ open = false, onClose, mainTabs = [] }) => {
             Người dùng
           </p>
           {usersSidebarItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = location.pathname === item.path || location.pathname.startsWith(`${item.path}/`);
+            return (
+              <button
+                key={item.path}
+                onClick={() => handleNav(item.path)}
+                className={cn(
+                  'w-full flex items-center gap-3 px-3 py-2.5 min-h-11 rounded-lg text-sm font-medium transition-colors',
+                  isActive
+                    ? 'bg-slate-100 text-slate-900'
+                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                )}
+              >
+                <Icon className="w-4 h-4 flex-shrink-0" />
+                <span className="text-left leading-tight">{item.label}</span>
+              </button>
+            );
+          })}
+        </nav>
+      )}
+      {isAccountsSection && (
+        <nav className="p-4 space-y-1">
+          <p className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+            Utilities
+          </p>
+          {accountsSidebarItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path || location.pathname.startsWith(`${item.path}/`);
             return (
