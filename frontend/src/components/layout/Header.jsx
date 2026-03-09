@@ -21,7 +21,7 @@ const Header = ({ onMenuClick }) => {
   };
 
   return (
-    <header className="bg-white border-b border-slate-200 sticky top-0 z-10 overflow-hidden">
+    <header className="sticky top-0 z-20 bg-white border-b border-slate-200 overflow-hidden">
       {/* Mobile/Tablet: chỉ hamburger + logo nhỏ */}
       <div className="lg:hidden max-w-7xl mx-auto w-full flex items-center gap-2 px-3 py-3 min-w-0">
         <button

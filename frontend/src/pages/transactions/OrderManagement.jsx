@@ -261,13 +261,12 @@ const OrderManagement = () => {
                       <th className="text-left font-medium p-3 whitespace-nowrap">ID đơn sạc</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">ID người dùng</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">ID phiên sạc</th>
-                      <th className="text-left font-medium p-3 whitespace-nowrap">Số lượng điện</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Ngày giờ đơn sạc</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Giá trị meter</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Giá tiền đơn sạc</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Phương pháp dừng</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Số dư hiện tại</th>
-                      <th className="text-left font-medium p-3 whitespace-nowrap">Số dư mới</th>
+                      <th className="text-left font-medium p-3 whitespace-nowrap bg-emerald-100 text-emerald-900">Số dư mới</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap w-[80px]">Hành động</th>
                     </tr>
                   </thead>
@@ -277,13 +276,12 @@ const OrderManagement = () => {
                         <td className="p-3">{o.WalletTransactionId ?? '—'}</td>
                         <td className="p-3">{o.UserAppId ?? '—'}</td>
                         <td className="p-3">{o.TransactionId ?? '—'}</td>
-                        <td className="p-3">{o.EnergyUsed != null ? formatNumber(o.EnergyUsed) : '—'}</td>
                         <td className="p-3">{formatDateTime(o.DateCreate)}</td>
                         <td className="p-3">{o.meterValue != null ? formatNumber(o.meterValue) : '—'}</td>
                         <td className="p-3">{o.Amount != null ? formatNumber(o.Amount) : '—'}</td>
                         <td className="p-3">{o.stopMethod ?? '—'}</td>
                         <td className="p-3">{o.currentBalance != null ? formatNumber(o.currentBalance) : '—'}</td>
-                        <td className="p-3">{o.newBalance != null ? formatNumber(o.newBalance) : '—'}</td>
+                        <td className="p-3 bg-emerald-50 font-medium text-emerald-800">{o.newBalance != null ? formatNumber(o.newBalance) : '—'}</td>
                         <td className="p-3">
                           {isOwner ? (
                             <span className="text-muted-foreground">—</span>

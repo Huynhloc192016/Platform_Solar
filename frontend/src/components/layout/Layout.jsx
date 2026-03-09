@@ -76,13 +76,13 @@ const Layout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 overflow-x-hidden max-w-full">
+    <div className="h-screen overflow-y-auto overflow-x-hidden bg-slate-50 max-w-full">
       <Header onMenuClick={() => setSidebarOpen((v) => !v)} />
       <div className="flex min-w-0">
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} mainTabs={visibleTabs} />
         <main className="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-8 lg:ml-64">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full min-w-0">
-            <div className="hidden lg:block overflow-x-auto mb-8 -mx-1 px-1 w-full">
+            <div className="hidden lg:block sticky top-[73px] z-10 bg-slate-50 overflow-x-auto mb-8 -mx-1 px-1 w-full">
               <TabsList className="flex w-full min-w-0">
                 {visibleTabs.map((tab) => {
                   const Icon = tab.icon;

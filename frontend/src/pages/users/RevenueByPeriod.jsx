@@ -86,12 +86,14 @@ const RevenueByPeriod = () => {
         <h1 className="text-2xl font-semibold text-slate-900">Doanh thu ngày tháng năm</h1>
         <p className="text-slate-500 mt-1">
           Doanh thu theo ngày trong tháng hoặc theo từng tháng trong năm
-        </p>
+
+         </p>
       </div>
           <form className="flex flex-wrap items-end gap-4 mb-6">
           
 
             <div className="flex flex-col gap-2">
+            <br />
               <Label className="text-sm font-medium">Xem theo</Label>
               <select
                 value={mode}

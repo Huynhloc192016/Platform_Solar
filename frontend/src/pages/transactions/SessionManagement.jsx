@@ -310,10 +310,10 @@ const SessionManagement = () => {
                       <th className="text-left font-medium p-3 whitespace-nowrap">ID điểm thu phí</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">ID thẻ bắt đầu</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Thời gian bắt đầu</th>
-                      <th className="text-left font-medium p-3 whitespace-nowrap">Thời gian đồng hồ bắt đầu</th>
+                      <th className="text-left font-medium p-3 whitespace-nowrap">MeterStart</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">ID thẻ kết thúc</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap">Thời gian kết thúc</th>
-                      <th className="text-left font-medium p-3 whitespace-nowrap">Thời gian đồng hồ kết thúc</th>
+                      <th className="text-left font-medium p-3 whitespace-nowrap">MeterStop</th>
                       <th className="text-left font-medium p-3 whitespace-nowrap w-[80px]">Hành động</th>
                     </tr>
                   </thead>
@@ -484,7 +484,7 @@ const SessionManagement = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label>Thời gian đồng hồ bắt đầu (MeterStart)</Label>
+                <Label>MeterStart</Label>
                 <Input
                   type="number"
                   step="any"
@@ -493,7 +493,7 @@ const SessionManagement = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label>Thời gian đồng hồ kết thúc (MeterStop)</Label>
+                <Label>MeterStop</Label>
                 <Input
                   type="number"
                   step="any"
