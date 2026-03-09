@@ -8,7 +8,7 @@ const ReportsPage = () => {
       <div>
         <h1 className="text-2xl font-bold tracking-tight">Báo cáo thống kê</h1>
         <p className="text-muted-foreground mt-1">
-          Xem báo cáo năng lượng, doanh thu và phiên sạc theo thời gian hoặc theo trạm.
+        Xem báo cáo năng lượng, doanh thu và phiên sạc theo thời gian hoặc theo trạm.
         </p>
       </div>
 
