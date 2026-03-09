@@ -15,8 +15,7 @@ import ExportOrdersPage from '../../pages/transactions/ExportOrdersPage';
 import TransactionSummary from '../../pages/transactions/TransactionSummary';
 import UserManagement from '../../pages/users/UserManagement';
 import VnpayTopUp from '../../pages/users/VnpayTopUp';
-import DailyRevenue from '../../pages/users/DailyRevenue';
-import MonthlyRevenue from '../../pages/users/MonthlyRevenue';
+import RevenueByPeriod from '../../pages/users/RevenueByPeriod';
 import ReportsPage from '../../pages/reports/ReportsPage';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -139,10 +138,8 @@ const Layout = () => {
             <TabsContent value="users" className="mt-0">
               {location.pathname === '/users/vnpay' ? (
                 <VnpayTopUp />
-              ) : location.pathname === '/users/revenue/daily' ? (
-                <DailyRevenue />
-              ) : location.pathname === '/users/revenue/monthly' ? (
-                <MonthlyRevenue />
+              ) : location.pathname === '/users/revenue' ? (
+                <RevenueByPeriod />
               ) : (
                 <UserManagement />
               )}

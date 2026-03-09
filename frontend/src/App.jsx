@@ -132,21 +132,15 @@ function App() {
             }
           />
           <Route
-            path="/users/revenue/daily"
+            path="/users/revenue"
             element={
               <ProtectedRoute>
                 <Layout />
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/users/revenue/monthly"
-            element={
-              <ProtectedRoute>
-                <Layout />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/users/revenue/daily" element={<Navigate to="/users/revenue" replace />} />
+          <Route path="/users/revenue/monthly" element={<Navigate to="/users/revenue" replace />} />
           <Route
             path="/accounts"
             element={

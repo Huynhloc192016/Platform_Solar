@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Building2, Activity, Zap, Receipt, Clock, Users, BarChart3, LayoutDashboard, FileDown, Radio, X, LogOut, ChevronDown, Shield, Mail, CreditCard, Calendar, CalendarDays } from 'lucide-react';
+import { Building2, Activity, Zap, Receipt, Clock, Users, BarChart3, LayoutDashboard, FileDown, Radio, X, LogOut, ChevronDown, Shield, Mail, CreditCard, Calendar } from 'lucide-react';
 import { cn } from '../ui/utils';
 import { useAuth } from '../../context/AuthContext';
 import logo from '../../img/logo.png';
@@ -26,8 +26,7 @@ const transactionsSidebarItems = [
 const usersSidebarItems = [
   { label: 'Quản lý người dùng', path: '/users', icon: Users },
   { label: 'Thanh toán nạp tiền VNPay', path: '/users/vnpay', icon: CreditCard },
-  { label: 'Doanh thu ngày', path: '/users/revenue/daily', icon: Calendar },
-  { label: 'Doanh thu tháng', path: '/users/revenue/monthly', icon: CalendarDays },
+  { label: 'Doanh thu ngày tháng năm', path: '/users/revenue', icon: Calendar },
 ];
 
 const accountsSidebarItems = [{ label: 'Tài khoản', path: '/accounts', icon: Shield }];
@@ -263,14 +262,14 @@ const Sidebar = ({ open = false, onClose, mainTabs = [] }) => {
                 key={item.path}
                 onClick={() => handleNav(item.path)}
                 className={cn(
-                  'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
+                  'w-full flex items-center gap-3 px-3 py-2.5 min-h-11 rounded-lg text-sm font-medium transition-colors',
                   isActive
                     ? 'bg-slate-100 text-slate-900'
                     : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                 )}
               >
                 <Icon className="w-4 h-4 flex-shrink-0" />
-                {item.label}
+                <span className="text-left leading-tight">{item.label}</span>
               </button>
             );
           })}
@@ -292,14 +291,14 @@ const Sidebar = ({ open = false, onClose, mainTabs = [] }) => {
                 key={item.path}
                 onClick={() => handleNav(item.path)}
                 className={cn(
-                  'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
+                  'w-full flex items-center gap-3 px-3 py-2.5 min-h-11 rounded-lg text-sm font-medium transition-colors',
                   isActive
                     ? 'bg-slate-100 text-slate-900'
                     : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                 )}
               >
                 <Icon className="w-4 h-4 flex-shrink-0" />
-                {item.label}
+                <span className="text-left leading-tight">{item.label}</span>
               </button>
             );
           })}
@@ -318,14 +317,14 @@ const Sidebar = ({ open = false, onClose, mainTabs = [] }) => {
                 key={item.path}
                 onClick={() => handleNav(item.path)}
                 className={cn(
-                  'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
+                  'w-full flex items-center gap-3 px-3 py-2.5 min-h-11 rounded-lg text-sm font-medium transition-colors',
                   isActive
                     ? 'bg-slate-100 text-slate-900'
                     : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                 )}
               >
                 <Icon className="w-4 h-4 flex-shrink-0" />
-                {item.label}
+                <span className="text-left leading-tight">{item.label}</span>
               </button>
             );
           })}
@@ -344,14 +343,14 @@ const Sidebar = ({ open = false, onClose, mainTabs = [] }) => {
                 key={item.path}
                 onClick={() => handleNav(item.path)}
                 className={cn(
-                  'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
+                  'w-full flex items-center gap-3 px-3 py-2.5 min-h-11 rounded-lg text-sm font-medium transition-colors',
                   isActive
                     ? 'bg-slate-100 text-slate-900'
                     : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                 )}
               >
                 <Icon className="w-4 h-4 flex-shrink-0" />
-                {item.label}
+                <span className="text-left leading-tight">{item.label}</span>
               </button>
             );
           })}
@@ -370,14 +369,14 @@ const Sidebar = ({ open = false, onClose, mainTabs = [] }) => {
                 key={item.path}
                 onClick={() => handleNav(item.path)}
                 className={cn(
-                  'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
+                  'w-full flex items-center gap-3 px-3 py-2.5 min-h-11 rounded-lg text-sm font-medium transition-colors',
                   isActive
                     ? 'bg-slate-100 text-slate-900'
                     : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                 )}
               >
                 <Icon className="w-4 h-4 flex-shrink-0" />
-                {item.label}
+                <span className="text-left leading-tight">{item.label}</span>
               </button>
             );
           })}

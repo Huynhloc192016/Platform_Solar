@@ -14,7 +14,7 @@ const exportPage = require('./export.page.controller');
 const servicePage = require('./service.page.controller');
 
 const vnpayPage = require('./vnpay.page.controller');
-
+const revenuePage = require('./revenue.page.controller');
 
 module.exports = {
   ...dashboardPage,
@@ -27,5 +27,5 @@ module.exports = {
   ...exportPage,
   ...servicePage,
   ...vnpayPage,
-
+  ...revenuePage,
 };

@@ -16,8 +16,10 @@ const transactionsRoutes = require('./transactions.routes');
 const usersRoutes = require('./users.routes');
 const exportRoutes = require('./export.routes');
 const serviceRoutes = require('./service.routes');
+const revenueRoutes = require('./revenue.routes');
 
 router.use(overviewRoutes);
+router.use('/revenue', revenueRoutes);
 router.use(stationsRoutes);
 router.use(chargepointsRoutes);
 router.use(ownersRoutes);
