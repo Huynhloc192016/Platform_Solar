@@ -108,7 +108,39 @@ function App() {
             }
           />
           <Route
+            path="/transactions/summary"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/users"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/users/vnpay"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/users/revenue/daily"
+            element={
+              <ProtectedRoute>
+                <Layout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/users/revenue/monthly"
             element={
               <ProtectedRoute>
                 <Layout />

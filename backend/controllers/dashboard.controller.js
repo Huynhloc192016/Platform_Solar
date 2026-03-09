@@ -10,7 +10,11 @@ const ordersPage = require('./orders.page.controller');
 const usersPage = require('./users.page.controller');
 const ownersPage = require('./owners.page.controller');
 const exportPage = require('./export.page.controller');
+
 const servicePage = require('./service.page.controller');
+
+const vnpayPage = require('./vnpay.page.controller');
+
 
 module.exports = {
   ...dashboardPage,
@@ -22,4 +26,6 @@ module.exports = {
   ...ownersPage,
   ...exportPage,
   ...servicePage,
+  ...vnpayPage,
+
 };
