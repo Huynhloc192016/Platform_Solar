@@ -11,7 +11,11 @@ import StationLivePage from '../../pages/stations/StationLivePage';
 import SessionManagement from '../../pages/transactions/SessionManagement';
 import OrderManagement from '../../pages/transactions/OrderManagement';
 import ExportOrdersPage from '../../pages/transactions/ExportOrdersPage';
+import TransactionSummary from '../../pages/transactions/TransactionSummary';
 import UserManagement from '../../pages/users/UserManagement';
+import VnpayTopUp from '../../pages/users/VnpayTopUp';
+import DailyRevenue from '../../pages/users/DailyRevenue';
+import MonthlyRevenue from '../../pages/users/MonthlyRevenue';
 import ReportsPage from '../../pages/reports/ReportsPage';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -52,9 +56,11 @@ const Layout = () => {
         ? 'stations'
         : location.pathname.startsWith('/transactions')
           ? 'transactions'
-          : location.pathname.startsWith('/dashboard')
-            ? 'dashboard'
-            : 'dashboard');
+          : location.pathname.startsWith('/users')
+            ? 'users'
+            : location.pathname.startsWith('/dashboard')
+              ? 'dashboard'
+              : 'dashboard');
 
   const handleTabChange = (value) => {
     const tab = visibleTabs.find((t) => t.value === value);
@@ -106,7 +112,9 @@ const Layout = () => {
               <StationLivePage />
             </TabsContent>
             <TabsContent value="transactions" className="mt-0">
-              {location.pathname === '/transactions/orders' ? (
+              {location.pathname === '/transactions/summary' ? (
+                <TransactionSummary />
+              ) : location.pathname === '/transactions/orders' ? (
                 <OrderManagement />
               ) : location.pathname === '/transactions/sessions' ? (
                 <SessionManagement />
@@ -119,7 +127,15 @@ const Layout = () => {
               )}
             </TabsContent>
             <TabsContent value="users" className="mt-0">
-              <UserManagement />
+              {location.pathname === '/users/vnpay' ? (
+                <VnpayTopUp />
+              ) : location.pathname === '/users/revenue/daily' ? (
+                <DailyRevenue />
+              ) : location.pathname === '/users/revenue/monthly' ? (
+                <MonthlyRevenue />
+              ) : (
+                <UserManagement />
+              )}
             </TabsContent>
             <TabsContent value="accounts" className="mt-0">
               <div className="text-center py-8 text-muted-foreground">

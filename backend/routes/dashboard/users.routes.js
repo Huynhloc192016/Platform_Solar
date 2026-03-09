@@ -6,6 +6,7 @@ const authenticate = require('../../middleware/auth.middleware');
 const validate = require('../../middleware/validator.middleware');
 
 router.get('/users', authenticate, controller.getUsers);
+router.get('/vnpay-transactions', authenticate, controller.getVnpayTransactions);
 router.put('/users/:id/reset-password', authenticate, controller.resetUserPassword);
 router.put('/users/:id/lock', authenticate, controller.setUserLock);
 router.post(

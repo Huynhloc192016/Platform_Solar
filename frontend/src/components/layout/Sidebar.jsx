@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Building2, Activity, Zap, Receipt, Clock, Users, BarChart3, LayoutDashboard, FileDown, Radio, X, LogOut, ChevronDown, Shield } from 'lucide-react';
+import { Building2, Activity, Zap, Receipt, Clock, Users, BarChart3, LayoutDashboard, FileDown, Radio, X, LogOut, ChevronDown, Shield, CreditCard, Calendar, CalendarDays } from 'lucide-react';
 import { cn } from '../ui/utils';
 import { useAuth } from '../../context/AuthContext';
 import logo from '../../img/logo.png';
@@ -14,12 +14,18 @@ const stationsSidebarItems = [
 const liveSidebarItems = [{ label: 'Trạng thái trực tuyến', path: '/live', icon: Radio }];
 
 const transactionsSidebarItems = [
+  { label: 'Tổng hợp sạc và tiêu thụ', path: '/transactions/summary', icon: BarChart3 },
   { label: 'Quản lý đơn sạc', path: '/transactions/orders', icon: Receipt },
   { label: 'Quản lý phiên sạc', path: '/transactions/sessions', icon: Clock },
   { label: 'Báo cáo đơn sạc', path: '/transactions/export', icon: FileDown },
 ];
 
-const usersSidebarItems = [{ label: 'Quản lý người dùng', path: '/users', icon: Users }];
+const usersSidebarItems = [
+  { label: 'Quản lý người dùng', path: '/users', icon: Users },
+  { label: 'Thanh toán nạp tiền VNPay', path: '/users/vnpay', icon: CreditCard },
+  { label: 'Doanh thu ngày', path: '/users/revenue/daily', icon: Calendar },
+  { label: 'Doanh thu tháng', path: '/users/revenue/monthly', icon: CalendarDays },
+];
 
 const accountsSidebarItems = [{ label: 'Tài khoản', path: '/accounts', icon: Shield }];
 

@@ -100,6 +100,45 @@ const getChargingSessions = async (req, res, next) => {
   }
 };
 
+// Tổng hợp sạc và tiêu thụ theo trạm (tên trạm, tổng lượt sạc, tổng lượt sạc thẻ từ)
+const getTransactionSummary = async (req, res, next) => {
+  try {
+    const ownerId = getOwnerIdForFilter(req.user);
+    const ownerWhere = ownerId ? `AND cp.OwnerId = ${ownerId}` : '';
+
+    const summary = await sequelize.query(
+      `SELECT
+        cs.ChargeStationId,
+        ISNULL(cs.Name, N'N/A') AS StationName,
+        COUNT(t.TransactionId) AS TotalSessions,
+        SUM(CASE WHEN t.StartTagId IS NOT NULL AND RTRIM(ISNULL(t.StartTagId, N'')) <> N'' THEN 1 ELSE 0 END) AS CardSessions,
+        SUM(CASE WHEN t.MeterStop IS NOT NULL AND t.MeterStart IS NOT NULL THEN CAST(t.MeterStop AS FLOAT) - CAST(t.MeterStart AS FLOAT) ELSE 0 END) AS TotalKwh,
+        SUM(ISNULL(wt.Amount, 0)) AS TotalAmount
+       FROM Transactions t
+       INNER JOIN ChargePoint cp ON t.ChargePointId = cp.ChargePointId
+       INNER JOIN ChargeStation cs ON cp.ChargeStationId = cs.ChargeStationId
+       LEFT JOIN WalletTransaction wt ON wt.TransactionId = t.TransactionId
+       WHERE 1=1 ${ownerWhere}
+       GROUP BY cs.ChargeStationId, cs.Name
+       ORDER BY cs.Name`,
+      { type: sequelize.QueryTypes.SELECT }
+    );
+
+    const data = summary.map((row) => ({
+      chargeStationId: row.ChargeStationId,
+      stationName: row.StationName,
+      totalSessions: parseInt(row.TotalSessions || 0, 10),
+      cardSessions: parseInt(row.CardSessions || 0, 10),
+      totalKwh: parseFloat(row.TotalKwh) || 0,
+      totalAmount: parseFloat(row.TotalAmount) || 0,
+    }));
+
+    res.json({ success: true, data });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // Cập nhật phiên sạc
 const updateSession = async (req, res, next) => {
   try {
@@ -195,6 +234,7 @@ const deleteSession = async (req, res, next) => {
 
 module.exports = {
   getChargingSessions,
+  getTransactionSummary,
   updateSession,
   deleteSession,
 };
