@@ -1,0 +1,1088 @@
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.Development.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\localhost.pfx
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.exe
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.deps.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.runtimeconfig.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Karambolo.Extensions.Logging.File.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.Sqlite.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Identity.Client.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\Newtonsoft.Json.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.batteries_v2.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.core.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\System.Drawing.Common.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\System.Runtime.Caching.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Permissions.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\System.Windows.Extensions.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.pdb
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.AssemblyReference.cache
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.GeneratedMSBuildEditorConfig.editorconfig
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfoInputs.cache
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfo.cs
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CoreCompileInputs.cache
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.MvcApplicationPartsAssemblyInfo.cache
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.FocusEV.OCPP.Server.Microsoft.AspNetCore.StaticWebAssets.props
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.build.FocusEV.OCPP.Server.props
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.FocusEV.OCPP.Server.props
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.FocusEV.OCPP.Server.props
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.pack.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.development.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\scopedcss\bundle\FocusEV.OCPP.Server.styles.css
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CopyComplete
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\refint\FocusEV.OCPP.Server.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.genruntimeconfig.cache
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V1\FocusEV.OCPP.Server\obj\Release\net6.0\ref\FocusEV.OCPP.Server.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.Development.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\localhost.pfx
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.exe
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.deps.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.runtimeconfig.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Karambolo.Extensions.Logging.File.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.Sqlite.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Identity.Client.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\Newtonsoft.Json.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.batteries_v2.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.core.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\System.Drawing.Common.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\System.Runtime.Caching.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Permissions.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\System.Windows.Extensions.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.pdb
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.AssemblyReference.cache
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.GeneratedMSBuildEditorConfig.editorconfig
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfoInputs.cache
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfo.cs
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CoreCompileInputs.cache
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.MvcApplicationPartsAssemblyInfo.cache
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.FocusEV.OCPP.Server.Microsoft.AspNetCore.StaticWebAssets.props
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.build.FocusEV.OCPP.Server.props
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.FocusEV.OCPP.Server.props
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.FocusEV.OCPP.Server.props
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.pack.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.development.json
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\scopedcss\bundle\FocusEV.OCPP.Server.styles.css
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CopyComplete
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\refint\FocusEV.OCPP.Server.dll
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.genruntimeconfig.cache
+D:\1. SourceCode_CustomerResource\11.Focus Solar\FocusEV_OCPP_Platform\FocusEV.OCPP_V3_net6.0_Final\FocusEV.OCPP.Server\obj\Release\net6.0\ref\FocusEV.OCPP.Server.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.Development.json
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\localhost.pfx
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.json
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.exe
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.deps.json
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.runtimeconfig.json
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Karambolo.Extensions.Logging.File.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.Sqlite.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Identity.Client.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\Newtonsoft.Json.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.batteries_v2.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.core.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\System.Drawing.Common.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\System.Runtime.Caching.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Permissions.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\System.Windows.Extensions.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.pdb
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.AssemblyReference.cache
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.GeneratedMSBuildEditorConfig.editorconfig
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfoInputs.cache
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfo.cs
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CoreCompileInputs.cache
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.MvcApplicationPartsAssemblyInfo.cache
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.development.json
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\scopedcss\bundle\FocusEV.OCPP.Server.styles.css
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CopyComplete
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\refint\FocusEV.OCPP.Server.dll
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.genruntimeconfig.cache
+D:\Terry-Data\1. SourceCode_CustomerResource\11.Focus Solar\SolarEV_OCPP_V4\FocusEV.OCPP.Server\obj\Release\net6.0\ref\FocusEV.OCPP.Server.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.Development.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\localhost.pfx
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.exe
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.deps.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.runtimeconfig.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Karambolo.Extensions.Logging.File.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.Sqlite.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Identity.Client.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Newtonsoft.Json.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.batteries_v2.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.core.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Drawing.Common.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Runtime.Caching.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Permissions.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Windows.Extensions.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.pdb
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.AssemblyReference.cache
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.GeneratedMSBuildEditorConfig.editorconfig
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfoInputs.cache
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfo.cs
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CoreCompileInputs.cache
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.MvcApplicationPartsAssemblyInfo.cache
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.development.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\scopedcss\bundle\FocusEV.OCPP.Server.styles.css
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CopyComplete
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\refint\FocusEV.OCPP.Server.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.genruntimeconfig.cache
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\ref\FocusEV.OCPP.Server.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.staticwebassets.runtime.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.VisualBasic.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.Common.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\debian-x64\native\libuv.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\fedora-x64\native\libuv.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\opensuse-x64\native\libuv.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx\native\libuv.dylib
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\rhel-x64\native\libuv.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-arm\native\libuv.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x64\native\libuv.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V4.1_191023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x86\native\libuv.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.Development.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\localhost.pfx
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.staticwebassets.runtime.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.exe
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.deps.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.runtimeconfig.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Karambolo.Extensions.Logging.File.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.Sqlite.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Identity.Client.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.VisualBasic.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Newtonsoft.Json.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.batteries_v2.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.core.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Drawing.Common.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Runtime.Caching.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Permissions.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Windows.Extensions.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.Common.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\debian-x64\native\libuv.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\fedora-x64\native\libuv.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\opensuse-x64\native\libuv.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx\native\libuv.dylib
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\rhel-x64\native\libuv.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-arm\native\libuv.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x64\native\libuv.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x86\native\libuv.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.pdb
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.AssemblyReference.cache
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.GeneratedMSBuildEditorConfig.editorconfig
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfoInputs.cache
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfo.cs
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CoreCompileInputs.cache
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.MvcApplicationPartsAssemblyInfo.cache
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.development.json
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\scopedcss\bundle\FocusEV.OCPP.Server.styles.css
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CopyComplete
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\refint\FocusEV.OCPP.Server.dll
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.genruntimeconfig.cache
+D:\Insitu\Focus2023\FinalFocus\SolarEV_OCPP_V5_08112023\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\ref\FocusEV.OCPP.Server.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.Development.json
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.json
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\localhost.pfx
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.staticwebassets.runtime.json
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.exe
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.deps.json
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.runtimeconfig.json
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Karambolo.Extensions.Logging.File.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.Sqlite.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Identity.Client.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.VisualBasic.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\Newtonsoft.Json.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.batteries_v2.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.core.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Drawing.Common.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Runtime.Caching.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Permissions.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\System.Windows.Extensions.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.Common.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\debian-x64\native\libuv.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\fedora-x64\native\libuv.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\opensuse-x64\native\libuv.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx\native\libuv.dylib
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\rhel-x64\native\libuv.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-arm\native\libuv.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x64\native\libuv.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x86\native\libuv.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.pdb
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.AssemblyReference.cache
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.GeneratedMSBuildEditorConfig.editorconfig
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfoInputs.cache
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfo.cs
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CoreCompileInputs.cache
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.MvcApplicationPartsAssemblyInfo.cache
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.FocusEV.OCPP.Server.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.build.FocusEV.OCPP.Server.props
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.FocusEV.OCPP.Server.props
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.FocusEV.OCPP.Server.props
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.pack.json
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.development.json
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\scopedcss\bundle\FocusEV.OCPP.Server.styles.css
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\refint\FocusEV.OCPP.Server.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.genruntimeconfig.cache
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\ref\FocusEV.OCPP.Server.dll
+D:\Insitu\SOLAREV_PLATFORM\SolarEV_OCPP_V4.1_191023\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV..9AF4DD16.Up2Date
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.Development.json
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\localhost.pfx
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.json
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.staticwebassets.runtime.json
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.exe
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.deps.json
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.runtimeconfig.json
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Karambolo.Extensions.Logging.File.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.Sqlite.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Identity.Client.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.VisualBasic.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\Newtonsoft.Json.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.batteries_v2.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.core.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\System.Drawing.Common.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\System.Runtime.Caching.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Permissions.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\System.Windows.Extensions.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.Common.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\debian-x64\native\libuv.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\fedora-x64\native\libuv.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\opensuse-x64\native\libuv.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx\native\libuv.dylib
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\rhel-x64\native\libuv.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-arm\native\libuv.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x64\native\libuv.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x86\native\libuv.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.pdb
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.AssemblyReference.cache
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.GeneratedMSBuildEditorConfig.editorconfig
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfoInputs.cache
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfo.cs
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CoreCompileInputs.cache
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.MvcApplicationPartsAssemblyInfo.cache
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.development.json
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.FocusEV.OCPP.Server.Microsoft.AspNetCore.StaticWebAssets.props
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.build.FocusEV.OCPP.Server.props
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.FocusEV.OCPP.Server.props
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.FocusEV.OCPP.Server.props
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.pack.json
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\scopedcss\bundle\FocusEV.OCPP.Server.styles.css
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV..9AF4DD16.Up2Date
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\refint\FocusEV.OCPP.Server.dll
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.genruntimeconfig.cache
+D:\INSITU_Company\3. Customer_project\2. Dev giai đoạn 2\OCPP.Solaev_Platform_resources\Sourcecode\FocusEV.OCPP.Server\obj\Release\net6.0\ref\FocusEV.OCPP.Server.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.Development.json
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.json
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\localhost.pfx
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.staticwebassets.runtime.json
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.exe
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.deps.json
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.runtimeconfig.json
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Karambolo.Extensions.Logging.File.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.Sqlite.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Identity.Client.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.VisualBasic.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\Newtonsoft.Json.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.batteries_v2.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.core.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\System.Drawing.Common.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\System.Runtime.Caching.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Permissions.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\System.Windows.Extensions.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.Common.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\debian-x64\native\libuv.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\fedora-x64\native\libuv.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\opensuse-x64\native\libuv.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx\native\libuv.dylib
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\rhel-x64\native\libuv.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-arm\native\libuv.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x64\native\libuv.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x86\native\libuv.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.pdb
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.AssemblyReference.cache
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.GeneratedMSBuildEditorConfig.editorconfig
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfoInputs.cache
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfo.cs
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CoreCompileInputs.cache
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.MvcApplicationPartsAssemblyInfo.cache
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.development.json
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.FocusEV.OCPP.Server.Microsoft.AspNetCore.StaticWebAssets.props
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.build.FocusEV.OCPP.Server.props
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.FocusEV.OCPP.Server.props
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.FocusEV.OCPP.Server.props
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.pack.json
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\scopedcss\bundle\FocusEV.OCPP.Server.styles.css
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV..9AF4DD16.Up2Date
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\refint\FocusEV.OCPP.Server.dll
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.genruntimeconfig.cache
+D:\OCPP.Solaev_Platform_resources\FocusEV.OCPP.Server\obj\Release\net6.0\ref\FocusEV.OCPP.Server.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.Development.json
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.json
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\localhost.pfx
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.staticwebassets.runtime.json
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.exe
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.deps.json
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.runtimeconfig.json
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.pdb
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Karambolo.Extensions.Logging.File.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.Sqlite.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Identity.Client.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.VisualBasic.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Newtonsoft.Json.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.batteries_v2.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.core.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Drawing.Common.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Runtime.Caching.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Permissions.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Windows.Extensions.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.Common.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\debian-x64\native\libuv.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\fedora-x64\native\libuv.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\opensuse-x64\native\libuv.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx\native\libuv.dylib
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\rhel-x64\native\libuv.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-arm\native\libuv.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x64\native\libuv.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x86\native\libuv.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.pdb
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.AssemblyReference.cache
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfoInputs.cache
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfo.cs
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.development.json
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.FocusEV.OCPP.Server.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.build.FocusEV.OCPP.Server.props
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.FocusEV.OCPP.Server.props
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.FocusEV.OCPP.Server.props
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.pack.json
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\scopedcss\bundle\FocusEV.OCPP.Server.styles.css
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV..9AF4DD16.Up2Date
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\refint\FocusEV.OCPP.Server.dll
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.pdb
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.genruntimeconfig.cache
+C:\Users\ASUS\FOCUS_SolarEV\Work\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\ref\FocusEV.OCPP.Server.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.AssemblyReference.cache
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\refint\FocusEV.OCPP.Server.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.pdb
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.Development.json
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\localhost.pfx
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.json
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.staticwebassets.runtime.json
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.staticwebassets.endpoints.json
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.exe
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.deps.json
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.runtimeconfig.json
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.pdb
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Karambolo.Extensions.Logging.File.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.Sqlite.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Identity.Client.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.VisualBasic.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Newtonsoft.Json.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.batteries_v2.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.core.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Drawing.Common.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Runtime.Caching.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Permissions.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Windows.Extensions.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.Common.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\debian-x64\native\libuv.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\fedora-x64\native\libuv.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\opensuse-x64\native\libuv.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx\native\libuv.dylib
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\rhel-x64\native\libuv.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-arm\native\libuv.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x64\native\libuv.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x86\native\libuv.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.dll
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.pdb
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.GeneratedMSBuildEditorConfig.editorconfig
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfoInputs.cache
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfo.cs
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CoreCompileInputs.cache
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.MvcApplicationPartsAssemblyInfo.cache
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\scopedcss\bundle\FocusEV.OCPP.Server.styles.css
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.development.json
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.endpoints.json
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.FocusEV.OCPP.Server.Microsoft.AspNetCore.StaticWebAssets.props
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.FocusEV.OCPP.Server.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.build.FocusEV.OCPP.Server.props
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.FocusEV.OCPP.Server.props
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.FocusEV.OCPP.Server.props
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.pack.json
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV..9AF4DD16.Up2Date
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.genruntimeconfig.cache
+C:\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\ref\FocusEV.OCPP.Server.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.Development.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\localhost.pfx
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\web.config
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\appsettings.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\appsettings.Development.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\appsettings.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\FocusEV.OCPP.Server.deps.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\FocusEV.OCPP.Server.runtimeconfig.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\FocusEV.OCPP.Server.staticwebassets.endpoints.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.staticwebassets.runtime.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.staticwebassets.endpoints.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.exe
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.deps.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.runtimeconfig.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Karambolo.Extensions.Logging.File.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Data.Sqlite.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Identity.Client.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.VisualBasic.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\Newtonsoft.Json.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.batteries_v2.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.core.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Drawing.Common.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Runtime.Caching.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Security.Permissions.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\System.Windows.Extensions.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\WebSocketManager.Common.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\debian-x64\native\libuv.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\fedora-x64\native\libuv.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\opensuse-x64\native\libuv.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx\native\libuv.dylib
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\rhel-x64\native\libuv.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-arm\native\libuv.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x64\native\libuv.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win7-x86\native\libuv.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x64\native\libe_sqlite3.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\linux-x86\native\libe_sqlite3.so
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm\native\e_sqlite3.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-arm64\native\e_sqlite3.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x64\native\e_sqlite3.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win-x86\native\e_sqlite3.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\FocusEV.OCPP.Database.pdb
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.AssemblyReference.cache
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\rpswa.dswa.cache.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.GeneratedMSBuildEditorConfig.editorconfig
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfoInputs.cache
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.AssemblyInfo.cs
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.csproj.CoreCompileInputs.cache
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.MvcApplicationPartsAssemblyInfo.cache
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\rjimswa.dswa.cache.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\rjsmrazor.dswa.cache.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\rjsmcshtml.dswa.cache.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\scopedcss\bundle\FocusEV.OCPP.Server.styles.css
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.json.cache
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.development.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.build.endpoints.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV..9AF4DD16.Up2Date
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\refint\FocusEV.OCPP.Server.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.pdb
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\FocusEV.OCPP.Server.genruntimeconfig.cache
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\ref\FocusEV.OCPP.Server.dll
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\obj\Release\net6.0\staticwebassets.upToDateCheck.txt
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\web.config
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\appsettings.Development.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\appsettings.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\FocusEV.OCPP.Server.deps.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\FocusEV.OCPP.Server.runtimeconfig.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\FocusEV.OCPP.Server.staticwebassets.endpoints.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\web.config
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\appsettings.Development.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\appsettings.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\FocusEV.OCPP.Server.deps.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\FocusEV.OCPP.Server.runtimeconfig.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\FocusEV.OCPP.Server.staticwebassets.endpoints.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\web.config
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\appsettings.Development.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\appsettings.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\FocusEV.OCPP.Server.deps.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\FocusEV.OCPP.Server.runtimeconfig.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\FocusEV.OCPP.Server.staticwebassets.endpoints.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\web.config
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\appsettings.Development.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\appsettings.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\FocusEV.OCPP.Server.deps.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\FocusEV.OCPP.Server.runtimeconfig.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\FocusEV.OCPP.Server.staticwebassets.endpoints.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\web.config
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\appsettings.Development.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\appsettings.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\FocusEV.OCPP.Server.deps.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\FocusEV.OCPP.Server.runtimeconfig.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\FocusEV.OCPP.Server.staticwebassets.endpoints.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\publish\web.config
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\publish\appsettings.Development.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\publish\appsettings.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\publish\FocusEV.OCPP.Server.deps.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\publish\FocusEV.OCPP.Server.runtimeconfig.json
+D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\bin\Release\net6.0\publish\publish\publish\publish\publish\publish\publish\FocusEV.OCPP.Server.staticwebassets.endpoints.json

@@ -1,0 +1,76 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Logs\FocusEV.OCPP.Server-00.log'))">
+      <SourceType>Package</SourceType>
+      <SourceId>FocusEV.OCPP.Server</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/FocusEV.OCPP.Server</BasePath>
+      <RelativePath>Logs/FocusEV.OCPP.Server-00.log</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>zruc6jtriv</Fingerprint>
+      <Integrity>MVfvSg6sy8GWZ08+jif5kpWN6bmJuJlbnjEeNESo2mc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Logs\FocusEV.OCPP.Server-00.log'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Logs\Lado.OCPP.Server-00.log'))">
+      <SourceType>Package</SourceType>
+      <SourceId>FocusEV.OCPP.Server</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/FocusEV.OCPP.Server</BasePath>
+      <RelativePath>Logs/Lado.OCPP.Server-00.log</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>2m52elwbwh</Fingerprint>
+      <Integrity>6oqq0UjjL+Axs2memfn4ro4KFiwGh8wLcfXJniwdF8A=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Logs\Lado.OCPP.Server-00.log'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Logs\Lado.OCPP.Server-01.log'))">
+      <SourceType>Package</SourceType>
+      <SourceId>FocusEV.OCPP.Server</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/FocusEV.OCPP.Server</BasePath>
+      <RelativePath>Logs/Lado.OCPP.Server-01.log</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>i50pjr31nc</Fingerprint>
+      <Integrity>+oOVzB53zU35jxcT/Mz4ZMbFjfXb2hUmrMz1vKrEzvE=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Logs\Lado.OCPP.Server-01.log'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Logs\Lado.OCPP.Server-02.log'))">
+      <SourceType>Package</SourceType>
+      <SourceId>FocusEV.OCPP.Server</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/FocusEV.OCPP.Server</BasePath>
+      <RelativePath>Logs/Lado.OCPP.Server-02.log</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>gjeky9m9en</Fingerprint>
+      <Integrity>ZLMkig6aA4Oa42FwzHQZu0IHXeMMBrYhMqvL/162VoU=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Logs\Lado.OCPP.Server-02.log'))</OriginalItemSpec>
+    </StaticWebAsset>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <NameOfLastUsedPublishProfile>D:\SolarEV\DEVELOPER\DEVELOPER - Copy\DEVELOPER\OCPP.Solaev_Platform_030724\FocusEV.OCPP.Server\Properties\PublishProfiles\FolderProfile7.pubxml</NameOfLastUsedPublishProfile>
+    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
+</Project>
