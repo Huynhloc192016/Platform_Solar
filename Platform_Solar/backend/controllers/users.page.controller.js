@@ -636,6 +636,82 @@ const setUserBalance = async (req, res, next) => {
   }
 };
 
+// Cập nhật email và số điện thoại người dùng (UserApp)
+const updateUserEmailPhone = async (req, res, next) => {
+  try {
+    if (!requireAdmin(req, res)) return;
+    const id = req.params.id != null ? String(req.params.id).trim() : '';
+    if (!id) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'ID người dùng không hợp lệ' });
+    }
+
+    const emailRaw = req.body?.email;
+    const phoneRaw = req.body?.phone;
+    const email = emailRaw != null ? String(emailRaw).trim() : '';
+    const phone = phoneRaw != null ? String(phoneRaw).trim() : '';
+
+    const cols = await getUserAppColumnsOrFail(res);
+    if (!cols) return;
+
+    const emailCol = pickColumn(cols.userAppCols, ['Email', 'EMail', 'Mail']);
+    const phoneCol = pickColumn(cols.userAppCols, ['Phone', 'PhoneNumber', 'Mobile', 'Tel']);
+    if (!emailCol && !phoneCol) {
+      return res.status(500).json({
+        success: false,
+        message: 'Bảng UserApp chưa có cột Email hoặc Phone để cập nhật.',
+      });
+    }
+
+    const before = await getUserAppSnapshotById(id, cols);
+    if (!before) {
+      return res
+        .status(404)
+        .json({ success: false, message: 'Không tìm thấy người dùng.' });
+    }
+
+    const updates = [];
+    const replacements = { id };
+
+    if (emailCol) {
+      updates.push(`${sqlIdent(emailCol)} = :email`);
+      replacements.email = email || null;
+    }
+    if (phoneCol) {
+      updates.push(`${sqlIdent(phoneCol)} = :phone`);
+      replacements.phone = phone || null;
+    }
+
+    if (updates.length === 0) return;
+
+    await sequelize.query(
+      `UPDATE UserApp SET ${updates.join(', ')} WHERE ${sqlIdent(cols.userIdCol)} = :id`,
+      { replacements }
+    );
+
+    const after = await getUserAppSnapshotById(id, cols);
+    await insertActivityLog({
+      module: 'users',
+      action: 'UPDATE',
+      actionName: 'USER_UPDATE_EMAIL_PHONE',
+      entity: 'UserApp',
+      entityId: id,
+      before,
+      after,
+      req,
+    });
+
+    return res.json({
+      success: true,
+      message: 'Đã cập nhật email và số điện thoại.',
+      data: { userId: id, email: email || null, phone: phone || null },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getUsers,
   resetUserPassword,
@@ -643,5 +719,6 @@ module.exports = {
   deleteUser,
   addUserBalance,
   setUserBalance,
+  updateUserEmailPhone,
 };
 

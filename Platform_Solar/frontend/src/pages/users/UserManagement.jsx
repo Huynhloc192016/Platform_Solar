@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
-import { ChevronLeft, ChevronRight, Loader2, Search, Users, MoreVertical, KeyRound, Lock, Unlock, Trash2, Coins, SlidersHorizontal } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Loader2, Search, Users, MoreVertical, KeyRound, Lock, Unlock, Trash2, Coins, SlidersHorizontal, Mail, Phone } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../../components/ui/dialog';
 import { Label } from '../../components/ui/label';
 import {
@@ -48,6 +48,12 @@ const UserManagement = () => {
   const [balanceValue, setBalanceValue] = useState('');
   const [balanceError, setBalanceError] = useState('');
   const [balancingId, setBalancingId] = useState(null);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [editUser, setEditUser] = useState(null);
+  const [editEmail, setEditEmail] = useState('');
+  const [editPhone, setEditPhone] = useState('');
+  const [editError, setEditError] = useState('');
+  const [editingId, setEditingId] = useState(null);
 
   const fetchUsers = async (params) => {
     const { page: p = page, limit: l = limit, search: s } = params || {};
@@ -223,6 +229,40 @@ const UserManagement = () => {
     }
   };
 
+  const openEditEmailPhone = (u) => {
+    if (!u?.userId) return;
+    setEditUser(u);
+    setEditEmail(u.email ?? '');
+    setEditPhone(u.phone ?? '');
+    setEditError('');
+    setEditDialogOpen(true);
+  };
+
+  const handleSubmitEditEmailPhone = async (e) => {
+    e.preventDefault();
+    if (!editUser?.userId) return;
+    setEditError('');
+    setEditingId(editUser.userId);
+    try {
+      const res = await api.put(`/dashboard/users/${encodeURIComponent(editUser.userId)}`, {
+        email: editEmail.trim(),
+        phone: editPhone.trim(),
+      });
+      if (res.data?.success) {
+        setEditDialogOpen(false);
+        setEditUser(null);
+        fetchUsers({ page, limit, search: searchApplied || undefined });
+        toast.success(res.data?.message || 'Đã cập nhật email và số điện thoại.');
+      } else {
+        setEditError(res.data?.message || 'Cập nhật thất bại.');
+      }
+    } catch (err) {
+      setEditError(err.response?.data?.message || 'Đã xảy ra lỗi.');
+    } finally {
+      setEditingId(null);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <Card>
@@ -344,6 +384,18 @@ const UserManagement = () => {
                               </DropdownMenuItem>
                               <DropdownMenuSeparator />
                               <DropdownMenuItem
+                                onClick={() => openEditEmailPhone(u)}
+                                disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId || editingId === u.userId}
+                              >
+                                {editingId === u.userId ? (
+                                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                ) : (
+                                  <Mail className="w-4 h-4 mr-2" />
+                                )}
+                                Sửa email & SĐT
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem
                                 onClick={() => handleDeleteUser(u)}
                                 disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId}
                                 className="text-destructive focus:text-destructive"
@@ -394,6 +446,11 @@ const UserManagement = () => {
                             <DropdownMenuItem onClick={() => openBalanceDialog(u, 'set')} disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId}>
                               <SlidersHorizontal className="w-4 h-4 mr-2" />
                               Set số dư
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem onClick={() => openEditEmailPhone(u)} disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId || editingId === u.userId}>
+                              {editingId === u.userId ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Mail className="w-4 h-4 mr-2" />}
+                              Sửa email & SĐT
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem onClick={() => handleDeleteUser(u)} disabled={resettingId === u.userId || lockingId === u.userId || deletingId === u.userId || balancingId === u.userId} className="text-destructive focus:text-destructive">
@@ -488,6 +545,72 @@ const UserManagement = () => {
                 variant="outline"
                 onClick={() => setBalanceDialogOpen(false)}
                 disabled={balancingId === balanceUser?.userId}
+              >
+                Hủy
+              </Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={editDialogOpen}
+        onOpenChange={(open) => {
+          setEditDialogOpen(open);
+          if (!open) {
+            setEditUser(null);
+            setEditEmail('');
+            setEditPhone('');
+            setEditError('');
+          }
+        }}
+      >
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Sửa email & số điện thoại</DialogTitle>
+            <DialogDescription>
+              {editUser?.userId ? `Người dùng #${editUser.userId}` : 'Chọn người dùng để thao tác'}
+            </DialogDescription>
+          </DialogHeader>
+
+          <form onSubmit={handleSubmitEditEmailPhone} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="edit-email">Email</Label>
+              <Input
+                id="edit-email"
+                type="email"
+                value={editEmail}
+                onChange={(e) => setEditEmail(e.target.value)}
+                placeholder="email@example.com"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="edit-phone">Số điện thoại</Label>
+              <Input
+                id="edit-phone"
+                type="tel"
+                value={editPhone}
+                onChange={(e) => setEditPhone(e.target.value)}
+                placeholder="0901234567"
+              />
+            </div>
+
+            {editError && (
+              <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+                <p className="text-sm text-destructive">{editError}</p>
+              </div>
+            )}
+
+            <div className="flex gap-2">
+              <Button type="submit" disabled={!editUser?.userId || editingId === editUser?.userId}>
+                {editingId === editUser?.userId ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
+                Xác nhận
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setEditDialogOpen(false)}
+                disabled={editingId === editUser?.userId}
               >
                 Hủy
               </Button>

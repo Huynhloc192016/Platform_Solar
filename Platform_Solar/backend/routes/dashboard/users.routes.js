@@ -9,6 +9,7 @@ router.get('/users', authenticate, controller.getUsers);
 router.get('/vnpay-transactions', authenticate, controller.getVnpayTransactions);
 router.put('/users/:id/reset-password', authenticate, controller.resetUserPassword);
 router.put('/users/:id/lock', authenticate, controller.setUserLock);
+router.put('/users/:id', authenticate, controller.updateUserEmailPhone);
 router.post(
   '/users/:id/balance/add',
   authenticate,
