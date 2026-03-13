@@ -72,6 +72,11 @@ const isChargingStatus = (status) => {
   return s === 'charging' || s === 'occupied';
 };
 
+const isFaultedStatus = (status) => {
+  const s = (status ?? '').toString().toLowerCase();
+  return s === 'faulted' || s === 'error';
+};
+
 const formatPower = (v) => {
   const num = typeof v === 'number' ? v : parseFloat(String(v || '').replace(/[^\d.-]/g, ''));
   return isNaN(num) ? 0 : num;
@@ -290,214 +295,224 @@ const StationLivePage = () => {
           const powerMax = Number(formatPower(cp.chargerPower));
           const totalMax = totalPowerMax(cp);
           const online = isOnline(cp);
+          const anyCharging = isChargingStatus(gun1Status) || isChargingStatus(gun2Status);
+          const stationStatus = !online
+            ? 'offline'
+            : isFaultedStatus(cp.ChargePointState) || isFaultedStatus(gun1Status) || isFaultedStatus(gun2Status)
+            ? 'faulted'
+            : anyCharging
+            ? 'charging'
+            : 'online';
           const latestStatusTime = gun1?.LastStatusTime ?? gun1?.lastStatusTime ?? gun2?.LastStatusTime ?? gun2?.lastStatusTime;
           const totalCurrentPower =
             (isChargingStatus(gun1Status) ? (Number(gun1?.CurrentChargeKW) || powerMax * 0.8) : 0) +
             (isChargingStatus(gun2Status) ? (Number(gun2?.CurrentChargeKW) || powerMax * 0.8) : 0);
           const showTotalCurrent = totalCurrentPower > 0;
-          const BadgeIcon1 = config1.badgeIcon;
-          const BadgeIcon2 = config2.badgeIcon;
 
           return (
-            <Card
+            <div
               key={cp.ChargePointId}
-              className={`overflow-hidden bg-white transition-opacity relative border-l-4 ${
-                isPaused ? 'border-l-gray-500' : online ? 'border-l-green-500' : 'border-l-red-500 opacity-75'
-              }`}
+              className={`charger-card ${stationStatus}`}
             >
-              {isPaused && (
-                <div className="absolute inset-0 bg-black/60 pointer-events-none rounded-[inherit]" aria-hidden />
-              )}
-              <CardHeader className="pb-3">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1 min-w-0">
-                    <div className="text-lg font-semibold flex items-center gap-2 flex-wrap">
-                      <span className="truncate">{cp.Name || cp.ChargePointId}</span>
-                      <div className="flex items-center gap-1">
-                        <span
-                          className={`inline-block w-2 h-2 shrink-0 rounded-full animate-pulse ${
-                            online ? 'bg-green-500' : 'bg-red-500'
+              <Card
+                className={`overflow-hidden bg-white transition-opacity relative border-l-4 ${
+                  isPaused ? 'border-l-gray-500' : online ? 'border-l-green-500' : 'border-l-red-500 opacity-75'
+                }`}
+              >
+                {isPaused && (
+                  <div className="absolute inset-0 bg-black/60 pointer-events-none rounded-[inherit]" aria-hidden />
+                )}
+                <CardHeader className="pb-3">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1 min-w-0">
+                      <div className="text-lg font-semibold flex items-center gap-2 flex-wrap">
+                        <span className="truncate">{cp.Name || cp.ChargePointId}</span>
+                        <div className="flex items-center gap-1">
+                          <span
+                            className={`inline-block w-2 h-2 shrink-0 rounded-full animate-pulse ${
+                              online ? 'bg-green-500' : 'bg-red-500'
+                            }`}
+                            aria-hidden
+                          />
+                          <span className="text-sm font-medium text-muted-foreground">
+                            {online ? 'Online' : 'Offline'}
+                          </span>
+                        </div>
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-1 truncate">{cp.StationName || '—'}</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => togglePower(cp)}
+                      className="shrink-0 p-1 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-300"
+                      title={isPaused ? 'Tiếp tục cập nhật' : 'Tạm dừng cập nhật trụ này'}
+                      aria-label={isPaused ? 'Tiếp tục cập nhật' : 'Tạm dừng cập nhật'}
+                    >
+                      {isPaused ? (
+                        <PowerOff className="w-5 h-5 text-gray-400" aria-hidden />
+                      ) : (
+                        <Power className={`w-5 h-5 ${online ? 'text-green-500' : 'text-gray-400'}`} aria-hidden />
+                      )}
+                    </button>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4 pt-0">
+                  {/* Súng 1 */}
+                  <div className={config1.sectionClass}>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Plug className="w-4 h-4 text-gray-600 shrink-0" />
+                        <span className="font-medium text-sm">{gun1?.ConnectorName || 'Súng 1'}</span>
+                        <Badge variant="outline" className="text-xs h-5 font-normal border-slate-200">
+                          {cp.connectorType || 'CCS2'}
+                        </Badge>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className={`${config1.className} px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1`}>
+                          {config1.badgeIcon && <config1.badgeIcon className="h-3 w-3" />}
+                          {config1.label}
+                        </div>
+                        {isChargingStatus(gun1Status) && gun1 && (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="h-7 text-xs border-orange-500 text-orange-600 hover:bg-orange-50"
+                            disabled={!!stopping}
+                            onClick={() => handleStopCharging(cp.ChargePointId, gun1.ConnectorId ?? 1)}
+                          >
+                            {stopping === `${cp.ChargePointId}-${gun1.ConnectorId ?? 1}` ? (
+                              <Loader2 className="h-3 w-3 animate-spin" />
+                            ) : (
+                              <>
+                                <StopCircle className="h-3 w-3 mr-1" />
+                                Dừng sạc
+                              </>
+                            )}
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2 text-xs">
+                      <div>
+                        <div className="text-muted-foreground">Công suất</div>
+                        <div className="font-medium">
+                          {isChargingStatus(gun1Status)
+                            ? `${(Number(gun1?.CurrentChargeKW) || powerMax * 0.8).toFixed(1)}/${powerMax} kW`
+                            : `${powerMax} kW`}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-muted-foreground">Điện áp</div>
+                        <div className="font-medium">{formatMeterValue(gun1?.Voltage, 'V')}</div>
+                      </div>
+                      <div>
+                        <div className="text-muted-foreground">Dòng</div>
+                        <div className="font-medium">{formatMeterValue(gun1?.Current, 'A')}</div>
+                      </div>
+                    </div>
+                    <div className="pt-1">
+                      <div className="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
+                        <div
+                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                            isChargingStatus(gun1Status) ? 'bg-blue-600' : 'bg-gray-300'
                           }`}
-                          aria-hidden
+                          style={{
+                            width: isChargingStatus(gun1Status)
+                              ? `${Math.min(100, Math.max(0, Number(gun1?.SoC) || 80))}%`
+                              : '0%',
+                          }}
                         />
-                        <span className="text-sm font-medium text-muted-foreground">
-                          {online ? 'Online' : 'Offline'}
-                        </span>
                       </div>
-                    </div>
-                    <p className="text-sm text-muted-foreground mt-1 truncate">{cp.StationName || '—'}</p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => togglePower(cp)}
-                    className="shrink-0 p-1 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-300"
-                    title={isPaused ? 'Tiếp tục cập nhật' : 'Tạm dừng cập nhật trụ này'}
-                    aria-label={isPaused ? 'Tiếp tục cập nhật' : 'Tạm dừng cập nhật'}
-                  >
-                    {isPaused ? (
-                      <PowerOff className="w-5 h-5 text-gray-400" aria-hidden />
-                    ) : (
-                      <Power className={`w-5 h-5 ${online ? 'text-green-500' : 'text-gray-400'}`} aria-hidden />
-                    )}
-                  </button>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4 pt-0">
-                {/* Súng 1 */}
-                <div className={config1.sectionClass}>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Plug className="w-4 h-4 text-gray-600 shrink-0" />
-                      <span className="font-medium text-sm">{gun1?.ConnectorName || 'Súng 1'}</span>
-                      <Badge variant="outline" className="text-xs h-5 font-normal border-slate-200">
-                        {cp.connectorType || 'CCS2'}
-                      </Badge>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className={`${config1.className} px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1`}>
-                        {BadgeIcon1 && <BadgeIcon1 className="h-3 w-3" />}
-                        {config1.label}
-                      </div>
-                      {isChargingStatus(gun1Status) && gun1 && (
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="h-7 text-xs border-orange-500 text-orange-600 hover:bg-orange-50"
-                          disabled={!!stopping}
-                          onClick={() => handleStopCharging(cp.ChargePointId, gun1.ConnectorId ?? 1)}
-                        >
-                          {stopping === `${cp.ChargePointId}-${gun1.ConnectorId ?? 1}` ? (
-                            <Loader2 className="h-3 w-3 animate-spin" />
-                          ) : (
-                            <>
-                              <StopCircle className="h-3 w-3 mr-1" />
-                              Dừng sạc
-                            </>
-                          )}
-                        </Button>
+                      {isChargingStatus(gun1Status) && (gun1?.SoC != null && Number.isFinite(Number(gun1.SoC))) && (
+                        <div className="text-xs text-muted-foreground mt-0.5">SoC {Number(gun1.SoC).toFixed(0)}%</div>
                       )}
                     </div>
                   </div>
-                  <div className="grid grid-cols-3 gap-2 text-xs">
-                    <div>
-                      <div className="text-muted-foreground">Công suất</div>
-                      <div className="font-medium">
-                        {isChargingStatus(gun1Status)
-                          ? `${(Number(gun1?.CurrentChargeKW) || powerMax * 0.8).toFixed(1)}/${powerMax} kW`
-                          : `${powerMax} kW`}
+                  {/* Súng 2 */}
+                  <div className={config2.sectionClass}>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Plug className="w-4 h-4 text-gray-600 shrink-0" />
+                        <span className="font-medium text-sm">{gun2?.ConnectorName || 'Súng 2'}</span>
+                        <Badge variant="outline" className="text-xs h-5 font-normal border-slate-200">
+                          {cp.connectorType || 'CCS2'}
+                        </Badge>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className={`${config2.className} px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1`}>
+                          {config2.badgeIcon && <config2.badgeIcon className="h-3 w-3" />}
+                          {config2.label}
+                        </div>
+                        {isChargingStatus(gun2Status) && gun2 && (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="h-7 text-xs border-orange-500 text-orange-600 hover:bg-orange-50"
+                            disabled={!!stopping}
+                            onClick={() => handleStopCharging(cp.ChargePointId, gun2.ConnectorId ?? 2)}
+                          >
+                            {stopping === `${cp.ChargePointId}-${gun2.ConnectorId ?? 2}` ? (
+                              <Loader2 className="h-3 w-3 animate-spin" />
+                            ) : (
+                              <>
+                                <StopCircle className="h-3 w-3 mr-1" />
+                                Dừng sạc
+                              </>
+                            )}
+                          </Button>
+                        )}
                       </div>
                     </div>
-                    <div>
-                      <div className="text-muted-foreground">Điện áp</div>
-                      <div className="font-medium">{formatMeterValue(gun1?.Voltage, 'V')}</div>
-                    </div>
-                    <div>
-                      <div className="text-muted-foreground">Dòng</div>
-                      <div className="font-medium">{formatMeterValue(gun1?.Current, 'A')}</div>
-                    </div>
-                  </div>
-                  <div className="pt-1">
-                    <div className="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
-                      <div
-                        className={`h-1.5 rounded-full transition-all duration-300 ${
-                          isChargingStatus(gun1Status) ? 'bg-blue-600' : 'bg-gray-300'
-                        }`}
-                        style={{
-                          width: isChargingStatus(gun1Status)
-                            ? `${Math.min(100, Math.max(0, Number(gun1?.SoC) || 80))}%`
-                            : '0%',
-                        }}
-                      />
-                    </div>
-                    {isChargingStatus(gun1Status) && (gun1?.SoC != null && Number.isFinite(Number(gun1.SoC))) && (
-                      <div className="text-xs text-muted-foreground mt-0.5">SoC {Number(gun1.SoC).toFixed(0)}%</div>
-                    )}
-                  </div>
-                </div>
-                {/* Súng 2 */}
-                <div className={config2.sectionClass}>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <Plug className="w-4 h-4 text-gray-600 shrink-0" />
-                      <span className="font-medium text-sm">{gun2?.ConnectorName || 'Súng 2'}</span>
-                      <Badge variant="outline" className="text-xs h-5 font-normal border-slate-200">
-                        {cp.connectorType || 'CCS2'}
-                      </Badge>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className={`${config2.className} px-2 py-1 rounded-md text-xs font-medium flex items-center gap-1`}>
-                        {BadgeIcon2 && <BadgeIcon2 className="h-3 w-3" />}
-                        {config2.label}
+                    <div className="grid grid-cols-3 gap-2 text-xs">
+                      <div>
+                        <div className="text-muted-foreground">Công suất</div>
+                        <div className="font-medium">
+                          {isChargingStatus(gun2Status)
+                            ? `${(Number(gun2?.CurrentChargeKW) || powerMax * 0.8).toFixed(1)}/${powerMax} kW`
+                            : `${powerMax} kW`}
+                        </div>
                       </div>
-                      {isChargingStatus(gun2Status) && gun2 && (
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="h-7 text-xs border-orange-500 text-orange-600 hover:bg-orange-50"
-                          disabled={!!stopping}
-                          onClick={() => handleStopCharging(cp.ChargePointId, gun2.ConnectorId ?? 2)}
-                        >
-                          {stopping === `${cp.ChargePointId}-${gun2.ConnectorId ?? 2}` ? (
-                            <Loader2 className="h-3 w-3 animate-spin" />
-                          ) : (
-                            <>
-                              <StopCircle className="h-3 w-3 mr-1" />
-                              Dừng sạc
-                            </>
-                          )}
-                        </Button>
+                      <div>
+                        <div className="text-muted-foreground">Điện áp</div>
+                        <div className="font-medium">{formatMeterValue(gun2?.Voltage, 'V')}</div>
+                      </div>
+                      <div>
+                        <div className="text-muted-foreground">Dòng</div>
+                        <div className="font-medium">{formatMeterValue(gun2?.Current, 'A')}</div>
+                      </div>
+                    </div>
+                    <div className="pt-1">
+                      <div className="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
+                        <div
+                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                            isChargingStatus(gun2Status) ? 'bg-blue-600' : 'bg-gray-300'
+                          }`}
+                          style={{
+                            width: isChargingStatus(gun2Status)
+                              ? `${Math.min(100, Math.max(0, Number(gun2?.SoC) || 80))}%`
+                              : '0%',
+                          }}
+                        />
+                      </div>
+                      {isChargingStatus(gun2Status) && (gun2?.SoC != null && Number.isFinite(Number(gun2.SoC))) && (
+                        <div className="text-xs text-muted-foreground mt-0.5">SoC {Number(gun2.SoC).toFixed(0)}%</div>
                       )}
                     </div>
                   </div>
-                  <div className="grid grid-cols-3 gap-2 text-xs">
-                    <div>
-                      <div className="text-muted-foreground">Công suất</div>
-                      <div className="font-medium">
-                        {isChargingStatus(gun2Status)
-                          ? `${(Number(gun2?.CurrentChargeKW) || powerMax * 0.8).toFixed(1)}/${powerMax} kW`
-                          : `${powerMax} kW`}
-                      </div>
+                  {/* Footer */}
+                  <div className="pt-2 border-t flex items-center justify-between text-sm">
+                    <div className="flex items-center gap-1 text-muted-foreground">
+                      <Clock className="w-3 h-3" />
+                      <span className="text-xs">{formatTimeAgo(latestStatusTime)}</span>
                     </div>
-                    <div>
-                      <div className="text-muted-foreground">Điện áp</div>
-                      <div className="font-medium">{formatMeterValue(gun2?.Voltage, 'V')}</div>
-                    </div>
-                    <div>
-                      <div className="text-muted-foreground">Dòng</div>
-                      <div className="font-medium">{formatMeterValue(gun2?.Current, 'A')}</div>
+                    <div className="font-medium flex items-center gap-1">
+                      <Zap className="w-3 h-3" />
+                      {showTotalCurrent ? `${totalCurrentPower.toFixed(1)}/${totalMax} kW` : `${totalMax} kW`}
                     </div>
                   </div>
-                  <div className="pt-1">
-                    <div className="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
-                      <div
-                        className={`h-1.5 rounded-full transition-all duration-300 ${
-                          isChargingStatus(gun2Status) ? 'bg-blue-600' : 'bg-gray-300'
-                        }`}
-                        style={{
-                          width: isChargingStatus(gun2Status)
-                            ? `${Math.min(100, Math.max(0, Number(gun2?.SoC) || 80))}%`
-                            : '0%',
-                        }}
-                      />
-                    </div>
-                    {isChargingStatus(gun2Status) && (gun2?.SoC != null && Number.isFinite(Number(gun2.SoC))) && (
-                      <div className="text-xs text-muted-foreground mt-0.5">SoC {Number(gun2.SoC).toFixed(0)}%</div>
-                    )}
-                  </div>
-                </div>
-                {/* Footer */}
-                <div className="pt-2 border-t flex items-center justify-between text-sm">
-                  <div className="flex items-center gap-1 text-muted-foreground">
-                    <Clock className="w-3 h-3" />
-                    <span className="text-xs">{formatTimeAgo(latestStatusTime)}</span>
-                  </div>
-                  <div className="font-medium flex items-center gap-1">
-                    <Zap className="w-3 h-3" />
-                    {showTotalCurrent ? `${totalCurrentPower.toFixed(1)}/${totalMax} kW` : `${totalMax} kW`}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           );
         })}
       </div>

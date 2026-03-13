@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\FocusEV.OCPP.Server.props" />
-</Project>

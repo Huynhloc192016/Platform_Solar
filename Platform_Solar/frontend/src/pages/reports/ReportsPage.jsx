@@ -32,6 +32,25 @@ const ReportsPage = () => {
     };
   });
 
+  // Tắt/mở việc áp dụng bộ lọc (form sẽ ẩn khi tắt)
+  const [filtersEnabled, setFiltersEnabled] = useState(() => {
+    try {
+      const raw = localStorage.getItem('reports.filtersEnabled');
+      if (raw === null) return false; // mặc định tắt
+      return raw === '1';
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('reports.filtersEnabled', filtersEnabled ? '1' : '0');
+    } catch {
+      // ignore
+    }
+  }, [filtersEnabled]);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -47,16 +66,25 @@ const ReportsPage = () => {
   const [sessionsByHour, setSessionsByHour] = useState([]);
   const [utilization, setUtilization] = useState([]);
 
-  const queryParams = useMemo(
-    () => ({
+  const queryParams = useMemo(() => {
+    if (!filtersEnabled) {
+      return {
+        from: undefined,
+        to: undefined,
+        stationId: undefined,
+        ownerId: undefined,
+        chargePointId: undefined,
+      };
+    }
+
+    return {
       from: filters.from,
       to: filters.to,
       stationId: filters.stationId || undefined,
       ownerId: filters.ownerId || undefined,
       chargePointId: filters.chargePointId || undefined,
-    }),
-    [filters]
-  );
+    };
+  }, [filters, filtersEnabled]);
 
   const topStationsClean = useMemo(
     () =>
@@ -156,70 +184,86 @@ const ReportsPage = () => {
               <CalendarRange className="h-4 w-4 text-muted-foreground" />
               <CardTitle className="text-sm">Bộ lọc báo cáo</CardTitle>
             </div>
+            <button
+              type="button"
+              onClick={() => setFiltersEnabled((v) => !v)}
+              className={`text-xs px-2 py-1 rounded-full border transition-colors ${
+                filtersEnabled
+                  ? 'border-emerald-500 text-emerald-700 bg-emerald-50'
+                  : 'border-slate-300 text-slate-600 bg-slate-50'
+              }`}
+              title={filtersEnabled ? 'Tắt áp dụng bộ lọc' : 'Bật áp dụng bộ lọc'}
+            >
+              Bộ lọc: {filtersEnabled ? 'Bật' : 'Tắt'}
+            </button>
           </div>
           <CardDescription>
             Chọn khoảng thời gian và bộ lọc trạm / chủ đầu tư để xem số liệu tương ứng.
           </CardDescription>
         </CardHeader>
-        <CardContent className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
-          <FilterField label="Từ ngày">
-            <input
-              type="date"
-              className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
-              value={filters.from}
-              onChange={(e) => handleDateRangeChange('from', e.target.value)}
-            />
-          </FilterField>
-          <FilterField label="Đến ngày">
-            <input
-              type="date"
-              className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
-              value={filters.to}
-              onChange={(e) => handleDateRangeChange('to', e.target.value)}
-            />
-          </FilterField>
-          <FilterField label="Station ID">
-            <input
-              type="text"
-              placeholder="Tất cả"
-              className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
-              value={filters.stationId}
-              onChange={(e) => setFilters((prev) => ({ ...prev, stationId: e.target.value }))}
-            />
-          </FilterField>
-          <FilterField label="Owner ID">
-            <input
-              type="text"
-              placeholder="Tất cả"
-              className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
-              value={filters.ownerId}
-              onChange={(e) => setFilters((prev) => ({ ...prev, ownerId: e.target.value }))}
-            />
-          </FilterField>
-          <FilterField label="ChargePoint ID">
-            <input
-              type="text"
-              placeholder="Tất cả"
-              className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
-              value={filters.chargePointId}
-              onChange={(e) =>
-                setFilters((prev) => ({ ...prev, chargePointId: e.target.value }))
-              }
-            />
-          </FilterField>
-          <div className="flex items-end justify-end">
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              className="w-full sm:w-auto"
-              onClick={() => setFilters((prev) => ({ ...prev }))}
-            >
-              <RefreshCw className="h-4 w-4 mr-2" />
-              Làm mới
-            </Button>
-          </div>
-        </CardContent>
+        {filtersEnabled && (
+          <CardContent className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
+            <FilterField label="Từ ngày">
+              <input
+                type="date"
+                className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
+                value={filters.from}
+                onChange={(e) => handleDateRangeChange('from', e.target.value)}
+              />
+            </FilterField>
+            <FilterField label="Đến ngày">
+              <input
+                type="date"
+                className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
+                value={filters.to}
+                onChange={(e) => handleDateRangeChange('to', e.target.value)}
+              />
+            </FilterField>
+            <FilterField label="Station ID">
+              <input
+                type="text"
+                placeholder="Tất cả"
+                className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
+                value={filters.stationId}
+                onChange={(e) =>
+                  setFilters((prev) => ({ ...prev, stationId: e.target.value }))
+                }
+              />
+            </FilterField>
+            <FilterField label="Owner ID">
+              <input
+                type="text"
+                placeholder="Tất cả"
+                className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
+                value={filters.ownerId}
+                onChange={(e) => setFilters((prev) => ({ ...prev, ownerId: e.target.value }))}
+              />
+            </FilterField>
+            <FilterField label="ChargePoint ID">
+              <input
+                type="text"
+                placeholder="Tất cả"
+                className="w-full h-9 rounded-md border border-input bg-background px-2 text-sm"
+                value={filters.chargePointId}
+                onChange={(e) =>
+                  setFilters((prev) => ({ ...prev, chargePointId: e.target.value }))
+                }
+              />
+            </FilterField>
+            <div className="flex items-end justify-end">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                className="w-full sm:w-auto"
+                onClick={() => setFilters((prev) => ({ ...prev }))}
+              >
+                <RefreshCw className="h-4 w-4 mr-2" />
+                Làm mới
+              </Button>
+            </div>
+          </CardContent>
+        )}
       </Card>
 
       {/* KPI cards */}
@@ -369,7 +413,8 @@ const ReportsPage = () => {
                 <BarChart
                   data={topStationsClean}
                   layout="vertical"
-                  margin={{ left: 80, right: 16, top: 8, bottom: 8 }}
+                  // Chừa thêm không gian để luôn hiển thị đủ tick label trên mobile
+                  margin={{ left: 70, right: 8, top: 8, bottom: 8 }}
                 >
                   <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#e5e7eb" />
                   <XAxis type="number" tick={{ fontSize: 11 }} />
@@ -377,7 +422,13 @@ const ReportsPage = () => {
                     type="category"
                     dataKey="stationShortName"
                     tick={{ fontSize: 11 }}
-                    width={80}
+                    width={110}
+                    interval={0}
+                    tickMargin={6}
+                    // Giới hạn tối đa 15 ký tự, dài hơn thì hiển thị "..."
+                    tickFormatter={(name) =>
+                      name && name.length > 15 ? `${name.slice(0, 15)}…` : name
+                    }
                   />
                   <Tooltip
                     formatter={(value) => [formatCurrency(value), 'Revenue']}
@@ -428,11 +479,11 @@ const ReportsPage = () => {
             Hiệu suất sử dụng trụ: ChargingTime / TotalTime cho từng trạm.
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="overflow-x-auto">
           {Array.isArray(utilization) && utilization.length === 0 ? (
             <EmptyState label="Chưa có dữ liệu hiệu suất trạm" />
           ) : (
-            <div className="space-y-3">
+            <div className="min-w-[640px] space-y-3">
               <div className="grid grid-cols-12 gap-2 text-xs text-muted-foreground">
                 <div className="col-span-3">Station</div>
                 <div className="col-span-2 text-right">Sessions</div>
@@ -444,12 +495,14 @@ const ReportsPage = () => {
                 {utilization.map((row) => {
                   const pct = Number(row.utilizationPct ?? row.utilization ?? 0);
                   const clamped = Math.max(0, Math.min(100, pct));
+                  const displayName = cleanStationName(row.stationName);
+
                   return (
                     <div
                       key={row.stationId || row.stationName}
                       className="grid grid-cols-12 gap-2 items-center"
                     >
-                      <div className="col-span-3 truncate font-medium">{row.stationName}</div>
+                      <div className="col-span-3 truncate font-medium">{displayName}</div>
                       <div className="col-span-2 text-right text-sm">
                         {formatInteger(row.sessions)}
                       </div>

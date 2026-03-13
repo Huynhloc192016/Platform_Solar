@@ -91,3 +91,313 @@
     background-clip: content-box;
   }
 }
+
+@layer components {
+  .charger-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 24px;
+  }
+
+  .charger-card {
+    --glow: #38bdf8;
+
+    position: relative;
+    border-radius: 24px;
+    padding: 2px; /* khung nhỏ cho viền neon */
+    background: transparent;
+    overflow: visible;
+  }
+
+  .charger-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1.6px;
+    border-radius: 24px;
+    background: linear-gradient(90deg, transparent 10%, var(--glow), transparent 90%);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: rotateBorder 5s linear infinite;
+    opacity: 0.6; /* giảm độ sáng viền */
+    pointer-events: none;
+  }
+
+  /* Hoạt động: online + đang sạc */
+  .charger-card.online,
+  .charger-card.charging {
+    --glow: #22c55e; /* xanh lá */
+  }
+
+  /* Không hoạt động: offline + lỗi */
+  .charger-card.offline,
+  .charger-card.faulted {
+    --glow: #ff6b6b; /* đỏ */
+  }
+
+  .charger-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .charger-title h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #f8fafc;
+  }
+
+  .charger-status-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .charger-status-text {
+    color: #94a3b8;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .charger-title p {
+    margin: 10px 0 0;
+    color: #94a3b8;
+    font-size: 14px;
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    display: inline-block;
+    box-shadow: 0 0 12px currentColor;
+  }
+
+  .status-dot.online {
+    background: #22c55e;
+    color: #22c55e;
+  }
+
+  .status-dot.offline,
+  .status-dot.faulted {
+    background: #ff6b6b;
+    color: #ff6b6b;
+  }
+
+  .status-dot.charging {
+    background: #f59e0b;
+    color: #f59e0b;
+  }
+
+  .power-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: #cbd5e1;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.03);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .connector-list {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 18px;
+  }
+
+  .connector-box {
+    position: relative;
+    border-radius: 18px;
+    padding: 18px 18px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .connector-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1.4px;
+    border-radius: 18px;
+    background: linear-gradient(90deg, transparent, var(--connector-glow), transparent);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: rotateBorder 3.8s linear infinite;
+    opacity: 0.95;
+    pointer-events: none;
+  }
+
+  .connector-box__glow {
+    position: absolute;
+    inset: auto -25% -40% -25%;
+    height: 100px;
+    background: radial-gradient(circle, var(--connector-soft), transparent 68%);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  .connector-box.ready {
+    --connector-glow: #22c55e;
+    --connector-soft: rgba(34, 197, 94, 0.16);
+  }
+
+  .connector-box.error {
+    --connector-glow: #ff6b6b;
+    --connector-soft: rgba(255, 107, 107, 0.18);
+  }
+
+  .connector-box.charging {
+    --connector-glow: #f59e0b;
+    --connector-soft: rgba(245, 158, 11, 0.18);
+  }
+
+  .connector-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .connector-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .connector-type {
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: #cbd5e1;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .badge {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    white-space: nowrap;
+  }
+
+  .badge.ready {
+    color: #86efac;
+    background: rgba(34, 197, 94, 0.16);
+    box-shadow: inset 0 0 14px rgba(34, 197, 94, 0.1);
+  }
+
+  .badge.error {
+    color: #fca5a5;
+    background: rgba(255, 107, 107, 0.16);
+    box-shadow: inset 0 0 14px rgba(255, 107, 107, 0.1);
+  }
+
+  .badge.charging {
+    color: #fcd34d;
+    background: rgba(245, 158, 11, 0.16);
+    box-shadow: inset 0 0 14px rgba(245, 158, 11, 0.1);
+  }
+
+  .connector-info {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .info-item span {
+    display: block;
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 6px;
+  }
+
+  .info-item strong {
+    font-size: 18px;
+    color: #f8fafc;
+  }
+
+  .connector-bar {
+    position: relative;
+    z-index: 2;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+  }
+
+  .connector-bar-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, transparent, var(--connector-glow), transparent);
+    animation: pulseBar 2.2s ease-in-out infinite;
+    opacity: 0.95;
+  }
+
+  .charger-footer {
+    position: relative;
+    z-index: 2;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    color: #94a3b8;
+    font-size: 14px;
+  }
+
+  .footer-right {
+    color: #f8fafc;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  @keyframes rotateBorder {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes pulseBar {
+    0%,
+    100% {
+      transform: translateX(-8%);
+      opacity: 0.7;
+    }
+    50% {
+      transform: translateX(12%);
+      opacity: 1;
+    }
+  }
+}

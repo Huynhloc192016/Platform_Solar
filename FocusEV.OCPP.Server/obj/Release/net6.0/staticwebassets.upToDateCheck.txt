@@ -1,4 +1,0 @@
-wwwroot\Logs\FocusEV.OCPP.Server-00.log
-wwwroot\Logs\Lado.OCPP.Server-00.log
-wwwroot\Logs\Lado.OCPP.Server-01.log
-wwwroot\Logs\Lado.OCPP.Server-02.log

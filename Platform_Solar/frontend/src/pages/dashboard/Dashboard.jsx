@@ -4,20 +4,21 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { Badge } from '../../components/ui/badge';
 import { Label } from '../../components/ui/label';
 import { Progress } from '../../components/ui/progress';
-import { Building2, User, Shield, Users, Battery, Zap, Activity, TrendingUp, AlertCircle, Loader2 } from 'lucide-react';
-import {
-  ResponsiveContainer,
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  Tooltip,
-  BarChart,
-  Bar,
-  CartesianGrid,
-} from 'recharts';
+import { Building2, User, Shield, Users, Battery, Activity, AlertCircle, Loader2 } from 'lucide-react';
 import api from '../../services/api';
 import Loading from '../../components/common/Loading';
+
+// Helpers for formatting values on the dashboard
+function formatCurrency(amount) {
+  return new Intl.NumberFormat('vi-VN', {
+    style: 'currency',
+    currency: 'VND',
+  }).format(amount || 0);
+}
+
+function formatEnergy(kWh) {
+  return `${Number(kWh || 0).toFixed(1)} kWh`;
+}
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -30,15 +31,10 @@ const Dashboard = () => {
     offlineChargePoints: 0,
     activeTransactions: 0,
     totalUsers: 0,
-    totalEnergy: 0,
-    todayEnergy: 0,
-    todayRevenue: 0
   });
   const [stations, setStations] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [energyByHour, setEnergyByHour] = useState([]);
-  const [revenueLast7Days, setRevenueLast7Days] = useState([]);
 
   const isAdmin = !user?.Owner;
   const role = isAdmin ? 'Admin hệ thống' : 'Chủ đầu tư';
@@ -63,15 +59,11 @@ const Dashboard = () => {
       const [
         statsResponse,
         chargePointsResponse,
-        transactionsResponse,
-        energyTodayResponse,
-        revenue7DaysResponse
+        transactionsResponse
       ] = await Promise.all([
         api.get('/dashboard/stats'),
         api.get('/dashboard/stations/recent'),
-        api.get('/dashboard/transactions'),
-        api.get('/dashboard/charts/energy-today'),
-        api.get('/dashboard/charts/revenue-7-days')
+        api.get('/dashboard/transactions')
       ]);
 
       if (statsResponse.data.success) {
@@ -83,28 +75,11 @@ const Dashboard = () => {
       if (transactionsResponse.data.success) {
         setTransactions(transactionsResponse.data.data);
       }
-      if (energyTodayResponse.data.success) {
-        setEnergyByHour(energyTodayResponse.data.data || []);
-      }
-      if (revenue7DaysResponse.data.success) {
-        setRevenueLast7Days(revenue7DaysResponse.data.data || []);
-      }
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
     } finally {
       setLoading(false);
     }
-  };
-
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND'
-    }).format(amount);
-  };
-
-  const formatEnergy = (kWh) => {
-    return `${kWh.toFixed(1)} kWh`;
   };
 
   return (
@@ -176,149 +151,6 @@ const Dashboard = () => {
               <p className="text-xs text-muted-foreground mt-1">
                 Tổng số người dùng
               </p>
-            </CardContent>
-          </Card>
-        </div>
-
-          {/* Stats Cards Row 2 */}
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Tổng năng lượng</CardTitle>
-              <Zap className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{formatEnergy(stats.totalEnergy)}</div>
-              <p className="text-xs text-muted-foreground mt-1">
-                Tổng năng lượng đã cung cấp
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Năng lượng hôm nay</CardTitle>
-              <Zap className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{formatEnergy(stats.todayEnergy)}</div>
-              <p className="text-xs text-muted-foreground mt-1">
-                Năng lượng đã sạc hôm nay
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Doanh thu hôm nay</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{formatCurrency(stats.todayRevenue)}</div>
-              <p className="text-xs text-muted-foreground mt-1">
-                Tổng doanh thu hôm nay
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Charts Section */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {/* Energy by hour today */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Năng lượng theo giờ hôm nay</CardTitle>
-              <CardDescription>Biểu đồ năng lượng (kWh) theo từng giờ trong ngày</CardDescription>
-            </CardHeader>
-            <CardContent className="h-72">
-              {loading ? (
-                <div className="flex items-center justify-center h-full">
-                  <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
-                </div>
-              ) : (energyByHour || []).every(e => !e.energy) ? (
-                <p className="text-sm text-muted-foreground text-center py-8">
-                  Chưa có dữ liệu năng lượng hôm nay
-                </p>
-              ) : (
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={energyByHour}>
-                    <defs>
-                      <linearGradient id="colorEnergy" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.4} />
-                        <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
-                      </linearGradient>
-                    </defs>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
-                    <XAxis
-                      dataKey="hour"
-                      tickFormatter={(h) => `${h}h`}
-                      tick={{ fontSize: 11 }}
-                    />
-                    <YAxis
-                      tick={{ fontSize: 11 }}
-                      width={40}
-                    />
-                    <Tooltip
-                      formatter={(value) => [`${Number(value).toFixed(1)} kWh`, 'Năng lượng']}
-                      labelFormatter={(label) => `${label}h`}
-                    />
-                    <Area
-                      type="monotone"
-                      dataKey="energy"
-                      stroke="#3b82f6"
-                      fill="url(#colorEnergy)"
-                      strokeWidth={2}
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              )}
-            </CardContent>
-          </Card>
-
-          {/* Revenue last 7 days */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Doanh thu 7 ngày gần nhất</CardTitle>
-              <CardDescription>Biểu đồ doanh thu theo ngày</CardDescription>
-            </CardHeader>
-            <CardContent className="h-72">
-              {loading ? (
-                <div className="flex items-center justify-center h-full">
-                  <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
-                </div>
-              ) : (revenueLast7Days || []).every(d => !d.revenue) ? (
-                <p className="text-sm text-muted-foreground text-center py-8">
-                  Chưa có dữ liệu doanh thu
-                </p>
-              ) : (
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={revenueLast7Days}>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
-                    <XAxis
-                      dataKey="date"
-                      tickFormatter={(d) =>
-                        new Date(d).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' })
-                      }
-                      tick={{ fontSize: 11 }}
-                    />
-                    <YAxis tick={{ fontSize: 11 }} width={60} />
-                    <Tooltip
-                      formatter={(value) => [
-                        new Intl.NumberFormat('vi-VN').format(value) + ' ₫',
-                        'Doanh thu',
-                      ]}
-                      labelFormatter={(label) =>
-                        new Date(label).toLocaleDateString('vi-VN', {
-                          day: '2-digit',
-                          month: '2-digit',
-                          year: 'numeric',
-                        })
-                      }
-                    />
-                    <Bar dataKey="revenue" fill="#10b981" radius={[4, 4, 0, 0]} />
-                  </BarChart>
-                </ResponsiveContainer>
-              )}
             </CardContent>
           </Card>
         </div>
