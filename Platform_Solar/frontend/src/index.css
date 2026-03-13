@@ -121,7 +121,7 @@
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    animation: rotateBorder 5s linear infinite;
+    animation: none;
     opacity: 0.6; /* giảm độ sáng viền */
     pointer-events: none;
   }
@@ -241,7 +241,7 @@
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    animation: rotateBorder 3.8s linear infinite;
+    animation: none;
     opacity: 0.95;
     pointer-events: none;
   }
